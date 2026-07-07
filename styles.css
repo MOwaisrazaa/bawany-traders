@@ -613,44 +613,39 @@ header {
 
 /* Circular Category Card */
 .category-card {
-  background-color: var(--white);
-  border: 1px solid var(--border-gray);
-  border-radius: 50%;
-  width: 170px;
-  height: 170px;
+  background-color: transparent;
+  border: none;
+  width: 145px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
   text-align: center;
   cursor: pointer;
   transition: all var(--transition-speed) ease;
-  box-shadow: var(--shadow-sm);
+  box-shadow: none;
   flex-shrink: 0;
-  padding: 15px;
-}
-
-.category-card:hover {
-  transform: translateY(-4px);
-  box-shadow: var(--shadow-md);
-  border-color: var(--primary-teal);
+  padding: 0;
 }
 
 .category-img-wrapper {
-  width: 110px;
-  height: 110px;
+  width: 145px;
+  height: 145px;
   border-radius: 50%;
   background-color: var(--light-gray);
+  border: 1px solid var(--border-gray);
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 8px;
+  margin-bottom: 12px;
   overflow: hidden;
-  transition: background-color var(--transition-speed) ease;
+  transition: all var(--transition-speed) ease;
+  box-shadow: var(--shadow-sm);
 }
 
 .category-card:hover .category-img-wrapper {
-  background-color: var(--primary-light);
+  border-color: var(--primary-teal);
+  box-shadow: var(--shadow-md);
+  transform: translateY(-4px);
 }
 
 .category-img-wrapper img {
@@ -662,16 +657,16 @@ header {
 }
 
 .category-card:hover .category-img-wrapper img {
-  transform: scale(1.1);
+  transform: scale(1.08);
 }
 
 .category-title {
   font-size: 0.85rem;
   font-weight: 700;
   color: var(--dark-navy);
-  margin-top: 2px;
-  max-width: 90%;
-  line-height: 1.25;
+  margin-top: 0;
+  max-width: 100%;
+  line-height: 1.3;
 }
 
 /* Keyframes for smooth infinite scrolling */
@@ -687,17 +682,17 @@ header {
 /* Mobile Category Card scaling */
 @media (max-width: 768px) {
   .category-card {
-    width: 135px;
-    height: 135px;
-    padding: 10px;
+    width: 110px;
+    height: auto;
+    padding: 0;
   }
   .category-img-wrapper {
-    width: 90px;
-    height: 90px;
-    margin-bottom: 6px;
+    width: 110px;
+    height: 110px;
+    margin-bottom: 8px;
   }
   .category-title {
-    font-size: 0.72rem;
+    font-size: 0.75rem;
   }
   .category-group {
     gap: 20px;
