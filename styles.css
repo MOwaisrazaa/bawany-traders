@@ -3,7 +3,7 @@
    ========================================== */
 
 /* 1. Global Reset & Theme Variables */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@300;400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@600;700;800&family=Montserrat:wght@700;800;900&display=swap');
 
 :root {
   --primary-teal: #00969A;
@@ -110,47 +110,79 @@ header {
   box-shadow: var(--shadow-sm);
 }
 
-/* Top Bar */
-.top-bar {
+/* Top Bar Ticker */
+.top-bar-ticker {
   background-color: var(--dark-navy);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  color: var(--white);
+  font-size: 0.78rem;
+  font-weight: 600;
   padding: 8px 0;
-  font-size: 0.8rem;
-  font-weight: 500;
-  color: rgba(255, 255, 255, 0.8);
+  overflow: hidden;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
 }
 
-.top-bar .container {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.top-bar-left, .top-bar-right {
-  display: flex;
+.top-bar-ticker .container {
+  display: grid;
+  grid-template-columns: 1.2fr 2.5fr 1fr;
   align-items: center;
   gap: 15px;
 }
 
-.top-bar-left span, .top-bar-right a {
+.ticker-left {
+  display: flex;
+  align-items: center;
+}
+
+.ticker-left a {
+  color: var(--white);
   display: flex;
   align-items: center;
   gap: 6px;
 }
 
-.top-bar a {
-  color: rgba(255, 255, 255, 0.8);
+.ticker-center {
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.ticker-wrapper {
+  width: 100%;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.ticker-text {
+  display: inline-block;
+  padding-left: 100%;
+  animation: marquee-text 18s linear infinite;
+}
+
+@keyframes marquee-text {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+.ticker-right {
+  display: flex;
+  justify-content: flex-end;
+  gap: 15px;
+}
+
+.ticker-right a {
+  color: var(--white);
+  font-size: 0.9rem;
   transition: color var(--transition-speed) ease;
 }
 
-.top-bar a:hover {
-  color: var(--white);
-}
-
-.divider {
-  width: 1px;
-  height: 12px;
-  background-color: rgba(255, 255, 255, 0.15);
+.ticker-right a:hover {
+  color: rgba(255, 255, 255, 0.8);
 }
 
 /* PKR Dropdown */
@@ -186,23 +218,47 @@ header {
 .logo {
   display: flex;
   align-items: center;
-  gap: 10px;
-  font-size: 1.6rem;
-  font-weight: 800;
+  gap: 12px;
   color: var(--dark-navy);
 }
 
 .logo-icon {
   background-color: var(--primary-teal);
   color: var(--white);
-  width: 40px;
-  height: 40px;
-  border-radius: 8px;
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1.4rem;
-  font-weight: 900;
+  font-size: 1.55rem;
+  font-weight: 800;
+  flex-shrink: 0;
+  box-shadow: 0 2px 5px rgba(0, 150, 154, 0.2);
+}
+
+.logo-text-wrapper {
+  display: flex;
+  flex-direction: column;
+  line-height: 0.95;
+}
+
+.logo-title {
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 800;
+  font-size: 1.7rem;
+  letter-spacing: -1px;
+  text-transform: uppercase;
+  color: var(--dark-navy);
+}
+
+.logo-subtitle {
+  font-size: 0.52rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--primary-teal);
+  letter-spacing: 1.5px;
+  margin-top: 2px;
 }
 
 /* Search Bar */

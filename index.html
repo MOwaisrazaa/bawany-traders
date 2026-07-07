@@ -16,16 +16,21 @@
        HEADER SECTION
        ========================================== -->
   <header>
-    <!-- Top Bar -->
-    <div class="top-bar">
+    <!-- Top Bar Ticker -->
+    <div class="top-bar-ticker">
       <div class="container">
-        <div class="top-bar-left">
-          <span><i class="fas fa-truck"></i> Fast Delivery Across Pakistan</span>
+        <div class="ticker-left">
+          <a href="mailto:info@bawanytraders.com"><i class="far fa-envelope"></i> info@bawanytraders.com</a>
         </div>
-        <div class="top-bar-right">
-          <a href="tel:03001234567"><i class="fas fa-phone-alt"></i> Need Help? 0300 1234567</a>
-          <div class="divider"></div>
-          <a href="#"><i class="fas fa-box"></i> Track Order</a>
+        <div class="ticker-center">
+          <div class="ticker-wrapper">
+            <div class="ticker-text">JOIN OUR COMMUNITY GROUP TODAY - SEND YOUR NAME, CITY & AREA TO 0321-8273588</div>
+          </div>
+        </div>
+        <div class="ticker-right">
+          <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+          <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+          <a href="#" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
         </div>
       </div>
     </div>
@@ -41,7 +46,10 @@
         <!-- Brand Logo -->
         <a href="#" class="logo" id="brandLogo">
           <div class="logo-icon">B</div>
-          <span>Bawany Traders</span>
+          <div class="logo-text-wrapper">
+            <span class="logo-title">BAWANY</span>
+            <span class="logo-subtitle">TRADERS OFFICIAL</span>
+          </div>
         </a>
 
         <!-- Search Container -->
@@ -62,6 +70,10 @@
 
         <!-- Action Items (Wishlist, Cart, Account) -->
         <div class="nav-actions">
+          <div class="nav-action-item" id="trackOrderAction">
+            <i class="fas fa-truck"></i>
+            <span>Track Order</span>
+          </div>
           <div class="nav-action-item" id="wishlistAction">
             <i class="far fa-heart"></i>
             <span>Wishlist</span>
@@ -121,7 +133,10 @@
     <div class="drawer-header">
       <a href="#" class="logo">
         <div class="logo-icon">B</div>
-        <span style="font-size: 1.3rem;">Bawany Traders</span>
+        <div class="logo-text-wrapper">
+          <span class="logo-title">BAWANY</span>
+          <span class="logo-subtitle">TRADERS OFFICIAL</span>
+        </div>
       </a>
       <button class="drawer-close" id="drawerClose" aria-label="Close menu">&times;</button>
     </div>
@@ -521,7 +536,10 @@
         <div class="footer-column footer-brand">
           <a href="#" class="logo">
             <div class="logo-icon">B</div>
-            <span style="color: var(--white);">Bawany Traders</span>
+            <div class="logo-text-wrapper">
+              <span class="logo-title" style="color: var(--white);">BAWANY</span>
+              <span class="logo-subtitle">TRADERS OFFICIAL</span>
+            </div>
           </a>
           <p>Your trusted destination for the latest gadgets, electronics & smart accessories in Pakistan.</p>
           <div class="social-links">
