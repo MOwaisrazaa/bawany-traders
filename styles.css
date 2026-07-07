@@ -513,6 +513,7 @@ header {
 }
 
 .slide-content {
+  position: relative;
   flex: 1;
   max-width: 55%;
   color: var(--white);
@@ -573,19 +574,30 @@ header {
 }
 
 .slide-image-container {
-  flex: 1;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
   height: 100%;
-  position: relative;
+  z-index: 1;
+}
+
+.slide-image-container::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, rgba(11, 19, 37, 0.7) 0%, rgba(11, 19, 37, 0.3) 60%, rgba(11, 19, 37, 0) 100%);
+  z-index: 2;
 }
 
 .slide-img {
-  max-height: 380px;
-  object-fit: contain;
-  animation: float 4s ease-in-out infinite;
-  z-index: 5;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 1;
 }
 
 /* Smartwatch Floating Animation */
@@ -1429,13 +1441,19 @@ footer {
   }
 
   .slide-image-container {
-    order: 1;
-    height: auto;
+    position: absolute;
+    top: 0;
+    left: 0;
     width: 100%;
+    height: 100%;
+    z-index: 1;
   }
 
   .slide-img {
-    max-height: 200px;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    max-height: none;
   }
 
   .section-title {
