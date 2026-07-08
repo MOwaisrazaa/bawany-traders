@@ -479,10 +479,19 @@ header {
 
 .hero-slider {
   position: relative;
-  background: linear-gradient(135deg, #0B1325 0%, #1A2844 100%);
+  background-color: #0B1325;
   border-radius: 20px;
+  border: 1px solid var(--border-gray);
   overflow: hidden;
-  height: 480px;
+  width: 100%;
+  height: 480px; /* Fallback for older browsers */
+}
+
+@supports (aspect-ratio: 3/1) {
+  .hero-slider {
+    height: auto;
+    aspect-ratio: 3 / 1;
+  }
 }
 
 .slide-track {
@@ -497,9 +506,6 @@ header {
   left: 0;
   width: 100%;
   height: 100%;
-  display: flex;
-  align-items: center;
-  padding: 40px 60px;
   opacity: 0;
   visibility: hidden;
   transition: opacity 0.8s ease, visibility 0.8s ease;
@@ -512,92 +518,11 @@ header {
   z-index: 2;
 }
 
-.slide-content {
-  position: relative;
-  flex: 1;
-  max-width: 55%;
-  color: var(--white);
-  z-index: 10;
-}
-
-.slide-badge {
-  display: inline-block;
-  border: 1px solid var(--primary-teal);
-  color: var(--primary-teal);
-  font-size: 0.75rem;
-  font-weight: 700;
-  padding: 4px 12px;
-  border-radius: 50px;
-  margin-bottom: 20px;
-  letter-spacing: 1px;
-}
-
-.slide-title {
-  font-size: 3rem;
-  font-weight: 800;
-  line-height: 1.15;
-  margin-bottom: 15px;
-}
-
-.slide-subtitle {
-  font-size: 1.05rem;
-  color: rgba(255, 255, 255, 0.85);
-  margin-bottom: 30px;
-  font-weight: 400;
-  max-width: 90%;
-}
-
-.slide-cta {
-  padding: 12px 30px;
-  font-size: 1.05rem;
-}
-
-.slide-features {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
-  margin-top: 40px;
-  font-size: 0.8rem;
-  font-weight: 500;
-  color: rgba(255, 255, 255, 0.75);
-}
-
-.feature-item {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-
-.feature-item i {
-  color: var(--primary-teal);
-  font-size: 1rem;
-}
-
-.slide-image-container {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 1;
-}
-
-.slide-image-container::after {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(90deg, rgba(11, 19, 37, 0.7) 0%, rgba(11, 19, 37, 0.3) 60%, rgba(11, 19, 37, 0) 100%);
-  z-index: 2;
-}
-
 .slide-img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  z-index: 1;
+  display: block;
 }
 
 /* Smartwatch Floating Animation */
@@ -1332,22 +1257,7 @@ footer {
     max-width: 450px;
   }
   
-  .hero-slider {
-    height: 400px;
-  }
-  .slide {
-    padding: 30px 40px;
-  }
-  .slide-title {
-    font-size: 2.2rem;
-  }
-  .slide-subtitle {
-    font-size: 0.95rem;
-    margin-bottom: 20px;
-  }
-  .slide-features {
-    display: none;
-  }
+  /* Hero Slider aspect-ratio automatically scales height */
   .slide-image-container img {
     max-height: 280px;
   }
@@ -1407,54 +1317,7 @@ footer {
     margin-right: auto;
   }
 
-  .hero-slider {
-    height: auto;
-    min-height: 520px;
-  }
-  
-  .slide {
-    flex-direction: column;
-    text-align: center;
-    padding: 40px 20px 60px 20px;
-    justify-content: center;
-  }
-  
-  .slide-content {
-    max-width: 100%;
-    order: 2;
-    margin-top: 25px;
-  }
-
-  .slide-badge {
-    margin-bottom: 12px;
-  }
-
-  .slide-title {
-    font-size: 1.8rem;
-    margin-bottom: 10px;
-  }
-
-  .slide-subtitle {
-    font-size: 0.85rem;
-    margin-bottom: 20px;
-    max-width: 100%;
-  }
-
-  .slide-image-container {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 1;
-  }
-
-  .slide-img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    max-height: none;
-  }
+  /* Hero Slider aspect-ratio automatically scales height */
 
   .section-title {
     font-size: 1.6rem;
