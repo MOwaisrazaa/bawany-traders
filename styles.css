@@ -473,7 +473,7 @@ header {
    3. Hero Section / Carousel Styles
    ========================================== */
 .hero-section {
-  padding: 30px 0;
+  padding: 10px 0 30px 0;
   background-color: var(--white);
 }
 
@@ -839,16 +839,21 @@ header {
 /* Product Content */
 .product-img-wrapper {
   height: 200px;
+  width: calc(100% + 30px);
+  margin: -15px -15px 15px -15px;
+  border-radius: var(--border-radius) var(--border-radius) 0 0;
+  overflow: hidden;
+  background-color: #F8FAFC;
+  border-bottom: 1px solid var(--border-gray);
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 15px;
-  overflow: hidden;
 }
 
 .product-img-wrapper img {
-  max-height: 180px;
-  object-fit: contain;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
   transition: transform var(--transition-speed) ease;
 }
 
@@ -1390,10 +1395,15 @@ footer {
 
   .product-img-wrapper {
     height: 140px;
+    width: calc(100% + 20px);
+    margin: -10px -10px 10px -10px;
+    border-radius: var(--border-radius) var(--border-radius) 0 0;
   }
 
   .product-img-wrapper img {
-    max-height: 120px;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
   }
 
   .product-title {
