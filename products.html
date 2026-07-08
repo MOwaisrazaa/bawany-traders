@@ -1,0 +1,859 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>All Products | Bawany Traders</title>
+  <meta name="description" content="Shop the latest smartwatches, ANC wireless earbuds, high capacity power banks, and tech accessories at Bawany Traders Pakistan.">
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="styles.css">
+  <!-- FontAwesome for Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+  <!-- ==========================================
+       HEADER SECTION
+       ========================================== -->
+  <header>
+    <!-- Top Bar Ticker -->
+    <div class="top-bar-ticker">
+      <div class="container">
+        <div class="ticker-left">
+          <a href="mailto:info@bawanytraders.com"><i class="far fa-envelope"></i> info@bawanytraders.com</a>
+        </div>
+        <div class="ticker-center">
+          <div class="ticker-wrapper">
+            <div class="ticker-text">JOIN OUR COMMUNITY GROUP TODAY - SEND YOUR NAME, CITY & AREA TO 0321-8273588</div>
+          </div>
+        </div>
+        <div class="ticker-right">
+          <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+          <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+          <a href="#" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Main Navigation Bar -->
+    <div class="main-nav">
+      <div class="container">
+        <!-- Hamburger Menu for Mobile -->
+        <button class="mobile-toggle" id="mobileToggle" aria-label="Open navigation menu">
+          <i class="fas fa-bars"></i>
+        </button>
+
+        <!-- Brand Logo -->
+        <a href="index.html" class="logo" id="brandLogo">
+          <div class="logo-icon">B</div>
+          <div class="logo-text-wrapper">
+            <span class="logo-title">BAWANY</span>
+            <span class="logo-subtitle">TRADERS OFFICIAL</span>
+          </div>
+        </a>
+
+        <!-- Search Container -->
+        <div class="search-container">
+          <select class="search-category" id="searchCategory" aria-label="Select category filter">
+            <option>All Categories</option>
+            <option>Smart Watches</option>
+            <option>Audio / Earbuds</option>
+            <option>Charging & Cables</option>
+            <option>Smart Home</option>
+            <option>Car Accessories</option>
+          </select>
+          <input type="text" class="search-input" id="searchInput" placeholder="Search for products, brands and more..." aria-label="Search inputs">
+          <button class="search-btn" id="searchBtn" aria-label="Execute search">
+            <i class="fas fa-search"></i>
+          </button>
+        </div>
+
+        <!-- Action Items (Wishlist, Cart, Account) -->
+        <div class="nav-actions">
+          <div class="nav-action-item" id="trackOrderAction">
+            <i class="fas fa-truck"></i>
+            <span>Track Order</span>
+          </div>
+          <div class="nav-action-item" id="wishlistAction">
+            <i class="far fa-heart"></i>
+            <span>Wishlist</span>
+            <span class="badge" id="wishlistBadge" style="display: none;">0</span>
+          </div>
+          <div class="nav-action-item" id="cartAction">
+            <i class="fas fa-shopping-basket"></i>
+            <span>Cart</span>
+            <span class="badge" id="cartBadge">0</span>
+          </div>
+          <div class="nav-action-item" id="accountAction">
+            <i class="far fa-user"></i>
+            <span>Account</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Sub Navigation Bar -->
+    <nav class="sub-nav">
+      <div class="container">
+        <!-- Category Dropdown Button -->
+        <div class="category-dropdown">
+          <button class="category-btn" id="categoryBtn">
+            <i class="fas fa-bars"></i>
+            <span>Shop by Categories</span>
+            <i class="fas fa-chevron-down" style="font-size: 0.75rem;"></i>
+          </button>
+          <!-- Category Hover/Click Menu -->
+          <div class="category-menu" id="categoryMenu">
+            <a href="#"><i class="fas fa-laptop" style="margin-right: 10px; width: 15px;"></i> Electronics</a>
+            <a href="#"><i class="fas fa-clock" style="margin-right: 10px; width: 15px;"></i> Smart Watches</a>
+            <a href="#"><i class="fas fa-headphones" style="margin-right: 10px; width: 15px;"></i> Audio / Earbuds</a>
+            <a href="#"><i class="fas fa-bolt" style="margin-right: 10px; width: 15px;"></i> Charging & Cables</a>
+            <a href="#"><i class="fas fa-home" style="margin-right: 10px; width: 15px;"></i> Smart Home</a>
+            <a href="#"><i class="fas fa-car" style="margin-right: 10px; width: 15px;"></i> Car Accessories</a>
+          </div>
+        </div>
+
+        <!-- Navigation Links -->
+        <div class="nav-links">
+          <a href="index.html">Home</a>
+          <a href="products.html" class="active">All Products</a>
+          <a href="#">New Arrivals</a>
+          <a href="#">Best Sellers</a>
+          <a href="#">Deals</a>
+          <a href="about.html">About Us</a>
+          <a href="contact.html">Contact Us</a>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Mobile Sidebar / Drawer -->
+  <div class="drawer-overlay" id="drawerOverlay"></div>
+  <div class="mobile-nav-drawer" id="mobileDrawer">
+    <div class="drawer-header">
+      <a href="index.html" class="logo">
+        <div class="logo-icon">B</div>
+        <div class="logo-text-wrapper">
+          <span class="logo-title">BAWANY</span>
+          <span class="logo-subtitle">TRADERS OFFICIAL</span>
+        </div>
+      </a>
+      <button class="drawer-close" id="drawerClose" aria-label="Close menu">&times;</button>
+    </div>
+    <div class="drawer-content">
+      <div class="drawer-menu">
+        <a href="index.html">Home</a>
+        <a href="products.html" class="active">All Products</a>
+        <a href="#">New Arrivals</a>
+        <a href="#">Best Sellers</a>
+        <a href="#">Deals</a>
+        <a href="about.html">About Us</a>
+        <a href="contact.html">Contact Us</a>
+      </div>
+      <div class="drawer-categories-title">Categories</div>
+      <div class="drawer-menu">
+        <a href="#">Smart Watches</a>
+        <a href="#">Audio / Earbuds</a>
+        <a href="#">Charging & Cables</a>
+        <a href="#">Smart Home</a>
+        <a href="#">Car Accessories</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==========================================
+       CATALOG HERO BANNER
+       ========================================== -->
+  <section class="catalog-hero">
+    <div class="container">
+      <div class="catalog-hero-inner">
+        <div class="catalog-hero-content">
+          <div class="about-breadcrumb" style="margin-bottom: 12px; color: var(--text-muted);">
+            <a href="index.html" style="color: var(--text-muted);">Home</a> <i class="fas fa-chevron-right" style="font-size: 0.75rem; margin: 0 5px;"></i> <span style="color: var(--dark-navy);">All Products</span>
+          </div>
+          <h1>All Products</h1>
+          <p>Explore the latest gadgets, electronics and smart accessories.</p>
+        </div>
+        <div class="catalog-hero-visual">
+          <img src="images/prod-airpods.png" alt="AirPods mockup icon">
+          <img src="images/prod-galaxywatch.png" alt="GalaxyWatch mockup icon">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================
+       CATALOG LAYOUT WRAPPER
+       ========================================== -->
+  <section style="background-color: var(--white); padding: 10px 0 50px 0;">
+    <div class="container">
+      <div class="shop-catalog-layout">
+        
+        <!-- Sidebar Filters -->
+        <aside class="filter-sidebar">
+          
+          <!-- Categories -->
+          <div class="filter-group">
+            <h4 class="filter-group-title">Categories</h4>
+            <ul class="filter-list">
+              <li class="filter-item">
+                <label class="filter-item-label">
+                  <input type="radio" name="filterCategory" checked>
+                  <span>All Categories</span>
+                </label>
+                <span class="filter-count">(168)</span>
+              </li>
+              <li class="filter-item">
+                <label class="filter-item-label">
+                  <input type="radio" name="filterCategory">
+                  <span>Audio / Earbuds</span>
+                </label>
+                <span class="filter-count">(24)</span>
+              </li>
+              <li class="filter-item">
+                <label class="filter-item-label">
+                  <input type="radio" name="filterCategory">
+                  <span>Smart Watches</span>
+                </label>
+                <span class="filter-count">(18)</span>
+              </li>
+              <li class="filter-item">
+                <label class="filter-item-label">
+                  <input type="radio" name="filterCategory">
+                  <span>Charging & Cables</span>
+                </label>
+                <span class="filter-count">(23)</span>
+              </li>
+              <li class="filter-item">
+                <label class="filter-item-label">
+                  <input type="radio" name="filterCategory">
+                  <span>Power Banks</span>
+                </label>
+                <span class="filter-count">(14)</span>
+              </li>
+              <li class="filter-item">
+                <label class="filter-item-label">
+                  <input type="radio" name="filterCategory">
+                  <span>Smart Home</span>
+                </label>
+                <span class="filter-count">(16)</span>
+              </li>
+              <li class="filter-item">
+                <label class="filter-item-label">
+                  <input type="radio" name="filterCategory">
+                  <span>Car Accessories</span>
+                </label>
+                <span class="filter-count">(22)</span>
+              </li>
+              <li class="filter-item">
+                <label class="filter-item-label">
+                  <input type="radio" name="filterCategory">
+                  <span>Computer Accessories</span>
+                </label>
+                <span class="filter-count">(21)</span>
+              </li>
+              <li class="filter-item">
+                <label class="filter-item-label">
+                  <input type="radio" name="filterCategory">
+                  <span>Gaming</span>
+                </label>
+                <span class="filter-count">(15)</span>
+              </li>
+              <li class="filter-item">
+                <label class="filter-item-label">
+                  <input type="radio" name="filterCategory">
+                  <span>Phone Accessories</span>
+                </label>
+                <span class="filter-count">(15)</span>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Price Range -->
+          <div class="filter-group">
+            <h4 class="filter-group-title">Price Range</h4>
+            <div class="price-range-inputs">
+              <span>Rs. 0</span>
+              <span>Rs. 50,000+</span>
+            </div>
+            <input type="range" class="price-range-slider" min="0" max="50000" value="50000" style="width: 100%; accent-color: var(--primary-teal); margin-bottom: 20px; cursor: pointer;" aria-label="Filter products price range">
+            <div class="price-filter-btns">
+              <button class="btn" style="padding: 8px 0; font-size: 0.82rem; border-radius: 6px; border: 1px solid var(--border-gray); background: transparent; color: var(--dark-navy); font-weight: 600; cursor: pointer;">Clear</button>
+              <button class="btn btn-teal" style="padding: 8px 0; font-size: 0.82rem; border-radius: 6px; border: none; font-weight: 600; cursor: pointer;">Apply</button>
+            </div>
+          </div>
+
+          <!-- Brands -->
+          <div class="filter-group">
+            <h4 class="filter-group-title">Brands</h4>
+            <ul class="filter-list">
+              <li class="filter-item">
+                <label class="filter-item-label">
+                  <input type="checkbox">
+                  <span>Apple</span>
+                </label>
+                <span class="filter-count">(12)</span>
+              </li>
+              <li class="filter-item">
+                <label class="filter-item-label">
+                  <input type="checkbox">
+                  <span>Samsung</span>
+                </label>
+                <span class="filter-count">(10)</span>
+              </li>
+              <li class="filter-item">
+                <label class="filter-item-label">
+                  <input type="checkbox">
+                  <span>Anker</span>
+                </label>
+                <span class="filter-count">(8)</span>
+              </li>
+              <li class="filter-item">
+                <label class="filter-item-label">
+                  <input type="checkbox">
+                  <span>Sony</span>
+                </label>
+                <span class="filter-count">(6)</span>
+              </li>
+              <li class="filter-item">
+                <label class="filter-item-label">
+                  <input type="checkbox">
+                  <span>Xiaomi</span>
+                </label>
+                <span class="filter-count">(9)</span>
+              </li>
+              <li class="filter-item">
+                <label class="filter-item-label">
+                  <input type="checkbox">
+                  <span>Baseus</span>
+                </label>
+                <span class="filter-count">(7)</span>
+              </li>
+              <li class="filter-item">
+                <label class="filter-item-label">
+                  <input type="checkbox">
+                  <span>Logitech</span>
+                </label>
+                <span class="filter-count">(6)</span>
+              </li>
+              <li class="filter-item">
+                <label class="filter-item-label">
+                  <input type="checkbox">
+                  <span>Ugreen</span>
+                </label>
+                <span class="filter-count">(5)</span>
+              </li>
+            </ul>
+            <a href="#" class="sidebar-badge-link" style="display: inline-block; margin-top: 12px; color: var(--primary-teal); font-size: 0.85rem; font-weight: 700;">View All Brands</a>
+          </div>
+
+          <!-- Availability -->
+          <div class="filter-group">
+            <h4 class="filter-group-title">Availability</h4>
+            <ul class="filter-list">
+              <li class="filter-item">
+                <label class="filter-item-label">
+                  <input type="checkbox" checked>
+                  <span>In Stock</span>
+                </label>
+                <span class="filter-count">(142)</span>
+              </li>
+              <li class="filter-item">
+                <label class="filter-item-label">
+                  <input type="checkbox">
+                  <span>Out of Stock</span>
+                </label>
+                <span class="filter-count">(26)</span>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Customer Ratings -->
+          <div class="filter-group">
+            <h4 class="filter-group-title">Customer Ratings</h4>
+            <ul class="filter-list">
+              <li class="filter-item">
+                <label class="filter-item-label">
+                  <input type="checkbox">
+                  <span style="color: #F1C40F;"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></span>
+                </label>
+                <span class="filter-count">(78)</span>
+              </li>
+              <li class="filter-item">
+                <label class="filter-item-label">
+                  <input type="checkbox">
+                  <span style="color: #F1C40F;"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><span style="color: #BDC3C7;"><i class="far fa-star"></i></span></span>
+                </label>
+                <span class="filter-count">(52)</span>
+              </li>
+              <li class="filter-item">
+                <label class="filter-item-label">
+                  <input type="checkbox">
+                  <span style="color: #F1C40F;"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><span style="color: #BDC3C7;"><i class="far fa-star"></i><i class="far fa-star"></i></span></span>
+                </label>
+                <span class="filter-count">(21)</span>
+              </li>
+              <li class="filter-item">
+                <label class="filter-item-label">
+                  <input type="checkbox">
+                  <span style="color: #F1C40F;"><i class="fas fa-star"></i><i class="fas fa-star"></i><span style="color: #BDC3C7;"><i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i></span></span>
+                </label>
+                <span class="filter-count">(10)</span>
+              </li>
+              <li class="filter-item">
+                <label class="filter-item-label">
+                  <input type="checkbox">
+                  <span style="color: #F1C40F;"><i class="fas fa-star"></i><span style="color: #BDC3C7;"><i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i></span></span>
+                </label>
+                <span class="filter-count">(7)</span>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Sidebar Assurance Badge -->
+          <div class="sidebar-badge-box">
+            <div class="sidebar-badge-icon"><i class="fas fa-shield-alt"></i></div>
+            <h5>Best Quality. Best Prices.</h5>
+            <p>100% authentic products with official warranty.</p>
+            <a href="#" class="sidebar-badge-link">Shop with Confidence</a>
+          </div>
+        </aside>
+
+        <!-- Main Products Side -->
+        <main class="catalog-main">
+          
+          <!-- Utility Bar -->
+          <div class="catalog-utility-bar">
+            <div class="catalog-results-count">Showing 1-12 of 168 results</div>
+            <div class="catalog-controls">
+              <button class="catalog-control-btn">
+                <i class="fas fa-filter"></i> Filter
+              </button>
+              <select class="catalog-sort-select" aria-label="Sort catalog order">
+                <option>Sort by: Popularity</option>
+                <option>Sort by: Latest</option>
+                <option>Sort by: Price: Low to High</option>
+                <option>Sort by: Price: High to Low</option>
+              </select>
+              <div class="catalog-view-toggles">
+                <button class="view-toggle-btn active" aria-label="Grid layout"><i class="fas fa-th-large"></i></button>
+                <button class="view-toggle-btn" aria-label="List layout"><i class="fas fa-list"></i></button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Products Grid -->
+          <div class="catalog-products-grid">
+            
+            <!-- Card 1: Galaxy Watch 6 -->
+            <div class="product-card">
+              <span class="product-badge" style="background-color: #E74C3C;">-15%</span>
+              <button class="wishlist-btn" aria-label="Add to wishlist"><i class="far fa-heart"></i></button>
+              <div class="product-img-wrapper">
+                <img src="images/prod-galaxywatch.png" alt="Samsung Galaxy Watch 6 Classic">
+              </div>
+              <div class="product-info">
+                <h3 class="product-title"><a href="#">Samsung Galaxy Watch 6 Classic 47mm</a></h3>
+                <div class="rating-stars" style="color: #F1C40F; font-size: 0.8rem; margin-bottom: 8px;">
+                  <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                  <span style="color: var(--text-muted); font-size: 0.75rem; margin-left: 5px;">(36)</span>
+                </div>
+                <div class="product-price">
+                  <span class="old-price">Rs. 60,000</span>
+                  <span class="current-price">Rs. 50,999</span>
+                </div>
+                <button class="btn add-to-cart-btn" style="width: 100%; border: none; padding: 11px 0; border-radius: 8px; font-weight: 700; font-size: 0.9rem; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px; margin-top: 15px; background-color: #0B1325; color: var(--white); transition: all 0.3s;" onmouseover="this.style.backgroundColor='var(--primary-teal)'" onmouseout="this.style.backgroundColor='#0B1325'">
+                  <i class="fas fa-shopping-cart"></i> Add to Cart
+                </button>
+              </div>
+            </div>
+
+            <!-- Card 2: AirPods Pro 2 -->
+            <div class="product-card">
+              <span class="product-badge" style="background-color: #E74C3C;">-20%</span>
+              <button class="wishlist-btn" aria-label="Add to wishlist"><i class="far fa-heart"></i></button>
+              <div class="product-img-wrapper">
+                <img src="images/prod-airpods.png" alt="Apple AirPods Pro 2nd Gen">
+              </div>
+              <div class="product-info">
+                <h3 class="product-title"><a href="#">Apple AirPods Pro 2nd Generation (USB-C)</a></h3>
+                <div class="rating-stars" style="color: #F1C40F; font-size: 0.8rem; margin-bottom: 8px;">
+                  <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                  <span style="color: var(--text-muted); font-size: 0.75rem; margin-left: 5px;">(128)</span>
+                </div>
+                <div class="product-price">
+                  <span class="old-price">Rs. 49,999</span>
+                  <span class="current-price">Rs. 39,999</span>
+                </div>
+                <button class="btn add-to-cart-btn" style="width: 100%; border: none; padding: 11px 0; border-radius: 8px; font-weight: 700; font-size: 0.9rem; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px; margin-top: 15px; background-color: #0B1325; color: var(--white); transition: all 0.3s;" onmouseover="this.style.backgroundColor='var(--primary-teal)'" onmouseout="this.style.backgroundColor='#0B1325'">
+                  <i class="fas fa-shopping-cart"></i> Add to Cart
+                </button>
+              </div>
+            </div>
+
+            <!-- Card 3: Sony WF-1000XM5 -->
+            <div class="product-card">
+              <span class="product-badge" style="background-color: #E74C3C;">-18%</span>
+              <button class="wishlist-btn" aria-label="Add to wishlist"><i class="far fa-heart"></i></button>
+              <div class="product-img-wrapper">
+                <img src="images/prod-sony.png" alt="Sony WF-1000XM5">
+              </div>
+              <div class="product-info">
+                <h3 class="product-title"><a href="#">Sony WF-1000XM5 Wireless Earbuds</a></h3>
+                <div class="rating-stars" style="color: #F1C40F; font-size: 0.8rem; margin-bottom: 8px;">
+                  <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><span style="color: #BDC3C7;"><i class="far fa-star"></i></span>
+                  <span style="color: var(--text-muted); font-size: 0.75rem; margin-left: 5px;">(87)</span>
+                </div>
+                <div class="product-price">
+                  <span class="old-price">Rs. 44,999</span>
+                  <span class="current-price">Rs. 36,999</span>
+                </div>
+                <button class="btn add-to-cart-btn" style="width: 100%; border: none; padding: 11px 0; border-radius: 8px; font-weight: 700; font-size: 0.9rem; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px; margin-top: 15px; background-color: #0B1325; color: var(--white); transition: all 0.3s;" onmouseover="this.style.backgroundColor='var(--primary-teal)'" onmouseout="this.style.backgroundColor='#0B1325'">
+                  <i class="fas fa-shopping-cart"></i> Add to Cart
+                </button>
+              </div>
+            </div>
+
+            <!-- Card 4: Anker 737 -->
+            <div class="product-card">
+              <span class="product-badge" style="background-color: #E74C3C;">-22%</span>
+              <button class="wishlist-btn" aria-label="Add to wishlist"><i class="far fa-heart"></i></button>
+              <div class="product-img-wrapper">
+                <img src="images/prod-anker.png" alt="Anker 737 Power Bank">
+              </div>
+              <div class="product-info">
+                <h3 class="product-title"><a href="#">Anker 737 Power Bank (PowerCore 24K)</a></h3>
+                <div class="rating-stars" style="color: #F1C40F; font-size: 0.8rem; margin-bottom: 8px;">
+                  <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                  <span style="color: var(--text-muted); font-size: 0.75rem; margin-left: 5px;">(72)</span>
+                </div>
+                <div class="product-price">
+                  <span class="old-price">Rs. 29,999</span>
+                  <span class="current-price">Rs. 23,499</span>
+                </div>
+                <button class="btn add-to-cart-btn" style="width: 100%; border: none; padding: 11px 0; border-radius: 8px; font-weight: 700; font-size: 0.9rem; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px; margin-top: 15px; background-color: #0B1325; color: var(--white); transition: all 0.3s;" onmouseover="this.style.backgroundColor='var(--primary-teal)'" onmouseout="this.style.backgroundColor='#0B1325'">
+                  <i class="fas fa-shopping-cart"></i> Add to Cart
+                </button>
+              </div>
+            </div>
+
+            <!-- Card 5: Baseus 100W Cable -->
+            <div class="product-card">
+              <span class="product-badge" style="background-color: #E74C3C;">-17%</span>
+              <button class="wishlist-btn" aria-label="Add to wishlist"><i class="far fa-heart"></i></button>
+              <div class="product-img-wrapper">
+                <img src="images/cat-charging.png" alt="Baseus 100W USB-C Cable">
+              </div>
+              <div class="product-info">
+                <h3 class="product-title"><a href="#">Baseus 100W USB-C to Lightning Cable (1m)</a></h3>
+                <div class="rating-stars" style="color: #F1C40F; font-size: 0.8rem; margin-bottom: 8px;">
+                  <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><span style="color: #BDC3C7;"><i class="far fa-star"></i></span>
+                  <span style="color: var(--text-muted); font-size: 0.75rem; margin-left: 5px;">(64)</span>
+                </div>
+                <div class="product-price">
+                  <span class="old-price">Rs. 2,499</span>
+                  <span class="current-price">Rs. 1,999</span>
+                </div>
+                <button class="btn add-to-cart-btn" style="width: 100%; border: none; padding: 11px 0; border-radius: 8px; font-weight: 700; font-size: 0.9rem; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px; margin-top: 15px; background-color: #0B1325; color: var(--white); transition: all 0.3s;" onmouseover="this.style.backgroundColor='var(--primary-teal)'" onmouseout="this.style.backgroundColor='#0B1325'">
+                  <i class="fas fa-shopping-cart"></i> Add to Cart
+                </button>
+              </div>
+            </div>
+
+            <!-- Card 6: JBL Flip 6 -->
+            <div class="product-card">
+              <span class="product-badge" style="background-color: #E74C3C;">-16%</span>
+              <button class="wishlist-btn" aria-label="Add to wishlist"><i class="far fa-heart"></i></button>
+              <div class="product-img-wrapper">
+                <img src="images/cat-audio.png" alt="JBL Flip 6">
+              </div>
+              <div class="product-info">
+                <h3 class="product-title"><a href="#">JBL Flip 6 Portable Bluetooth Speaker</a></h3>
+                <div class="rating-stars" style="color: #F1C40F; font-size: 0.8rem; margin-bottom: 8px;">
+                  <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                  <span style="color: var(--text-muted); font-size: 0.75rem; margin-left: 5px;">(98)</span>
+                </div>
+                <div class="product-price">
+                  <span class="old-price">Rs. 24,999</span>
+                  <span class="current-price">Rs. 20,999</span>
+                </div>
+                <button class="btn add-to-cart-btn" style="width: 100%; border: none; padding: 11px 0; border-radius: 8px; font-weight: 700; font-size: 0.9rem; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px; margin-top: 15px; background-color: #0B1325; color: var(--white); transition: all 0.3s;" onmouseover="this.style.backgroundColor='var(--primary-teal)'" onmouseout="this.style.backgroundColor='#0B1325'">
+                  <i class="fas fa-shopping-cart"></i> Add to Cart
+                </button>
+              </div>
+            </div>
+
+            <!-- Card 7: Xiaomi Smart Camera C300 -->
+            <div class="product-card">
+              <span class="product-badge" style="background-color: #E74C3C;">-19%</span>
+              <button class="wishlist-btn" aria-label="Add to wishlist"><i class="far fa-heart"></i></button>
+              <div class="product-img-wrapper">
+                <img src="images/cat-smarthome.png" alt="Xiaomi Smart Camera C300">
+              </div>
+              <div class="product-info">
+                <h3 class="product-title"><a href="#">Xiaomi Smart Camera C300 1080p</a></h3>
+                <div class="rating-stars" style="color: #F1C40F; font-size: 0.8rem; margin-bottom: 8px;">
+                  <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><span style="color: #BDC3C7;"><i class="far fa-star"></i></span>
+                  <span style="color: var(--text-muted); font-size: 0.75rem; margin-left: 5px;">(53)</span>
+                </div>
+                <div class="product-price">
+                  <span class="old-price">Rs. 6,999</span>
+                  <span class="current-price">Rs. 5,699</span>
+                </div>
+                <button class="btn add-to-cart-btn" style="width: 100%; border: none; padding: 11px 0; border-radius: 8px; font-weight: 700; font-size: 0.9rem; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px; margin-top: 15px; background-color: #0B1325; color: var(--white); transition: all 0.3s;" onmouseover="this.style.backgroundColor='var(--primary-teal)'" onmouseout="this.style.backgroundColor='#0B1325'">
+                  <i class="fas fa-shopping-cart"></i> Add to Cart
+                </button>
+              </div>
+            </div>
+
+            <!-- Card 8: Sony WH-CH720N -->
+            <div class="product-card">
+              <span class="product-badge" style="background-color: #E74C3C;">-21%</span>
+              <button class="wishlist-btn" aria-label="Add to wishlist"><i class="far fa-heart"></i></button>
+              <div class="product-img-wrapper">
+                <img src="images/cat-audio.png" alt="Sony WH-CH720N">
+              </div>
+              <div class="product-info">
+                <h3 class="product-title"><a href="#">Sony WH-CH720N Wireless Headphones</a></h3>
+                <div class="rating-stars" style="color: #F1C40F; font-size: 0.8rem; margin-bottom: 8px;">
+                  <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                  <span style="color: var(--text-muted); font-size: 0.75rem; margin-left: 5px;">(40)</span>
+                </div>
+                <div class="product-price">
+                  <span class="old-price">Rs. 24,999</span>
+                  <span class="current-price">Rs. 19,799</span>
+                </div>
+                <button class="btn add-to-cart-btn" style="width: 100%; border: none; padding: 11px 0; border-radius: 8px; font-weight: 700; font-size: 0.9rem; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px; margin-top: 15px; background-color: #0B1325; color: var(--white); transition: all 0.3s;" onmouseover="this.style.backgroundColor='var(--primary-teal)'" onmouseout="this.style.backgroundColor='#0B1325'">
+                  <i class="fas fa-shopping-cart"></i> Add to Cart
+                </button>
+              </div>
+            </div>
+
+            <!-- Card 9: UGREEN Phone Stand -->
+            <div class="product-card">
+              <span class="product-badge" style="background-color: #E74C3C;">-14%</span>
+              <button class="wishlist-btn" aria-label="Add to wishlist"><i class="far fa-heart"></i></button>
+              <div class="product-img-wrapper">
+                <img src="images/cat-smarthome.png" alt="UGREEN Phone Stand">
+              </div>
+              <div class="product-info">
+                <h3 class="product-title"><a href="#">UGREEN Adjustable Phone Stand</a></h3>
+                <div class="rating-stars" style="color: #F1C40F; font-size: 0.8rem; margin-bottom: 8px;">
+                  <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><span style="color: #BDC3C7;"><i class="far fa-star"></i></span>
+                  <span style="color: var(--text-muted); font-size: 0.75rem; margin-left: 5px;">(31)</span>
+                </div>
+                <div class="product-price">
+                  <span class="old-price">Rs. 1,759</span>
+                  <span class="current-price">Rs. 1,549</span>
+                </div>
+                <button class="btn add-to-cart-btn" style="width: 100%; border: none; padding: 11px 0; border-radius: 8px; font-weight: 700; font-size: 0.9rem; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px; margin-top: 15px; background-color: #0B1325; color: var(--white); transition: all 0.3s;" onmouseover="this.style.backgroundColor='var(--primary-teal)'" onmouseout="this.style.backgroundColor='#0B1325'">
+                  <i class="fas fa-shopping-cart"></i> Add to Cart
+                </button>
+              </div>
+            </div>
+
+            <!-- Card 10: Anker PowerDrive III -->
+            <div class="product-card">
+              <span class="product-badge" style="background-color: #E74C3C;">-13%</span>
+              <button class="wishlist-btn" aria-label="Add to wishlist"><i class="far fa-heart"></i></button>
+              <div class="product-img-wrapper">
+                <img src="images/cat-car.png" alt="Anker PowerDrive III Car Charger">
+              </div>
+              <div class="product-info">
+                <h3 class="product-title"><a href="#">Anker PowerDrive III Car Charger 36W</a></h3>
+                <div class="rating-stars" style="color: #F1C40F; font-size: 0.8rem; margin-bottom: 8px;">
+                  <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><span style="color: #BDC3C7;"><i class="far fa-star"></i></span>
+                  <span style="color: var(--text-muted); font-size: 0.75rem; margin-left: 5px;">(28)</span>
+                </div>
+                <div class="product-price">
+                  <span class="old-price">Rs. 2,499</span>
+                  <span class="current-price">Rs. 1,999</span>
+                </div>
+                <button class="btn add-to-cart-btn" style="width: 100%; border: none; padding: 11px 0; border-radius: 8px; font-weight: 700; font-size: 0.9rem; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px; margin-top: 15px; background-color: #0B1325; color: var(--white); transition: all 0.3s;" onmouseover="this.style.backgroundColor='var(--primary-teal)'" onmouseout="this.style.backgroundColor='#0B1325'">
+                  <i class="fas fa-shopping-cart"></i> Add to Cart
+                </button>
+              </div>
+            </div>
+
+            <!-- Card 11: Logitech M331 -->
+            <div class="product-card">
+              <span class="product-badge" style="background-color: #E74C3C;">-12%</span>
+              <button class="wishlist-btn" aria-label="Add to wishlist"><i class="far fa-heart"></i></button>
+              <div class="product-img-wrapper">
+                <img src="images/cat-smarthome.png" alt="Logitech M331 Silent Mouse">
+              </div>
+              <div class="product-info">
+                <h3 class="product-title"><a href="#">Logitech M331 Silent Wireless Mouse</a></h3>
+                <div class="rating-stars" style="color: #F1C40F; font-size: 0.8rem; margin-bottom: 8px;">
+                  <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><span style="color: #BDC3C7;"><i class="far fa-star"></i></span>
+                  <span style="color: var(--text-muted); font-size: 0.75rem; margin-left: 5px;">(71)</span>
+                </div>
+                <div class="product-price">
+                  <span class="old-price">Rs. 2,699</span>
+                  <span class="current-price">Rs. 2,199</span>
+                </div>
+                <button class="btn add-to-cart-btn" style="width: 100%; border: none; padding: 11px 0; border-radius: 8px; font-weight: 700; font-size: 0.9rem; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px; margin-top: 15px; background-color: #0B1325; color: var(--white); transition: all 0.3s;" onmouseover="this.style.backgroundColor='var(--primary-teal)'" onmouseout="this.style.backgroundColor='#0B1325'">
+                  <i class="fas fa-shopping-cart"></i> Add to Cart
+                </button>
+              </div>
+            </div>
+
+            <!-- Card 12: Redragon K552 -->
+            <div class="product-card">
+              <span class="product-badge" style="background-color: #E74C3C;">-23%</span>
+              <button class="wishlist-btn" aria-label="Add to wishlist"><i class="far fa-heart"></i></button>
+              <div class="product-img-wrapper">
+                <img src="images/cat-smarthome.png" alt="Redragon K552 Keyboard">
+              </div>
+              <div class="product-info">
+                <h3 class="product-title"><a href="#">Redragon K552 Mechanical Gaming Keyboard</a></h3>
+                <div class="rating-stars" style="color: #F1C40F; font-size: 0.8rem; margin-bottom: 8px;">
+                  <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                  <span style="color: var(--text-muted); font-size: 0.75rem; margin-left: 5px;">(66)</span>
+                </div>
+                <div class="product-price">
+                  <span class="old-price">Rs. 6,499</span>
+                  <span class="current-price">Rs. 4,999</span>
+                </div>
+                <button class="btn add-to-cart-btn" style="width: 100%; border: none; padding: 11px 0; border-radius: 8px; font-weight: 700; font-size: 0.9rem; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px; margin-top: 15px; background-color: #0B1325; color: var(--white); transition: all 0.3s;" onmouseover="this.style.backgroundColor='var(--primary-teal)'" onmouseout="this.style.backgroundColor='#0B1325'">
+                  <i class="fas fa-shopping-cart"></i> Add to Cart
+                </button>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Pagination Container -->
+          <div class="pagination-container">
+            <button class="page-btn prev-next">Previous</button>
+            <button class="page-btn active">1</button>
+            <button class="page-btn">2</button>
+            <button class="page-btn">3</button>
+            <button class="page-btn">4</button>
+            <button class="page-btn">5</button>
+            <span class="page-dots">...</span>
+            <button class="page-btn">14</button>
+            <button class="page-btn prev-next">Next</button>
+          </div>
+
+        </main>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================
+       PROPS BAR SECTION
+       ========================================== -->
+  <section class="props-bar-section">
+    <div class="container">
+      <div class="props-bar">
+        <div class="prop-item">
+          <i class="fas fa-truck"></i>
+          <div class="prop-text">
+            <h6>Free Shipping Nationwide</h6>
+            <p>On all orders above Rs. 5,000</p>
+          </div>
+        </div>
+        <div class="prop-item">
+          <i class="fas fa-sync-alt"></i>
+          <div class="prop-text">
+            <h6>7-Day Replacement Warranty</h6>
+            <p>Hassle free replacement</p>
+          </div>
+        </div>
+        <div class="prop-item">
+          <i class="fas fa-award"></i>
+          <div class="prop-text">
+            <h6>100% Authentic Products</h6>
+            <p>Sourced directly from brands</p>
+          </div>
+        </div>
+        <div class="prop-item">
+          <i class="fas fa-hand-holding-usd"></i>
+          <div class="prop-text">
+            <h6>Cash on Delivery</h6>
+            <p>Pay when you receive</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================
+       FOOTER SECTION (DARK THEME)
+       ========================================== -->
+  <footer>
+    <div class="container">
+      <div class="footer-top">
+        
+        <!-- Column 1: Brand details -->
+        <div class="footer-column footer-brand">
+          <a href="index.html" class="logo">
+            <div class="logo-icon">B</div>
+            <div class="logo-text-wrapper">
+              <span class="logo-title" style="color: var(--white);">BAWANY</span>
+              <span class="logo-subtitle">TRADERS OFFICIAL</span>
+            </div>
+          </a>
+          <p>Your trusted destination for the latest gadgets, electronics & smart accessories in Pakistan.</p>
+          <div class="social-links">
+            <a href="#" class="social-link" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" class="social-link" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="#" class="social-link" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+            <a href="#" class="social-link" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+          </div>
+        </div>
+
+        <!-- Column 2: Useful Links -->
+        <div class="footer-column">
+          <h3>Useful Links</h3>
+          <ul class="footer-links-list">
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="#">Track Order</a></li>
+            <li><a href="#">Returns & Refunds</a></li>
+            <li><a href="#">Shipping Policy</a></li>
+            <li><a href="#">Privacy Policy</a></li>
+            <li><a href="#">Terms & Conditions</a></li>
+            <li><a href="contact.html">Contact Us</a></li>
+          </ul>
+        </div>
+
+        <!-- Column 3: Customer Service -->
+        <div class="footer-column">
+          <h3>Customer Service</h3>
+          <ul class="footer-links-list">
+            <li><a href="#">Help Center</a></li>
+            <li><a href="#">Support</a></li>
+            <li><a href="#">Warranty Policy</a></li>
+          </ul>
+        </div>
+
+        <!-- Column 4: Newsletter -->
+        <div class="footer-column">
+          <h3>Newsletter</h3>
+          <p style="font-size: 0.85rem; margin-bottom: 15px; line-height: 1.5;">Subscribe to get updates on new arrivals, exclusive deals & offers.</p>
+          <form class="newsletter-form" id="newsletterForm">
+            <input type="email" class="newsletter-input" id="newsletterInput" placeholder="Enter your email" required aria-label="Email address for subscription">
+            <button type="submit" class="newsletter-btn" aria-label="Subscribe to newsletter">
+              <i class="fas fa-paper-plane"></i>
+            </button>
+          </form>
+        </div>
+
+      </div>
+
+      <!-- Copyright Bottom -->
+      <div class="footer-bottom">
+        <div class="container">
+          <p>&copy; 2026 Bawany Traders. All Rights Reserved.</p>
+          <p>Powered by <a href="https://snipezon.com" target="_blank" style="color: var(--primary-teal); text-decoration: none; font-weight: 600;">snipezon.com</a></p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="script.js"></script>
+</body>
+</html>
