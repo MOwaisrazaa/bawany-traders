@@ -2159,10 +2159,11 @@ footer {
    10. All Products Catalog Page Styles
    ========================================== */
 .catalog-hero {
-  background-color: #F8FAFC;
+  background: #F8FAFC url('images/catalog-banner-bg.png') no-repeat right center / cover;
   border-bottom: 1px solid var(--border-gray);
-  padding: 40px 0;
+  padding: 85px 0;
   margin-bottom: 40px;
+  position: relative;
 }
 
 .catalog-hero-inner {
@@ -2173,29 +2174,17 @@ footer {
 
 .catalog-hero-content h1 {
   font-family: 'Space Grotesk', sans-serif;
-  font-size: 2.6rem;
+  font-size: 3.5rem;
   font-weight: 800;
   color: var(--dark-navy);
   margin-bottom: 10px;
-  letter-spacing: -0.5px;
+  letter-spacing: -1px;
 }
 
 .catalog-hero-content p {
-  font-size: 1rem;
+  font-size: 1.15rem;
   color: var(--text-muted);
   margin: 0;
-}
-
-.catalog-hero-visual {
-  display: flex;
-  align-items: center;
-  gap: 15px;
-}
-
-.catalog-hero-visual img {
-  height: 65px;
-  width: auto;
-  opacity: 0.85;
 }
 
 .shop-catalog-layout {
@@ -2470,6 +2459,10 @@ footer {
 }
 
 @media (max-width: 768px) {
+  .catalog-hero {
+    background-image: none;
+    padding: 50px 0;
+  }
   .catalog-products-grid {
     grid-template-columns: repeat(2, 1fr);
   }
@@ -2477,9 +2470,6 @@ footer {
 
 @media (max-width: 480px) {
   .catalog-hero-content h1 {
-    font-size: 2.1rem;
-  }
-  .catalog-hero-visual {
-    display: none;
+    font-size: 2.2rem;
   }
 }
