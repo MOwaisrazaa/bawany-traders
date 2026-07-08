@@ -93,6 +93,11 @@ document.addEventListener('DOMContentLoaded', () => {
     showSlide(next);
   };
 
+  const prevSlide = () => {
+    let prev = (currentSlide - 1 + slides.length) % slides.length;
+    showSlide(prev);
+  };
+
   const startSlideShow = () => {
     stopSlideShow();
     slideInterval = setInterval(nextSlide, slideDuration);
@@ -109,6 +114,24 @@ document.addEventListener('DOMContentLoaded', () => {
       startSlideShow(); // Reset autoplay timer
     });
   });
+
+  // Arrows Click Handlers
+  const prevBtn = document.getElementById('prevSlide');
+  const nextBtn = document.getElementById('nextSlide');
+
+  if (prevBtn) {
+    prevBtn.addEventListener('click', () => {
+      prevSlide();
+      startSlideShow(); // Reset autoplay timer
+    });
+  }
+
+  if (nextBtn) {
+    nextBtn.addEventListener('click', () => {
+      nextSlide();
+      startSlideShow(); // Reset autoplay timer
+    });
+  }
 
   // Start initial slideshow
   if (slides.length > 0) {
