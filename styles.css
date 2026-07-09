@@ -1334,19 +1334,7 @@ footer {
     border-right: none !important;
   }
   .slide-img {
-    object-fit: contain !important;
-  }
-  .slide:nth-child(1) {
-    background-color: #070325 !important;
-  }
-  .slide:nth-child(2) {
-    background-color: #000002 !important;
-  }
-  .slide:nth-child(3) {
-    background-color: #e8e3df !important;
-  }
-  .slide:nth-child(4) {
-    background-color: #031111 !important;
+    object-fit: cover !important;
   }
   .carousel-dots {
     bottom: 20px !important;
