@@ -1338,24 +1338,42 @@ footer {
 
   .main-nav .container {
     flex-wrap: wrap;
-    gap: 15px;
+    gap: 10px;
     padding: 10px 15px;
   }
 
   .logo {
-    font-size: 1.4rem;
+    order: 1;
+    margin-right: auto;
   }
 
   .logo-icon {
-    width: 35px;
-    height: 35px;
-    font-size: 1.2rem;
+    width: 32px;
+    height: 32px;
+    font-size: 1rem;
+    box-shadow: none;
+  }
+
+  .logo-title {
+    font-size: 1.1rem;
+    letter-spacing: -0.5px;
+  }
+
+  .logo-subtitle {
+    font-size: 0.45rem;
+    letter-spacing: 1px;
   }
 
   .search-container {
     order: 3;
+    flex: none;
     width: 100%;
     max-width: 100%;
+    margin-top: 5px;
+  }
+
+  .search-category {
+    display: none;
   }
 
   .nav-actions {
@@ -1363,14 +1381,18 @@ footer {
     gap: 15px;
   }
 
+  .nav-action-item span {
+    display: none;
+  }
+
+  .nav-action-item i {
+    font-size: 1.25rem;
+    margin-bottom: 0;
+  }
+
   .mobile-toggle {
     order: 1;
-    margin-right: 5px;
-  }
-  
-  .logo {
-    order: 1;
-    margin-right: auto;
+    margin-right: 8px;
   }
 
   /* Hero Slider aspect-ratio automatically scales height */
