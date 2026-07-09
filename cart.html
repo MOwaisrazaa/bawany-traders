@@ -1,0 +1,659 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shopping Cart | Bawany Traders</title>
+  <meta name="description" content="Review, update quantities, and checkout your premium gadgets, earbuds, smart watches, and electronics in your Bawany Traders Shopping Cart.">
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="styles.css">
+  <!-- FontAwesome for Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+  <!-- ==========================================
+       HEADER SECTION
+       ========================================== -->
+  <header>
+    <!-- Top Bar Ticker -->
+    <div class="top-bar-ticker">
+      <div class="container">
+        <div class="ticker-left">
+          <a href="mailto:info@bawanytraders.com"><i class="far fa-envelope"></i> info@bawanytraders.com</a>
+        </div>
+        <div class="ticker-center">
+          <div class="ticker-wrapper">
+            <div class="ticker-text">JOIN OUR COMMUNITY GROUP TODAY - SEND YOUR NAME, CITY & AREA TO 0321-8273588</div>
+          </div>
+        </div>
+        <div class="ticker-right">
+          <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+          <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+          <a href="#" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Main Navigation Bar -->
+    <div class="main-nav">
+      <div class="container">
+        <!-- Hamburger Menu for Mobile -->
+        <button class="mobile-toggle" id="mobileToggle" aria-label="Open navigation menu">
+          <i class="fas fa-bars"></i>
+        </button>
+
+        <!-- Brand Logo -->
+        <a href="index.html" class="logo" id="brandLogo">
+          <div class="logo-icon">B</div>
+          <div class="logo-text-wrapper">
+            <span class="logo-title">BAWANY</span>
+            <span class="logo-subtitle">TRADERS OFFICIAL</span>
+          </div>
+        </a>
+
+        <!-- Search Container -->
+        <div class="search-container">
+          <select class="search-category" id="searchCategory" aria-label="Select category filter">
+            <option>All Categories</option>
+            <option>Smart Watches</option>
+            <option>Audio / Earbuds</option>
+            <option>Charging & Cables</option>
+            <option>Smart Home</option>
+            <option>Car Accessories</option>
+          </select>
+          <input type="text" class="search-input" id="searchInput" placeholder="Search for products, brands and more..." aria-label="Search inputs">
+          <button class="search-btn" id="searchBtn" aria-label="Execute search">
+            <i class="fas fa-search"></i>
+          </button>
+        </div>
+
+        <!-- Action Items (Cart, Account) -->
+        <div class="nav-actions">
+          <div class="nav-action-item" id="trackOrderAction">
+            <i class="fas fa-truck"></i>
+            <span>Track Order</span>
+          </div>
+          <a href="cart.html" class="nav-action-item" id="cartAction">
+            <i class="fas fa-shopping-basket"></i>
+            <span>Cart</span>
+            <span class="badge" id="cartBadge">4</span>
+          </a>
+          <div class="nav-action-item" id="accountAction">
+            <i class="far fa-user"></i>
+            <span>Account</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Sub Navigation Bar -->
+    <nav class="sub-nav">
+      <div class="container">
+        <!-- Category Dropdown Button -->
+        <div class="category-dropdown">
+          <button class="category-btn" id="categoryBtn">
+            <i class="fas fa-bars"></i>
+            <span>Shop by Categories</span>
+            <i class="fas fa-chevron-down" style="font-size: 0.75rem;"></i>
+          </button>
+          <!-- Category Hover/Click Menu -->
+          <div class="category-menu" id="categoryMenu">
+            <a href="#"><i class="fas fa-laptop" style="margin-right: 10px; width: 15px;"></i> Electronics</a>
+            <a href="#"><i class="fas fa-clock" style="margin-right: 10px; width: 15px;"></i> Smart Watches</a>
+            <a href="#"><i class="fas fa-headphones" style="margin-right: 10px; width: 15px;"></i> Audio / Earbuds</a>
+            <a href="#"><i class="fas fa-bolt" style="margin-right: 10px; width: 15px;"></i> Charging & Cables</a>
+            <a href="#"><i class="fas fa-home" style="margin-right: 10px; width: 15px;"></i> Smart Home</a>
+            <a href="#"><i class="fas fa-car" style="margin-right: 10px; width: 15px;"></i> Car Accessories</a>
+          </div>
+        </div>
+
+        <!-- Navigation Links -->
+        <div class="nav-links">
+          <a href="index.html">Home</a>
+          <a href="products.html">All Products</a>
+          <a href="deals.html">Deals</a>
+          <a href="about.html">About Us</a>
+          <a href="contact.html">Contact Us</a>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Mobile Sidebar / Drawer -->
+  <div class="drawer-overlay" id="drawerOverlay"></div>
+  <div class="mobile-nav-drawer" id="mobileDrawer">
+    <div class="drawer-header">
+      <a href="index.html" class="logo">
+        <div class="logo-icon">B</div>
+        <div class="logo-text-wrapper">
+          <span class="logo-title">BAWANY</span>
+          <span class="logo-subtitle">TRADERS OFFICIAL</span>
+        </div>
+      </a>
+      <button class="drawer-close" id="drawerClose" aria-label="Close menu">&times;</button>
+    </div>
+    <div class="drawer-content">
+      <div class="drawer-menu">
+        <a href="index.html">Home</a>
+        <a href="products.html">All Products</a>
+        <a href="#">Best Sellers</a>
+        <a href="deals.html">Deals</a>
+        <a href="about.html">About Us</a>
+        <a href="contact.html">Contact Us</a>
+      </div>
+      <div class="drawer-categories-title">Categories</div>
+      <div class="drawer-menu">
+        <a href="#">Smart Watches</a>
+        <a href="#">Audio / Earbuds</a>
+        <a href="#">Charging & Cables</a>
+        <a href="#">Smart Home</a>
+        <a href="#">Car Accessories</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==========================================
+       BREADCRUMB SECTION
+       ========================================== -->
+  <div class="breadcrumb-container" style="padding: 20px 0; background-color: #f8fafc; border-bottom: 1px solid var(--border-gray);">
+    <div class="container">
+      <div class="about-breadcrumb" style="font-size: 0.85rem; color: var(--text-muted);">
+        <a href="index.html" style="color: var(--text-muted); text-decoration: none;">Home</a> 
+        <i class="fas fa-chevron-right" style="font-size: 0.7rem; margin: 0 8px;"></i> 
+        <span style="color: var(--dark-navy); font-weight: 600;">Cart</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==========================================
+       SHOPPING CART CONTENT SECTION
+       ========================================== -->
+  <section class="cart-page-section" style="padding: 50px 0; background-color: #f8fafc;">
+    <div class="container">
+      <div class="cart-layout-grid">
+        
+        <!-- Left Column: Cart Items -->
+        <div class="cart-items-column">
+          <div class="cart-header-wrapper">
+            <h1 class="cart-page-title">Shopping Cart (<span id="cartHeaderCount">4</span>)</h1>
+            <a href="#" class="share-cart-link"><i class="fas fa-share-alt"></i> Share Cart</a>
+          </div>
+
+          <div class="cart-items-list" id="cartItemsList">
+            
+            <!-- Item 1: Apple AirPods Pro 2 -->
+            <div class="cart-item" data-price="39999" data-original-price="49999" data-id="prodAirpods">
+              <label class="cart-checkbox-container">
+                <input type="checkbox" class="cart-item-checkbox" checked>
+                <span class="cart-checkmark"></span>
+              </label>
+              
+              <div class="cart-item-img-wrapper">
+                <img src="images/prod-airpods.png" alt="Apple AirPods Pro 2nd Gen">
+              </div>
+              
+              <div class="cart-item-details">
+                <h3 class="cart-item-title">Apple AirPods Pro 2nd Generation (USB-C)</h3>
+                <span class="cart-item-stock"><i class="fas fa-check-circle"></i> In Stock</span>
+                <span class="cart-item-meta">Color: White</span>
+              </div>
+              
+              <div class="cart-item-pricing">
+                <div class="cart-price-badges">
+                  <span class="cart-current-price">Rs. 39,999</span>
+                  <span class="cart-old-price">Rs. 49,999</span>
+                  <span class="cart-discount-badge">-20%</span>
+                </div>
+              </div>
+
+              <div class="cart-qty-control">
+                <button class="cart-qty-btn minus"><i class="fas fa-minus"></i></button>
+                <input type="text" class="cart-qty-val" value="1" readonly aria-label="Item quantity">
+                <button class="cart-qty-btn plus"><i class="fas fa-plus"></i></button>
+              </div>
+
+              <div class="cart-subtotal-column">
+                <span class="cart-item-subtotal">Rs. 39,999</span>
+              </div>
+
+              <button class="cart-item-delete" aria-label="Delete item from cart">
+                <i class="far fa-trash-alt"></i>
+              </button>
+            </div>
+
+            <!-- Item 2: Samsung Galaxy Watch 6 -->
+            <div class="cart-item" data-price="50999" data-original-price="59999" data-id="prodGalaxyWatch">
+              <label class="cart-checkbox-container">
+                <input type="checkbox" class="cart-item-checkbox" checked>
+                <span class="cart-checkmark"></span>
+              </label>
+              
+              <div class="cart-item-img-wrapper">
+                <img src="images/prod-galaxywatch.png" alt="Samsung Galaxy Watch 6">
+              </div>
+              
+              <div class="cart-item-details">
+                <h3 class="cart-item-title">Samsung Galaxy Watch 6 Classic 47mm</h3>
+                <span class="cart-item-stock"><i class="fas fa-check-circle"></i> In Stock</span>
+                <span class="cart-item-meta">Color: Black</span>
+              </div>
+              
+              <div class="cart-item-pricing">
+                <div class="cart-price-badges">
+                  <span class="cart-current-price">Rs. 50,999</span>
+                  <span class="cart-old-price">Rs. 59,999</span>
+                  <span class="cart-discount-badge">-15%</span>
+                </div>
+              </div>
+
+              <div class="cart-qty-control">
+                <button class="cart-qty-btn minus"><i class="fas fa-minus"></i></button>
+                <input type="text" class="cart-qty-val" value="1" readonly aria-label="Item quantity">
+                <button class="cart-qty-btn plus"><i class="fas fa-plus"></i></button>
+              </div>
+
+              <div class="cart-subtotal-column">
+                <span class="cart-item-subtotal">Rs. 50,999</span>
+              </div>
+
+              <button class="cart-item-delete" aria-label="Delete item from cart">
+                <i class="far fa-trash-alt"></i>
+              </button>
+            </div>
+
+            <!-- Item 3: Sony WF-1000XM5 -->
+            <div class="cart-item" data-price="36999" data-original-price="44999" data-id="prodSony">
+              <label class="cart-checkbox-container">
+                <input type="checkbox" class="cart-item-checkbox" checked>
+                <span class="cart-checkmark"></span>
+              </label>
+              
+              <div class="cart-item-img-wrapper">
+                <img src="images/prod-sony.png" alt="Sony WF-1000XM5">
+              </div>
+              
+              <div class="cart-item-details">
+                <h3 class="cart-item-title">Sony WF-1000XM5 Wireless Earbuds</h3>
+                <span class="cart-item-stock"><i class="fas fa-check-circle"></i> In Stock</span>
+                <span class="cart-item-meta">Color: White</span>
+              </div>
+              
+              <div class="cart-item-pricing">
+                <div class="cart-price-badges">
+                  <span class="cart-current-price">Rs. 36,999</span>
+                  <span class="cart-old-price">Rs. 44,999</span>
+                  <span class="cart-discount-badge">-18%</span>
+                </div>
+              </div>
+
+              <div class="cart-qty-control">
+                <button class="cart-qty-btn minus"><i class="fas fa-minus"></i></button>
+                <input type="text" class="cart-qty-val" value="1" readonly aria-label="Item quantity">
+                <button class="cart-qty-btn plus"><i class="fas fa-plus"></i></button>
+              </div>
+
+              <div class="cart-subtotal-column">
+                <span class="cart-item-subtotal">Rs. 36,999</span>
+              </div>
+
+              <button class="cart-item-delete" aria-label="Delete item from cart">
+                <i class="far fa-trash-alt"></i>
+              </button>
+            </div>
+
+            <!-- Item 4: Anker 737 Power Bank -->
+            <div class="cart-item" data-price="23499" data-original-price="29999" data-id="prodAnker">
+              <label class="cart-checkbox-container">
+                <input type="checkbox" class="cart-item-checkbox" checked>
+                <span class="cart-checkmark"></span>
+              </label>
+              
+              <div class="cart-item-img-wrapper">
+                <img src="images/prod-anker.png" alt="Anker 737 Power Bank">
+              </div>
+              
+              <div class="cart-item-details">
+                <h3 class="cart-item-title">Anker 737 Power Bank (PowerCore 24K)</h3>
+                <span class="cart-item-stock"><i class="fas fa-check-circle"></i> In Stock</span>
+                <span class="cart-item-meta">Color: Black</span>
+              </div>
+              
+              <div class="cart-item-pricing">
+                <div class="cart-price-badges">
+                  <span class="cart-current-price">Rs. 23,499</span>
+                  <span class="cart-old-price">Rs. 29,999</span>
+                  <span class="cart-discount-badge">-22%</span>
+                </div>
+              </div>
+
+              <div class="cart-qty-control">
+                <button class="cart-qty-btn minus"><i class="fas fa-minus"></i></button>
+                <input type="text" class="cart-qty-val" value="1" readonly aria-label="Item quantity">
+                <button class="cart-qty-btn plus"><i class="fas fa-plus"></i></button>
+              </div>
+
+              <div class="cart-subtotal-column">
+                <span class="cart-item-subtotal">Rs. 23,499</span>
+              </div>
+
+              <button class="cart-item-delete" aria-label="Delete item from cart">
+                <i class="far fa-trash-alt"></i>
+              </button>
+            </div>
+
+          </div>
+
+          <!-- Bottom Action Buttons -->
+          <div class="cart-action-bar">
+            <label class="cart-checkbox-container">
+              <input type="checkbox" id="selectAllCheckbox" checked>
+              <span class="cart-checkmark"></span>
+              <span class="select-all-text">Select All (<span id="selectAllCount">4</span>)</span>
+            </label>
+            <div class="action-buttons-group">
+              <button class="cart-action-outline-btn" id="removeSelectedBtn"><i class="far fa-trash-alt"></i> Remove Selected</button>
+              <button class="cart-action-outline-btn" id="clearCartBtn"><i class="fas fa-trash-restore-alt"></i> Clear Cart</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right Column: Order Summary & Why Shop With Us -->
+        <div class="cart-sidebar-column">
+          
+          <!-- Order Summary Box -->
+          <div class="summary-box">
+            <h2>Order Summary</h2>
+            <div class="summary-details">
+              <div class="summary-row">
+                <span>Subtotal (<span id="summaryItemsCount">4</span> items)</span>
+                <span id="summarySubtotal">Rs. 184,996</span>
+              </div>
+              <div class="summary-row">
+                <span>Discount</span>
+                <span class="text-green" id="summaryDiscount">- Rs. 34,000</span>
+              </div>
+              <div class="summary-row">
+                <span>Shipping Charges</span>
+                <span id="summaryShipping">Rs. 0</span>
+              </div>
+              <p class="shipping-note">Free shipping on orders above Rs. 5,000</p>
+            </div>
+            
+            <div class="summary-total-section">
+              <div class="total-row">
+                <span class="total-label">Total</span>
+                <span class="total-value" id="summaryTotal">Rs. 150,996</span>
+              </div>
+              <p class="savings-label">You Save <span id="summarySaveAmount">Rs. 34,000</span></p>
+            </div>
+
+            <button class="summary-checkout-btn" id="checkoutBtn"><i class="fas fa-lock"></i> Proceed to Checkout</button>
+            <button class="summary-one-click-btn" id="oneClickBuyBtn"><i class="fas fa-bolt"></i> Buy with 1 Click</button>
+            <a href="products.html" class="continue-shopping-link"><i class="fas fa-arrow-left"></i> Continue Shopping</a>
+          </div>
+
+          <!-- Why Shop With Us Box -->
+          <div class="why-shop-box">
+            <h3>Why Shop With Us?</h3>
+            <ul class="why-shop-list">
+              <li>
+                <div class="why-shop-icon"><i class="fas fa-award"></i></div>
+                <div class="why-shop-info">
+                  <h4>100% Authentic Products</h4>
+                  <p>Genuine products from trusted brands</p>
+                </div>
+              </li>
+              <li>
+                <div class="why-shop-icon"><i class="fas fa-sync-alt"></i></div>
+                <div class="why-shop-info">
+                  <h4>7-Day Replacement</h4>
+                  <p>Hassle free replacement policy</p>
+                </div>
+              </li>
+              <li>
+                <div class="why-shop-icon"><i class="fas fa-shield-alt"></i></div>
+                <div class="why-shop-info">
+                  <h4>Secure Payments</h4>
+                  <p>100% secure and encrypted payments</p>
+                </div>
+              </li>
+              <li>
+                <div class="why-shop-icon"><i class="fas fa-truck"></i></div>
+                <div class="why-shop-info">
+                  <h4>Fast Delivery</h4>
+                  <p>Quick delivery all over Pakistan</p>
+                </div>
+              </li>
+            </ul>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================
+       YOU MAY ALSO LIKE SECTION
+       ========================================== -->
+  <section class="recommendations-section" style="padding: 50px 0; background-color: var(--white); border-bottom: 1px solid var(--border-gray);">
+    <div class="container">
+      <div class="featured-header" style="margin-bottom: 30px;">
+        <h2 class="section-title" style="margin-bottom: 0;">You May Also Like</h2>
+        <a href="products.html" class="view-all-link">View All <i class="fas fa-arrow-right"></i></a>
+      </div>
+
+      <div class="products-grid">
+        
+        <!-- Rec Product 1: Apple Watch Series 9 -->
+        <div class="product-card" id="recWatch">
+          <div class="product-img-wrapper">
+            <img src="images/prod-galaxywatch.png" alt="Apple Watch Series 9" style="filter: hue-rotate(90deg);">
+          </div>
+          <div class="product-info">
+            <h3 class="product-title">Apple Watch Series 9 GPS 45mm Midnight</h3>
+            <div class="product-rating">
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <span class="rating-count">(128)</span>
+            </div>
+            <div class="product-price">
+              <span class="price-current">Rs. 129,999</span>
+            </div>
+            <button class="add-to-cart-btn"><i class="fas fa-shopping-cart"></i> Add to Cart</button>
+          </div>
+        </div>
+
+        <!-- Rec Product 2: JBL Tune Buds -->
+        <div class="product-card" id="recJbl">
+          <div class="product-img-wrapper">
+            <img src="images/prod-airpods.png" alt="JBL Tune Buds" style="filter: invert(0.9);">
+          </div>
+          <div class="product-info">
+            <h3 class="product-title">JBL Tune Buds Noise Cancelling Earbuds</h3>
+            <div class="product-rating">
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="far fa-star"></i>
+              <span class="rating-count">(86)</span>
+            </div>
+            <div class="product-price">
+              <span class="price-old">Rs. 19,999</span>
+              <span class="price-current">Rs. 15,999</span>
+            </div>
+            <button class="add-to-cart-btn"><i class="fas fa-shopping-cart"></i> Add to Cart</button>
+          </div>
+        </div>
+
+        <!-- Rec Product 3: iPhone 15 Pro Max -->
+        <div class="product-card" id="recIphone">
+          <div class="product-img-wrapper">
+            <img src="images/prod-airpods.png" alt="iPhone 15 Pro Max" style="filter: opacity(0.3) saturate(0); display:none;">
+            <div style="height: 100%; display: flex; align-items: center; justify-content: center; font-weight: bold; color: #cbd5e1; font-size: 3rem;"><i class="fas fa-mobile-alt"></i></div>
+          </div>
+          <div class="product-info">
+            <h3 class="product-title">iPhone 15 Pro Max 256GB Natural Titanium</h3>
+            <div class="product-rating">
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <span class="rating-count">(98)</span>
+            </div>
+            <div class="product-price">
+              <span class="price-old">Rs. 449,999</span>
+              <span class="price-current">Rs. 379,999</span>
+            </div>
+            <button class="add-to-cart-btn"><i class="fas fa-shopping-cart"></i> Add to Cart</button>
+          </div>
+        </div>
+
+        <!-- Rec Product 4: boAt Stone 650 -->
+        <div class="product-card" id="recBoat">
+          <div class="product-img-wrapper">
+            <div style="height: 100%; display: flex; align-items: center; justify-content: center; font-weight: bold; color: #cbd5e1; font-size: 3.5rem;"><i class="fas fa-volume-up"></i></div>
+          </div>
+          <div class="product-info">
+            <h3 class="product-title">boAt Stone 650 10W Bluetooth Speaker</h3>
+            <div class="product-rating">
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="far fa-star"></i>
+              <span class="rating-count">(64)</span>
+            </div>
+            <div class="product-price">
+              <span class="price-old">Rs. 8,999</span>
+              <span class="price-current">Rs. 6,499</span>
+            </div>
+            <button class="add-to-cart-btn"><i class="fas fa-shopping-cart"></i> Add to Cart</button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================
+       PROPS BAR SECTION
+       ========================================== -->
+  <section class="props-bar-section">
+    <div class="container">
+      <div class="props-bar">
+        <div class="prop-item">
+          <i class="fas fa-truck"></i>
+          <div class="prop-text">
+            <h6>Free Shipping Nationwide</h6>
+            <p>On all orders above Rs. 5,000</p>
+          </div>
+        </div>
+        <div class="prop-item">
+          <i class="fas fa-sync-alt"></i>
+          <div class="prop-text">
+            <h6>7-Day Replacement Warranty</h6>
+            <p>Hassle free replacement</p>
+          </div>
+        </div>
+        <div class="prop-item">
+          <i class="fas fa-award"></i>
+          <div class="prop-text">
+            <h6>100% Authentic Products</h6>
+            <p>Sourced directly from brands</p>
+          </div>
+        </div>
+        <div class="prop-item">
+          <i class="fas fa-hand-holding-usd"></i>
+          <div class="prop-text">
+            <h6>Cash on Delivery</h6>
+            <p>Pay when you receive</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================
+       FOOTER SECTION (DARK THEME)
+       ========================================== -->
+  <footer>
+    <div class="container">
+      <div class="footer-top">
+        
+        <!-- Column 1: Brand details -->
+        <div class="footer-column footer-brand">
+          <a href="index.html" class="logo">
+            <div class="logo-icon">B</div>
+            <div class="logo-text-wrapper">
+              <span class="logo-title" style="color: var(--white);">BAWANY</span>
+              <span class="logo-subtitle">TRADERS OFFICIAL</span>
+            </div>
+          </a>
+          <p>Your trusted destination for the latest gadgets, electronics & smart accessories in Pakistan.</p>
+          <div class="social-links">
+            <a href="#" class="social-link" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" class="social-link" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="#" class="social-link" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+            <a href="#" class="social-link" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+          </div>
+        </div>
+
+        <!-- Column 2: Useful Links -->
+        <div class="footer-column">
+          <h3>Useful Links</h3>
+          <ul class="footer-links-list">
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="#">Track Order</a></li>
+            <li><a href="#">Returns & Refunds</a></li>
+            <li><a href="#">Shipping Policy</a></li>
+            <li><a href="#">Privacy Policy</a></li>
+            <li><a href="#">Terms & Conditions</a></li>
+            <li><a href="contact.html">Contact Us</a></li>
+          </ul>
+        </div>
+
+        <!-- Column 3: Customer Service -->
+        <div class="footer-column">
+          <h3>Customer Service</h3>
+          <ul class="footer-links-list">
+            <li><a href="#">Help Center</a></li>
+            <li><a href="#">Support</a></li>
+            <li><a href="#">Warranty Policy</a></li>
+          </ul>
+        </div>
+
+        <!-- Column 4: Newsletter -->
+        <div class="footer-column">
+          <h3>Newsletter</h3>
+          <p style="font-size: 0.85rem; margin-bottom: 15px; line-height: 1.5;">Subscribe to get updates on new arrivals, exclusive deals & offers.</p>
+          <form class="newsletter-form" id="newsletterForm">
+            <input type="email" class="newsletter-input" id="newsletterInput" placeholder="Enter your email" required aria-label="Email address for subscription">
+            <button type="submit" class="newsletter-btn" aria-label="Subscribe to newsletter">
+              <i class="fas fa-paper-plane"></i>
+            </button>
+          </form>
+        </div>
+
+      </div>
+
+      <!-- Copyright Bottom -->
+      <div class="footer-bottom">
+        <div class="container">
+          <p>&copy; 2026 Bawany Traders. All Rights Reserved.</p>
+          <p>Powered by <a href="https://snipezon.com" target="_blank" style="color: var(--primary-teal); text-decoration: none; font-weight: 600;">snipezon.com</a></p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="script.js"></script>
+</body>
+</html>

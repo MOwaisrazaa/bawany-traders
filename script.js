@@ -12,7 +12,6 @@ document.addEventListener('DOMContentLoaded', () => {
   const drawerClose = document.getElementById('drawerClose');
   const drawerOverlay = document.getElementById('drawerOverlay');
   const cartBadge = document.getElementById('cartBadge');
-  const wishlistBadge = document.getElementById('wishlistBadge');
   const newsletterForm = document.getElementById('newsletterForm');
   const newsletterInput = document.getElementById('newsletterInput');
 
@@ -25,7 +24,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // State Variables
   let cartCount = 0;
-  let wishlistCount = 0;
 
   // ==========================================
   // 1. Sticky Header & Shadow on Scroll
@@ -203,41 +201,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // ==========================================
-  // 7. "Wishlist" Toggle Logic
-  // ==========================================
-  const wishlistButtons = document.querySelectorAll('.wishlist-btn');
-
-  wishlistButtons.forEach(btn => {
-    btn.addEventListener('click', (e) => {
-      e.preventDefault();
-      e.stopPropagation();
-
-      const isAdding = !btn.classList.contains('active');
-      btn.classList.toggle('active');
-
-      const card = btn.closest('.product-card');
-      let productTitle = "Premium Gadget";
-      if (card) {
-        const titleEl = card.querySelector('.product-title');
-        if (titleEl) productTitle = titleEl.textContent.trim();
-      }
-
-      if (isAdding) {
-        wishlistCount++;
-        showToast(`Saved "${productTitle}" to Wishlist!`, 'fa-heart');
-      } else {
-        wishlistCount = Math.max(0, wishlistCount - 1);
-        showToast(`Removed "${productTitle}" from Wishlist.`, 'fa-heart-broken');
-      }
-
-      // Update wishlist badge
-      if (wishlistBadge) {
-        wishlistBadge.textContent = wishlistCount;
-        wishlistBadge.style.display = wishlistCount > 0 ? 'flex' : 'none';
-      }
-    });
-  });
 
   // ==========================================
   // 8. Newsletter Form Submission & Validation
@@ -348,6 +311,217 @@ document.addEventListener('DOMContentLoaded', () => {
         catSlider.scrollBy({ left: 220, behavior: 'smooth' });
       });
     }
+  }
+
+  // ==========================================
+  // 11. Deals Page Countdown & Notify Logic
+  // ==========================================
+  const daysEl = document.getElementById('days');
+  const hoursEl = document.getElementById('hours');
+  const minutesEl = document.getElementById('minutes');
+  const secondsEl = document.getElementById('seconds');
+  const dealsNotifyForm = document.getElementById('dealsNotifyForm');
+
+  if (daysEl && hoursEl && minutesEl && secondsEl) {
+    // Set target date to 2 days, 12 hours, 45 minutes, 30 seconds from now
+    const targetDate = new Date();
+    targetDate.setDate(targetDate.getDate() + 2);
+    targetDate.setHours(targetDate.getHours() + 12);
+    targetDate.setMinutes(targetDate.getMinutes() + 45);
+    targetDate.setSeconds(targetDate.getSeconds() + 30);
+
+    const updateCountdown = () => {
+      const now = new Date().getTime();
+      const difference = targetDate - now;
+
+      if (difference <= 0) {
+        daysEl.textContent = '00';
+        hoursEl.textContent = '00';
+        minutesEl.textContent = '00';
+        secondsEl.textContent = '00';
+        return;
+      }
+
+      const days = Math.floor(difference / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((difference % (1000 * 60)) / 1000);
+
+      daysEl.textContent = String(days).padStart(2, '0');
+      hoursEl.textContent = String(hours).padStart(2, '0');
+      minutesEl.textContent = String(minutes).padStart(2, '0');
+      secondsEl.textContent = String(seconds).padStart(2, '0');
+    };
+
+    updateCountdown();
+    setInterval(updateCountdown, 1000);
+  }
+
+  if (dealsNotifyForm) {
+    dealsNotifyForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const emailInput = dealsNotifyForm.querySelector('.notify-input');
+      const email = emailInput.value.trim();
+      if (email) {
+        showToast(`Thank you! We will notify you at ${email}.`, 'fa-bell');
+        emailInput.value = '';
+      }
+    });
+  }
+
+  // ==========================================
+  // 12. Cart Page Interaction & Calculations
+  // ==========================================
+  const cartItemsList = document.getElementById('cartItemsList');
+  if (cartItemsList) {
+    const selectAllCheckbox = document.getElementById('selectAllCheckbox');
+    const selectAllCount = document.getElementById('selectAllCount');
+    const cartHeaderCount = document.getElementById('cartHeaderCount');
+    const summaryItemsCount = document.getElementById('summaryItemsCount');
+    const summarySubtotal = document.getElementById('summarySubtotal');
+    const summaryDiscount = document.getElementById('summaryDiscount');
+    const summaryTotal = document.getElementById('summaryTotal');
+    const summarySaveAmount = document.getElementById('summarySaveAmount');
+    const removeSelectedBtn = document.getElementById('removeSelectedBtn');
+    const clearCartBtn = document.getElementById('clearCartBtn');
+
+    // Format price helper
+    const formatPrice = (num) => {
+      return "Rs. " + num.toLocaleString();
+    };
+
+    // Calculate Summary Values
+    const updateCartTotals = () => {
+      let totalOriginal = 0;
+      let totalDiscounted = 0;
+      let checkedItemsCount = 0;
+      let totalItemsCount = 0;
+
+      const activeItems = cartItemsList.querySelectorAll('.cart-item');
+      totalItemsCount = activeItems.length;
+
+      activeItems.forEach(item => {
+        const checkbox = item.querySelector('.cart-item-checkbox');
+        const qtyVal = parseInt(item.querySelector('.cart-qty-val').value) || 1;
+        const price = parseInt(item.getAttribute('data-price')) || 0;
+        const originalPrice = parseInt(item.getAttribute('data-original-price')) || price;
+
+        // Calculate Subtotal for this item
+        const itemSubtotal = price * qtyVal;
+        item.querySelector('.cart-item-subtotal').textContent = formatPrice(itemSubtotal);
+
+        if (checkbox && checkbox.checked) {
+          totalOriginal += originalPrice * qtyVal;
+          totalDiscounted += price * qtyVal;
+          checkedItemsCount++;
+        }
+      });
+
+      // Update counters
+      if (cartHeaderCount) cartHeaderCount.textContent = totalItemsCount;
+      if (selectAllCount) selectAllCount.textContent = totalItemsCount;
+      if (summaryItemsCount) summaryItemsCount.textContent = checkedItemsCount;
+
+      // Update summary box
+      const discountAmount = totalOriginal - totalDiscounted;
+      if (summarySubtotal) summarySubtotal.textContent = formatPrice(totalOriginal);
+      if (summaryDiscount) summaryDiscount.textContent = discountAmount > 0 ? "- " + formatPrice(discountAmount) : "Rs. 0";
+      if (summaryTotal) summaryTotal.textContent = formatPrice(totalDiscounted);
+      if (summarySaveAmount) summarySaveAmount.textContent = formatPrice(discountAmount);
+
+      // Check / uncheck select all checkbox
+      if (selectAllCheckbox) {
+        const checkedCheckboxes = cartItemsList.querySelectorAll('.cart-item-checkbox:checked');
+        selectAllCheckbox.checked = (checkedCheckboxes.length === totalItemsCount) && (totalItemsCount > 0);
+      }
+
+      // Update header nav badge
+      const headerCartBadge = document.getElementById('cartBadge');
+      if (headerCartBadge) {
+        headerCartBadge.textContent = totalItemsCount;
+        headerCartBadge.style.display = totalItemsCount > 0 ? 'flex' : 'none';
+      }
+    };
+
+    // Listen to changes inside items
+    cartItemsList.addEventListener('change', (e) => {
+      if (e.target.classList.contains('cart-item-checkbox')) {
+        updateCartTotals();
+      }
+    });
+
+    // Handle Quantity selectors
+    cartItemsList.addEventListener('click', (e) => {
+      const btn = e.target.closest('.cart-qty-btn');
+      if (btn) {
+        const item = btn.closest('.cart-item');
+        const qtyInput = item.querySelector('.cart-qty-val');
+        let qty = parseInt(qtyInput.value) || 1;
+
+        if (btn.classList.contains('plus')) {
+          qty++;
+        } else if (btn.classList.contains('minus') && qty > 1) {
+          qty--;
+        }
+
+        qtyInput.value = qty;
+        updateCartTotals();
+      }
+
+      // Handle Delete button click
+      const deleteBtn = e.target.closest('.cart-item-delete');
+      if (deleteBtn) {
+        const item = deleteBtn.closest('.cart-item');
+        if (item) {
+          const title = item.querySelector('.cart-item-title').textContent.trim();
+          item.remove();
+          showToast(`Removed "${title}" from cart.`, 'fa-trash-alt');
+          updateCartTotals();
+        }
+      }
+    });
+
+    // Handle Select All click
+    if (selectAllCheckbox) {
+      selectAllCheckbox.addEventListener('change', () => {
+        const checkboxes = cartItemsList.querySelectorAll('.cart-item-checkbox');
+        checkboxes.forEach(cb => {
+          cb.checked = selectAllCheckbox.checked;
+        });
+        updateCartTotals();
+      });
+    }
+
+    // Handle Remove Selected click
+    if (removeSelectedBtn) {
+      removeSelectedBtn.addEventListener('click', () => {
+        const checkedItems = cartItemsList.querySelectorAll('.cart-item:has(.cart-item-checkbox:checked)');
+        if (checkedItems.length === 0) {
+          showToast("No items selected to remove.", "fa-info-circle");
+          return;
+        }
+        checkedItems.forEach(item => item.remove());
+        showToast("Removed selected items from cart.", "fa-trash-alt");
+        updateCartTotals();
+      });
+    }
+
+    // Handle Clear Cart click
+    if (clearCartBtn) {
+      clearCartBtn.addEventListener('click', () => {
+        const allItems = cartItemsList.querySelectorAll('.cart-item');
+        if (allItems.length === 0) {
+          showToast("Your cart is already empty.", "fa-info-circle");
+          return;
+        }
+        allItems.forEach(item => item.remove());
+        showToast("Cleared all items from cart.", "fa-trash");
+        updateCartTotals();
+      });
+    }
+
+    // Initial load totals
+    updateCartTotals();
   }
 
   document.head.appendChild(style);

@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>About Us | Bawany Traders</title>
-  <meta name="description" content="Learn more about Bawany Traders, our journey, values, and why we are Pakistan's most trusted premium electronics flagship store.">
+  <title>Hot Deals | Bawany Traders</title>
+  <meta name="description" content="Discover unbeatable, limited-time hot deals on smart watches, earbuds, cables, smart home products, and accessories at Bawany Traders.">
   <!-- Stylesheets -->
   <link rel="stylesheet" href="styles.css">
   <!-- FontAwesome for Icons -->
@@ -68,7 +68,7 @@
           </button>
         </div>
 
-        <!-- Action Items (Wishlist, Cart, Account) -->
+        <!-- Action Items (Cart, Account) -->
         <div class="nav-actions">
           <div class="nav-action-item" id="trackOrderAction">
             <i class="fas fa-truck"></i>
@@ -112,9 +112,8 @@
         <div class="nav-links">
           <a href="index.html">Home</a>
           <a href="products.html">All Products</a>
-        
-          <a href="deals.html">Deals</a>
-          <a href="about.html" class="active">About Us</a>
+          <a href="deals.html" class="active">Deals</a>
+          <a href="about.html">About Us</a>
           <a href="contact.html">Contact Us</a>
         </div>
       </div>
@@ -139,8 +138,8 @@
         <a href="index.html">Home</a>
         <a href="products.html">All Products</a>
         <a href="#">Best Sellers</a>
-        <a href="deals.html">Deals</a>
-        <a href="about.html" class="active">About Us</a>
+        <a href="deals.html" class="active">Deals</a>
+        <a href="about.html">About Us</a>
         <a href="contact.html">Contact Us</a>
       </div>
       <div class="drawer-categories-title">Categories</div>
@@ -155,168 +154,135 @@
   </div>
 
   <!-- ==========================================
-       ABOUT HERO BANNER
+       BREADCRUMB SECTION
        ========================================== -->
-  <section class="about-hero">
+  <div class="breadcrumb-container" style="padding: 20px 0; background-color: #f8fafc; border-bottom: 1px solid var(--border-gray);">
     <div class="container">
-      <div class="about-breadcrumb">
-        <a href="index.html">Home</a> <i class="fas fa-chevron-right" style="font-size: 0.75rem; margin: 0 5px;"></i> <span>About Us</span>
+      <div class="about-breadcrumb" style="font-size: 0.85rem; color: var(--text-muted);">
+        <a href="index.html" style="color: var(--text-muted); text-decoration: none;">Home</a> 
+        <i class="fas fa-chevron-right" style="font-size: 0.7rem; margin: 0 8px;"></i> 
+        <span style="color: var(--dark-navy); font-weight: 600;">Deals</span>
       </div>
-      <h1 class="about-title-large">About<br><span class="text-teal">Bawany Traders</span></h1>
-      <div class="about-sep-line"></div>
-      <p class="about-hero-text">Your trusted destination for premium gadgets, electronics and smart accessories. We bring the latest technology to make your everyday life smarter and easier.</p>
+    </div>
+  </div>
+
+  <!-- ==========================================
+       COMING SOON BANNER CARD
+       ========================================== -->
+  <section class="deals-banner-section" style="padding: 60px 0; background-color: #f8fafc;">
+    <div class="container">
+      <div class="deals-coming-soon-card">
+        <div class="deals-cs-grid">
+          
+          <!-- Left Column (Content) -->
+          <div class="deals-cs-content">
+            <span class="deals-badge">Exciting Offers Ahead</span>
+            <h1 class="deals-main-title">Hot Deals <br><span>Coming Soon!</span></h1>
+            <p class="deals-subtitle">We're preparing exclusive discounts and unbeatable offers just for you.</p>
+            
+            <div class="deals-launch-box">
+              <span class="launch-label">Deals launch in:</span>
+              <div class="countdown-timer">
+                <div class="countdown-item">
+                  <span class="countdown-num" id="days">00</span>
+                  <span class="countdown-label"><i class="far fa-calendar-alt"></i> DAYS</span>
+                </div>
+                <div class="countdown-item">
+                  <span class="countdown-num" id="hours">00</span>
+                  <span class="countdown-label"><i class="far fa-clock"></i> HOURS</span>
+                </div>
+                <div class="countdown-item">
+                  <span class="countdown-num" id="minutes">00</span>
+                  <span class="countdown-label"><i class="far fa-clock"></i> MINUTES</span>
+                </div>
+                <div class="countdown-item">
+                  <span class="countdown-num" id="seconds">00</span>
+                  <span class="countdown-label"><i class="far fa-clock"></i> SECONDS</span>
+                </div>
+              </div>
+            </div>
+            
+            <div class="deals-notify-box">
+              <p class="notify-title"><i class="far fa-bell"></i> Be the first to know when the best deals go live!</p>
+              <form class="deals-notify-form" id="dealsNotifyForm">
+                <input type="email" class="notify-input" placeholder="Enter your email address" required aria-label="Notify email address">
+                <button type="submit" class="notify-btn">Notify Me</button>
+              </form>
+              <span class="notify-subtext"><i class="fas fa-user-shield"></i> No spam, ever. Unsubscribe anytime.</span>
+            </div>
+          </div>
+          
+          <!-- Right Column (3D Visual) -->
+          <div class="deals-cs-visual">
+            <div class="deals-image-wrapper">
+              <img src="images/deals-illustration.png" alt="Hot Deals Coming Soon" class="deals-3d-img">
+            </div>
+          </div>
+          
+        </div>
+        
+        <!-- Progress Bar -->
+        <div class="deals-progress-container">
+          <div class="progress-header">
+            <span><i class="fas fa-rocket"></i> Preparing Amazing Offers</span>
+            <span class="progress-percentage">78%</span>
+          </div>
+          <div class="progress-bar-track">
+            <div class="progress-bar-fill" style="width: 78%;"></div>
+          </div>
+          <p class="progress-subtext">Our team is working hard to bring you the best value on top products.</p>
+        </div>
+        
+      </div>
     </div>
   </section>
 
   <!-- ==========================================
-       OUR STORY / WHO WE ARE
+       DEALS FEATURES SECTION
        ========================================== -->
-  <section class="section-padding" style="background-color: var(--white);">
+  <section class="deals-features-section" style="padding: 40px 0; background-color: var(--white); border-bottom: 1px solid var(--border-gray);">
     <div class="container">
-      <div class="about-content-grid">
-        
-        <!-- Showcase Image -->
-        <div class="about-img-container">
-          <img src="images/about-showcase.png" alt="Bawany Traders Flagship Store Showcase">
-        </div>
-
-        <!-- Story Text -->
-        <div class="about-text">
-          <span class="section-badge">OUR STORY</span>
-          <h2 class="about-section-heading">Built on Trust. Driven by Passion.</h2>
-          <p class="about-text-p">Bawany Traders was founded with a simple mission - to deliver 100% authentic technology products with a focus on quality, affordability and excellent customer service.</p>
-          <p class="about-text-p">From the latest smartwatches to must-have accessories, we carefully curate every product to ensure you get the best value and latest innovation under one roof.</p>
-          
-          <!-- Features list -->
-          <div class="about-feature-grid">
-            
-            <div class="about-feature-item">
-              <div class="about-feature-icon"><i class="fas fa-award"></i></div>
-              <div class="about-feature-text">
-                <h5>100% Authentic</h5>
-                <p>Genuine products from trusted brands.</p>
-              </div>
-            </div>
-
-            <div class="about-feature-item">
-              <div class="about-feature-icon"><i class="fas fa-tags"></i></div>
-              <div class="about-feature-text">
-                <h5>Best Prices</h5>
-                <p>Competitive prices and regular deals.</p>
-              </div>
-            </div>
-
-            <div class="about-feature-item">
-              <div class="about-feature-icon"><i class="fas fa-shield-alt"></i></div>
-              <div class="about-feature-text">
-                <h5>Secure Shopping</h5>
-                <p>Safe payments and data protection.</p>
-              </div>
-            </div>
-
-            <div class="about-feature-item">
-              <div class="about-feature-icon"><i class="fas fa-headset"></i></div>
-              <div class="about-feature-text">
-                <h5>Customer Support</h5>
-                <p>We're here to help you every step of the way.</p>
-              </div>
-            </div>
-
+      <div class="deals-features-row">
+        <!-- Feature 1 -->
+        <div class="deals-feature-card">
+          <div class="deals-feature-icon">
+            <i class="fas fa-tags"></i>
+          </div>
+          <div class="deals-feature-info">
+            <h5>Best Prices</h5>
+            <p>Unbeatable deals on top brands</p>
           </div>
         </div>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- ==========================================
-       STATS SECTION
-       ========================================== -->
-  <section class="about-stats-section">
-    <div class="container">
-      <div class="about-stats-card">
-        <div class="stat-col">
-          <div class="stat-number">10K+</div>
-          <div class="stat-title">Happy Customers</div>
-          <div class="stat-desc">Across Pakistan</div>
+        <!-- Feature 2 -->
+        <div class="deals-feature-card">
+          <div class="deals-feature-icon">
+            <i class="fas fa-shield-alt"></i>
+          </div>
+          <div class="deals-feature-info">
+            <h5>100% Authentic</h5>
+            <p>Original products you can trust</p>
+          </div>
         </div>
-        <div class="stat-col">
-          <div class="stat-number">500+</div>
-          <div class="stat-title">Products</div>
-          <div class="stat-desc">And Growing</div>
+        <!-- Feature 3 -->
+        <div class="deals-feature-card">
+          <div class="deals-feature-icon">
+            <i class="fas fa-truck"></i>
+          </div>
+          <div class="deals-feature-info">
+            <h5>Fast Delivery</h5>
+            <p>Quick & reliable shipping</p>
+          </div>
         </div>
-        <div class="stat-col">
-          <div class="stat-number">4.8/5</div>
-          <div class="stat-title">Store Rating</div>
-          <div class="stat-desc">Based on Reviews</div>
+        <!-- Feature 4 -->
+        <div class="deals-feature-card">
+          <div class="deals-feature-icon">
+            <i class="fas fa-headset"></i>
+          </div>
+          <div class="deals-feature-info">
+            <h5>Trusted Support</h5>
+            <p>We're here to help you always</p>
+          </div>
         </div>
-        <div class="stat-col">
-          <div class="stat-number">2,500+</div>
-          <div class="stat-title">Orders Delivered</div>
-          <div class="stat-desc">Successfully</div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ==========================================
-       OUR VALUES SECTION
-       ========================================== -->
-  <section class="section-padding" style="border-top: 1px solid var(--border-gray); background-color: #F8FAFC;">
-    <div class="container">
-      <span class="section-badge" style="display: block; text-align: center; margin: 0 auto 10px auto;">OUR VALUES</span>
-      <h2 class="section-title" style="text-align: center; margin-bottom: 40px; font-size: 2.2rem; font-weight: 800; font-family: 'Space Grotesk', sans-serif;">What We Stand For</h2>
-      
-      <div class="values-grid">
-        
-        <div class="value-card-v2">
-          <div class="value-icon-v2"><i class="fas fa-gem"></i></div>
-          <h4>Quality First</h4>
-          <p>We never compromise on product quality.</p>
-        </div>
-
-        <div class="value-card-v2">
-          <div class="value-icon-v2"><i class="fas fa-users"></i></div>
-          <h4>Customer Focused</h4>
-          <p>You are at the heart of everything we do.</p>
-        </div>
-
-        <div class="value-card-v2">
-          <div class="value-icon-v2"><i class="fas fa-award"></i></div>
-          <h4>Integrity</h4>
-          <p>Honesty and transparency in every step.</p>
-        </div>
-
-        <div class="value-card-v2">
-          <div class="value-icon-v2"><i class="fas fa-rocket"></i></div>
-          <h4>Innovation</h4>
-          <p>Bringing the latest tech to your doorstep.</p>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- ==========================================
-       OUR TEAM SECTION
-       ========================================== -->
-  <section class="section-padding" style="border-top: 1px solid var(--border-gray); background-color: var(--white);">
-    <div class="container">
-      <div class="about-team-grid">
-        
-        <!-- Team Text Info -->
-        <div class="about-team-info">
-          <span class="section-badge">OUR TEAM</span>
-          <h2 class="about-section-heading">The People Behind Bawany Traders</h2>
-          <p class="about-text-p">A dedicated team of tech enthusiasts working tirelessly to bring you the best gadgets and an unbeatable shopping experience.</p>
-          <button class="btn btn-teal" style="padding: 12px 30px; font-size: 1rem;">Get in Touch <i class="fas fa-arrow-right" style="margin-left: 8px;"></i></button>
-        </div>
-
-        <!-- Team Photo Image -->
-        <div class="team-img-container">
-          <img src="images/about-team.png" alt="Bawany Traders Official Operations Team">
-        </div>
-
       </div>
     </div>
   </section>
@@ -425,7 +391,7 @@
       <!-- Copyright Bottom -->
       <div class="footer-bottom">
         <div class="container">
-          <p>&copy; 2024 Bawany Traders. All Rights Reserved.</p>
+          <p>&copy; 2026 Bawany Traders. All Rights Reserved.</p>
           <p>Powered by <a href="https://snipezon.com" target="_blank" style="color: var(--primary-teal); text-decoration: none; font-weight: 600;">snipezon.com</a></p>
         </div>
       </div>
