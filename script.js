@@ -278,5 +278,77 @@ document.addEventListener('DOMContentLoaded', () => {
       animation: bounce 0.4s ease;
     }
   `;
+  // ==========================================
+  // 10. Upgraded Category Slider Logic
+  // ==========================================
+  const catSlider = document.getElementById('categorySlider');
+  const catPrevBtn = document.getElementById('catPrevBtn');
+  const catNextBtn = document.getElementById('catNextBtn');
+  const catTrack = document.querySelector('.category-track');
+
+  if (catSlider && catTrack) {
+    let isHovered = false;
+    let scrollSpeed = 0.8; // Scroll speed in pixels per frame
+    let autoScrollActive = true;
+    let autoScrollTimeout = null;
+
+    // requestAnimationFrame scroll loop
+    const scrollStep = () => {
+      if (autoScrollActive && !isHovered) {
+        catSlider.scrollLeft += scrollSpeed;
+        
+        // Loop back seamlessly when scrolling past the first group
+        const halfWidth = catTrack.scrollWidth / 2;
+        if (catSlider.scrollLeft >= halfWidth) {
+          catSlider.scrollLeft = 0;
+        }
+      }
+      requestAnimationFrame(scrollStep);
+    };
+
+    // Initialize auto-scrolling loop
+    requestAnimationFrame(scrollStep);
+
+    // Pause auto-scrolling on hover or mobile touches
+    catSlider.addEventListener('mouseenter', () => { isHovered = true; });
+    catSlider.addEventListener('mouseleave', () => { isHovered = false; });
+    catSlider.addEventListener('touchstart', () => { isHovered = true; }, { passive: true });
+    catSlider.addEventListener('touchend', () => { isHovered = false; }, { passive: true });
+
+    // Helper to temporarily pause auto-scroll after manual navigation clicks
+    const pauseAutoScrollTemporarily = () => {
+      autoScrollActive = false;
+      if (autoScrollTimeout) clearTimeout(autoScrollTimeout);
+      autoScrollTimeout = setTimeout(() => {
+        autoScrollActive = true;
+      }, 3000); // Resume auto-scrolling after 3 seconds of inactivity
+    };
+
+    // Prev Navigation Arrow Click
+    if (catPrevBtn) {
+      catPrevBtn.addEventListener('click', () => {
+        pauseAutoScrollTemporarily();
+        // If we are at the very beginning, wrap back to the midpoint seamlessly first
+        if (catSlider.scrollLeft <= 5) {
+          catSlider.scrollLeft = catTrack.scrollWidth / 2;
+        }
+        catSlider.scrollBy({ left: -220, behavior: 'smooth' });
+      });
+    }
+
+    // Next Navigation Arrow Click
+    if (catNextBtn) {
+      catNextBtn.addEventListener('click', () => {
+        pauseAutoScrollTemporarily();
+        // If we scroll past the midpoint, wrap back to 0 seamlessly first
+        const halfWidth = catTrack.scrollWidth / 2;
+        if (catSlider.scrollLeft >= halfWidth - 5) {
+          catSlider.scrollLeft = 0;
+        }
+        catSlider.scrollBy({ left: 220, behavior: 'smooth' });
+      });
+    }
+  }
+
   document.head.appendChild(style);
 });
