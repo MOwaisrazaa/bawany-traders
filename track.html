@@ -1,0 +1,601 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Track Your Order | Bawany Traders</title>
+  <meta name="description" content="Track your Bawany Traders order status in real time. Enter your Order ID and email to view tracking updates, shipment location, and items.">
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="styles.css">
+  <!-- FontAwesome for Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+  <!-- ==========================================
+       HEADER SECTION
+       ========================================== -->
+  <header>
+    <!-- Top Bar Ticker -->
+    <div class="top-bar-ticker">
+      <div class="container">
+        <div class="ticker-left">
+          <a href="mailto:info@bawanytradersofficial.com"><i class="far fa-envelope"></i> info@bawanytradersofficial.com</a>
+        </div>
+        <div class="ticker-center">
+          <div class="ticker-wrapper">
+            <div class="ticker-text">JOIN OUR COMMUNITY GROUP TODAY - SEND YOUR NAME, CITY & AREA TO 0321-8273588</div>
+          </div>
+        </div>
+        <div class="ticker-right">
+          <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+          <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+          <a href="#" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Main Navigation Bar -->
+    <div class="main-nav">
+      <div class="container">
+        <!-- Hamburger Menu for Mobile -->
+        <button class="mobile-toggle" id="mobileToggle" aria-label="Open navigation menu">
+          <i class="fas fa-bars"></i>
+        </button>
+
+        <!-- Brand Logo -->
+        <a href="index.html" class="logo" id="brandLogo">
+          <div class="logo-icon">B</div>
+          <div class="logo-text-wrapper">
+            <span class="logo-title">BAWANY</span>
+            <span class="logo-subtitle">TRADERS OFFICIAL</span>
+          </div>
+        </a>
+
+        <!-- Search Container -->
+        <div class="search-container">
+          <select class="search-category" id="searchCategory" aria-label="Select category filter">
+            <option>All Categories</option>
+            <option>Smart Watches</option>
+            <option>Audio / Earbuds</option>
+            <option>Charging & Cables</option>
+            <option>Smart Home</option>
+            <option>Car Accessories</option>
+          </select>
+          <input type="text" class="search-input" id="searchInput" placeholder="Search for products, brands and more..." aria-label="Search inputs">
+          <button class="search-btn" id="searchBtn" aria-label="Execute search">
+            <i class="fas fa-search"></i>
+          </button>
+        </div>
+
+        <!-- Action Items (Wishlist, Cart, Account) -->
+        <div class="nav-actions">
+          <a href="track.html" class="nav-action-item active" id="trackOrderAction">
+            <i class="fas fa-truck"></i>
+            <span>Track Order</span>
+          </a>
+          <a href="cart.html" class="nav-action-item" id="cartAction">
+            <i class="fas fa-shopping-basket"></i>
+            <span>Cart</span>
+            <span class="badge" id="cartBadge">0</span>
+          </a>
+          <div class="nav-action-item" id="accountAction">
+            <i class="far fa-user"></i>
+            <span>Account</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Sub Navigation Bar -->
+    <nav class="sub-nav">
+      <div class="container">
+        <!-- Category Dropdown Button -->
+        <div class="category-dropdown">
+          <button class="category-btn" id="categoryBtn">
+            <i class="fas fa-bars"></i>
+            <span>Shop by Categories</span>
+            <i class="fas fa-chevron-down" style="font-size: 0.75rem;"></i>
+          </button>
+          <!-- Category Hover/Click Menu -->
+          <div class="category-menu" id="categoryMenu">
+            <a href="#"><i class="fas fa-laptop" style="margin-right: 10px; width: 15px;"></i> Electronics</a>
+            <a href="#"><i class="fas fa-clock" style="margin-right: 10px; width: 15px;"></i> Smart Watches</a>
+            <a href="#"><i class="fas fa-headphones" style="margin-right: 10px; width: 15px;"></i> Audio / Earbuds</a>
+            <a href="#"><i class="fas fa-bolt" style="margin-right: 10px; width: 15px;"></i> Charging & Cables</a>
+            <a href="#"><i class="fas fa-home" style="margin-right: 10px; width: 15px;"></i> Smart Home</a>
+            <a href="#"><i class="fas fa-car" style="margin-right: 10px; width: 15px;"></i> Car Accessories</a>
+          </div>
+        </div>
+
+        <!-- Navigation Links -->
+        <div class="nav-links">
+          <a href="index.html">Home</a>
+          <a href="products.html">All Products</a>
+          <a href="deals.html">Deals</a>
+          <a href="about.html">About Us</a>
+          <a href="contact.html">Contact Us</a>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Mobile Sidebar / Drawer -->
+  <div class="drawer-overlay" id="drawerOverlay"></div>
+  <div class="mobile-nav-drawer" id="mobileDrawer">
+    <div class="drawer-header">
+      <a href="index.html" class="logo">
+        <div class="logo-icon">B</div>
+        <div class="logo-text-wrapper">
+          <span class="logo-title">BAWANY</span>
+          <span class="logo-subtitle">TRADERS OFFICIAL</span>
+        </div>
+      </a>
+      <button class="drawer-close" id="drawerClose" aria-label="Close menu">&times;</button>
+    </div>
+    <div class="drawer-content">
+      <div class="drawer-menu">
+        <a href="index.html">Home</a>
+        <a href="products.html">All Products</a>
+        <a href="#">Best Sellers</a>
+        <a href="deals.html">Deals</a>
+        <a href="about.html">About Us</a>
+        <a href="contact.html">Contact Us</a>
+      </div>
+      <div class="drawer-categories-title">Categories</div>
+      <div class="drawer-menu">
+        <a href="#">Smart Watches</a>
+        <a href="#">Audio / Earbuds</a>
+        <a href="#">Charging & Cables</a>
+        <a href="#">Smart Home</a>
+        <a href="#">Car Accessories</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==========================================
+       BREADCRUMB SECTION
+       ========================================== -->
+  <div class="breadcrumb-container" style="padding: 15px 0 0 0; background-color: #f8fafc;">
+    <div class="container">
+      <div class="about-breadcrumb" style="font-size: 0.85rem; color: #00969A; font-weight: 500;">
+        <a href="index.html" style="color: #00969A; text-decoration: none;">Home</a> 
+        <i class="fas fa-chevron-right" style="font-size: 0.7rem; margin: 0 8px; color: #00969A;"></i> 
+        <span style="color: #00969A;">Track Order</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==========================================
+       HERO & INPUT FORM SECTION
+       ========================================== -->
+  <section class="track-hero-section" style="padding: 20px 0 20px 0; background-color: #f8fafc;">
+    <div class="container">
+      
+      <!-- Hero Grid Layout -->
+      <div class="track-hero-grid">
+        <div class="track-hero-content">
+          <h1 class="track-title">Track Your Order</h1>
+          <p class="track-subtitle">Stay updated with your order status in real time.<br>Enter your order details below to see the latest updates.</p>
+        </div>
+        <div class="track-hero-visual">
+          <img src="images/track-illustration.png" alt="Tracking Illustration" class="track-ill-img">
+        </div>
+      </div>
+
+      <!-- Input Form Card -->
+      <div class="track-form-card">
+        <form class="track-form" id="orderTrackForm">
+          <div class="track-form-grid">
+            <div class="track-form-group">
+              <label for="orderId" class="track-form-label">Order ID / Tracking Number</label>
+              <input type="text" id="orderId" class="track-input" placeholder="e.g. BT-73489216" value="BT-73489216" required>
+            </div>
+            <div class="track-form-group">
+              <label for="emailOrPhone" class="track-form-label">Email / Phone Number</label>
+              <input type="text" id="emailOrPhone" class="track-input" placeholder="e.g. kashif.ali@example.com" value="kashif.ali@example.com" required>
+            </div>
+            <div class="track-form-group track-btn-group">
+              <button type="submit" class="track-submit-btn">
+                <i class="fas fa-search"></i> Track Order
+              </button>
+            </div>
+          </div>
+        </form>
+        <div class="track-form-footer">
+          <span class="track-help-text">Need help? <a href="#" class="track-help-link">How to find your Order ID <i class="far fa-info-circle"></i></a></span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ==========================================
+       ORDER DETAILS & TIMELINE SECTION
+       ========================================== -->
+  <section class="track-details-section" id="trackingResultContainer" style="padding: 0 0 50px 0; background-color: #f8fafc;">
+    <div class="container">
+      
+      <!-- Order Summary Card -->
+      <div class="order-summary-card">
+        <div class="order-info-header-grid">
+          <div class="info-block">
+            <span class="info-label">Order Number</span>
+            <h4 class="info-value">BT-73489216 <button class="copy-order-btn" title="Copy Order ID" aria-label="Copy Order ID"><i class="far fa-copy"></i></button></h4>
+          </div>
+          <div class="info-block">
+            <span class="info-label">Order Date</span>
+            <h4 class="info-value">May 18, 2025 <span class="info-time">02:24 PM</span></h4>
+          </div>
+          <div class="info-block">
+            <span class="info-label">Estimated Delivery</span>
+            <h4 class="info-value">May 25, 2025 <span class="info-time">by 08:00 PM</span></h4>
+          </div>
+          <div class="info-block address-block">
+            <span class="info-label">Delivery Address</span>
+            <div class="address-wrapper">
+              <span class="address-name"><i class="fas fa-map-marker-alt" style="color: #00969A; margin-right: 6px;"></i> Kashif Ali</span>
+              <span class="address-line">House # 123, Street 5, Block A</span>
+              <span class="address-city">Gulberg III, Lahore, Punjab 54000</span>
+              <a href="#" class="view-address-link">View Full Address <i class="fas fa-chevron-right"></i></a>
+            </div>
+          </div>
+        </div>
+
+        <div class="order-info-footer-row">
+          <div class="pm-block">
+            <span class="pm-badge"><i class="far fa-money-bill-alt" style="color: #137333; margin-right: 8px;"></i> Payment Method</span>
+            <span class="pm-value">Cash on Delivery</span>
+          </div>
+          <div class="total-block">
+            <span class="total-label">Order Total</span>
+            <span class="total-value">Rs. 139,496 <i class="fas fa-chevron-down" style="font-size: 0.85rem; margin-left: 8px; color: #1a202c;"></i></span>
+          </div>
+        </div>
+
+        <!-- Stepper Timeline -->
+        <div class="track-stepper">
+          <div class="stepper-line">
+            <div class="stepper-line-fill" style="width: 50%;"></div>
+          </div>
+          
+          <div class="stepper-step completed">
+            <div class="step-icon"><i class="fas fa-check"></i></div>
+            <div class="step-label">Order Confirmed</div>
+            <div class="step-date">May 18, 2025<br>02:24 PM</div>
+          </div>
+          
+          <div class="stepper-step completed">
+            <div class="step-icon"><i class="fas fa-box"></i></div>
+            <div class="step-label">Packed</div>
+            <div class="step-date">May 19, 2025<br>11:18 AM</div>
+          </div>
+          
+          <div class="stepper-step completed">
+            <div class="step-icon"><i class="fas fa-truck"></i></div>
+            <div class="step-label">Shipped</div>
+            <div class="step-date">May 20, 2025<br>09:42 AM</div>
+          </div>
+          
+          <div class="stepper-step pending">
+            <div class="step-icon"><i class="fas fa-motorcycle"></i></div>
+            <div class="step-label">Out for Delivery</div>
+            <div class="step-date">May 24, 2025<br>10:00 AM</div>
+          </div>
+          
+          <div class="stepper-step pending">
+            <div class="step-icon"><i class="fas fa-home"></i></div>
+            <div class="step-label">Delivered</div>
+            <div class="step-date">--<br>--</div>
+          </div>
+        </div>
+
+        <!-- Stepper Status Banner -->
+        <div class="stepper-status-banner-centered">
+          <div class="status-badge-capsule">
+            <i class="fas fa-shipping-fast" style="margin-right: 6px;"></i> Your order is on the way
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Two Column Details: Tracking Log and Items -->
+      <div class="track-layout-grid">
+        
+        <!-- Left: Tracking Updates Log -->
+        <div class="track-log-card">
+          <h3 class="track-section-title">Tracking Updates</h3>
+          
+          <div class="track-log-timeline">
+            <!-- Timeline Item 1 -->
+            <div class="timeline-log-item active">
+              <div class="log-marker">
+                <i class="fas fa-truck"></i>
+              </div>
+              <div class="log-content-wrapper">
+                <div class="log-text-block">
+                  <h4 class="log-title">Shipment In Transit</h4>
+                  <p class="log-desc">Your order has been shipped and is on the way.</p>
+                </div>
+                <div class="log-time-block">
+                  <span class="log-date">May 20, 2025</span>
+                  <span class="log-time">09:42 AM</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Timeline Item 2 -->
+            <div class="timeline-log-item active">
+              <div class="log-marker">
+                <i class="fas fa-warehouse"></i>
+              </div>
+              <div class="log-content-wrapper">
+                <div class="log-text-block">
+                  <h4 class="log-title">Departed from Warehouse</h4>
+                  <p class="log-desc">Your order has left our warehouse.</p>
+                </div>
+                <div class="log-time-block">
+                  <span class="log-date">May 20, 2025</span>
+                  <span class="log-time">07:15 AM</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Timeline Item 3 -->
+            <div class="timeline-log-item">
+              <div class="log-marker">
+                <i class="fas fa-box"></i>
+              </div>
+              <div class="log-content-wrapper">
+                <div class="log-text-block">
+                  <h4 class="log-title">Packed</h4>
+                  <p class="log-desc">Your order has been packed and is ready to ship.</p>
+                </div>
+                <div class="log-time-block">
+                  <span class="log-date">May 19, 2025</span>
+                  <span class="log-time">11:18 AM</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Timeline Item 4 -->
+            <div class="timeline-log-item">
+              <div class="log-marker">
+                <i class="far fa-clipboard"></i>
+              </div>
+              <div class="log-content-wrapper">
+                <div class="log-text-block">
+                  <h4 class="log-title">Order Confirmed</h4>
+                  <p class="log-desc">Your order has been placed successfully.</p>
+                </div>
+                <div class="log-time-block">
+                  <span class="log-date">May 18, 2025</span>
+                  <span class="log-time">02:24 PM</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <a href="#" class="card-footer-link">View More Updates <i class="fas fa-chevron-down"></i></a>
+        </div>
+
+        <!-- Right: Order Items List -->
+        <div class="track-items-card">
+          <h3 class="track-section-title">Order Items <span>(4)</span></h3>
+          
+          <div class="track-items-list">
+            <!-- Item 1 -->
+            <div class="track-item-row">
+              <div class="item-img-wrapper">
+                <img src="images/prod-airpods.png" alt="Apple AirPods Pro 2" onerror="this.src='images/product-placeholder.png'">
+              </div>
+              <div class="item-info">
+                <h4>Apple AirPods Pro 2nd Generation (USB-C)</h4>
+                <span class="item-qty">Qty: 1</span>
+              </div>
+              <div class="item-price">Rs. 39,999</div>
+            </div>
+
+            <!-- Item 2 -->
+            <div class="track-item-row">
+              <div class="item-img-wrapper">
+                <img src="images/prod-galaxywatch.png" alt="Samsung Galaxy Watch 6" onerror="this.src='images/product-placeholder.png'">
+              </div>
+              <div class="item-info">
+                <h4>Samsung Galaxy Watch 6 Classic 47mm</h4>
+                <span class="item-qty">Qty: 1</span>
+              </div>
+              <div class="item-price">Rs. 50,999</div>
+            </div>
+
+            <!-- Item 3 -->
+            <div class="track-item-row">
+              <div class="item-img-wrapper">
+                <img src="images/prod-anker.png" alt="Anker 737 Power Bank" onerror="this.src='images/product-placeholder.png'">
+              </div>
+              <div class="item-info">
+                <h4>Anker 737 Power Bank (PowerCore 24K)</h4>
+                <span class="item-qty">Qty: 1</span>
+              </div>
+              <div class="item-price">Rs. 23,499</div>
+            </div>
+
+            <!-- Item 4 -->
+            <div class="track-item-row">
+              <div class="item-img-wrapper">
+                <img src="images/prod-sony.png" alt="Sony WF-1000XM5" onerror="this.src='images/product-placeholder.png'">
+              </div>
+              <div class="item-info">
+                <h4>Sony WF-1000XM5 Wireless Earbuds</h4>
+                <span class="item-qty">Qty: 1</span>
+              </div>
+              <div class="item-price">Rs. 24,999</div>
+            </div>
+          </div>
+
+          <a href="#" class="card-footer-link">View Order Details <i class="fas fa-chevron-right"></i></a>
+        </div>
+
+      </div>
+
+      <!-- Support & Help Grid -->
+      <div class="track-help-section">
+        <h3 class="help-section-title">Need help with your order?</h3>
+        <p class="help-section-subtitle">We are here to assist you with any queries.</p>
+        
+        <div class="help-cards-grid">
+          <!-- Card 1 -->
+          <a href="contact.html" class="help-card">
+            <div class="help-card-left">
+              <div class="help-icon-box"><i class="fas fa-headset"></i></div>
+              <div class="help-text">
+                <h4>Contact Support</h4>
+                <p>Talk to our support team</p>
+              </div>
+            </div>
+            <i class="fas fa-chevron-right help-arrow"></i>
+          </a>
+
+          <!-- Card 2 -->
+          <a href="#" class="help-card">
+            <div class="help-card-left">
+              <div class="help-icon-box"><i class="fas fa-sync-alt"></i></div>
+              <div class="help-text">
+                <h4>Return Policy</h4>
+                <p>Learn about our returns</p>
+              </div>
+            </div>
+            <i class="fas fa-chevron-right help-arrow"></i>
+          </a>
+
+          <!-- Card 3 -->
+          <a href="#" class="help-card">
+            <div class="help-card-left">
+              <div class="help-icon-box"><i class="far fa-question-circle"></i></div>
+              <div class="help-text">
+                <h4>FAQ</h4>
+                <p>Find quick answers</p>
+              </div>
+            </div>
+            <i class="fas fa-chevron-right help-arrow"></i>
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ==========================================
+       PROPS BAR SECTION
+       ========================================== -->
+  <section class="props-bar-section">
+    <div class="container">
+      <div class="props-bar">
+        <div class="prop-item">
+          <i class="fas fa-truck"></i>
+          <div class="prop-text">
+            <h6>Free Shipping Nationwide</h6>
+            <p>On all orders above Rs. 5,000</p>
+          </div>
+        </div>
+        <div class="prop-item">
+          <i class="fas fa-sync-alt"></i>
+          <div class="prop-text">
+            <h6>7-Day Replacement Warranty</h6>
+            <p>Hassle free replacement</p>
+          </div>
+        </div>
+        <div class="prop-item">
+          <i class="fas fa-award"></i>
+          <div class="prop-text">
+            <h6>100% Authentic Products</h6>
+            <p>Sourced directly from brands</p>
+          </div>
+        </div>
+        <div class="prop-item">
+          <i class="fas fa-hand-holding-usd"></i>
+          <div class="prop-text">
+            <h6>Cash on Delivery</h6>
+            <p>Pay when you receive</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================
+       FOOTER SECTION (DARK THEME)
+       ========================================== -->
+  <footer>
+    <div class="container">
+      <div class="footer-top">
+        
+        <!-- Column 1: Brand details -->
+        <div class="footer-column footer-brand">
+          <a href="index.html" class="logo">
+            <div class="logo-icon">B</div>
+            <div class="logo-text-wrapper">
+              <span class="logo-title" style="color: var(--white);">BAWANY</span>
+              <span class="logo-subtitle">TRADERS OFFICIAL</span>
+            </div>
+          </a>
+          <p>Your trusted destination for the latest gadgets, electronics & smart accessories in Pakistan.</p>
+          <div class="social-links">
+            <a href="#" class="social-link" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" class="social-link" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="#" class="social-link" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+            <a href="#" class="social-link" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+          </div>
+        </div>
+
+        <!-- Column 2: Useful Links -->
+        <div class="footer-column">
+          <h3>Useful Links</h3>
+          <ul class="footer-links-list">
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="track.html">Track Order</a></li>
+            <li><a href="#">Returns & Refunds</a></li>
+            <li><a href="#">Privacy Policy</a></li>
+            <li><a href="#">Terms & Conditions</a></li>
+            <li><a href="contact.html">Contact Us</a></li>
+          </ul>
+        </div>
+
+        <!-- Column 3: Customer Service -->
+        <div class="footer-column">
+          <h3>Customer Service</h3>
+          <ul class="footer-links-list">
+            <li><a href="#">Help Center</a></li>
+            <li><a href="#">Support</a></li>
+            <li><a href="#">Warranty Policy</a></li>
+          </ul>
+        </div>
+
+        <!-- Column 4: Newsletter -->
+        <div class="footer-column">
+          <h3>Newsletter</h3>
+          <p style="font-size: 0.85rem; margin-bottom: 15px; line-height: 1.5;">Subscribe to get updates on new arrivals, exclusive deals & offers.</p>
+          <form class="newsletter-form" id="newsletterForm">
+            <input type="email" class="newsletter-input" id="newsletterInput" placeholder="Enter your email" required aria-label="Email address for subscription">
+            <button type="submit" class="newsletter-btn" aria-label="Subscribe to newsletter">
+              <i class="fas fa-paper-plane"></i>
+            </button>
+          </form>
+        </div>
+
+      </div>
+
+      <!-- Copyright Bottom -->
+      <div class="footer-bottom">
+        <div class="container">
+          <p>&copy; 2026 Bawany Traders. All Rights Reserved.</p>
+          <p>Powered by <a href="https://snipezon.com" target="_blank" style="color: var(--primary-teal); text-decoration: none; font-weight: 600;">snipezon.com</a></p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="script.js"></script>
+</body>
+</html>

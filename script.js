@@ -524,5 +524,42 @@ document.addEventListener('DOMContentLoaded', () => {
     updateCartTotals();
   }
 
+  // ==========================================
+  // 13. Track Order Page Form Submission & Copy Logic
+  // ==========================================
+  const orderTrackForm = document.getElementById('orderTrackForm');
+  const trackingResultContainer = document.getElementById('trackingResultContainer');
+
+  if (orderTrackForm && trackingResultContainer) {
+    orderTrackForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      
+      // Smooth scroll to container
+      trackingResultContainer.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      
+      showToast("Order status loaded successfully!", "fa-check-circle");
+    });
+  }
+
+  const copyBtn = document.querySelector('.copy-order-btn');
+  if (copyBtn) {
+    copyBtn.addEventListener('click', () => {
+      const textToCopy = "BT-73489216";
+      navigator.clipboard.writeText(textToCopy).then(() => {
+        const icon = copyBtn.querySelector('i');
+        icon.className = "fas fa-check";
+        copyBtn.style.color = "#137333";
+        showToast("Order ID copied to clipboard!", "fa-copy");
+        
+        setTimeout(() => {
+          icon.className = "far fa-copy";
+          copyBtn.style.color = "";
+        }, 2000);
+      }).catch(err => {
+        console.error('Failed to copy text: ', err);
+      });
+    });
+  }
+
   document.head.appendChild(style);
 });
