@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Bawany Traders | Premium & Smart Accessories</title>
-  <meta name="description" content="Shop the latest smartwatches, wireless earbuds, cables, chargers and smart home accessories in Pakistan. Fast delivery and cash on delivery.">
+  <title>My Wishlist | Bawany Traders</title>
+  <meta name="description" content="Manage your saved items, view ratings and stock status, and add them to your cart.">
   <!-- Stylesheets -->
   <link rel="stylesheet" href="styles.css">
   <!-- FontAwesome for Icons -->
@@ -74,7 +74,7 @@
             <i class="fas fa-truck"></i>
             <span>Track Order</span>
           </a>
-          <a href="wishlist.html" class="nav-action-item" id="wishlistAction">
+          <a href="wishlist.html" class="nav-action-item active" id="wishlistAction">
             <i class="far fa-heart"></i>
             <span>Wishlist</span>
             <span class="badge" id="wishlistBadge">4</span>
@@ -115,9 +115,10 @@
 
         <!-- Navigation Links -->
         <div class="nav-links">
-          <a href="index.html" class="active">Home</a>
+          <a href="index.html">Home</a>
           <a href="products.html">All Products</a>
-          
+          <a href="#">New Arrivals</a>
+          <a href="#">Best Sellers</a>
           <a href="deals.html">Deals</a>
           <a href="about.html">About Us</a>
           <a href="contact.html">Contact Us</a>
@@ -141,7 +142,7 @@
     </div>
     <div class="drawer-content">
       <div class="drawer-menu">
-        <a href="index.html" class="active">Home</a>
+        <a href="index.html">Home</a>
         <a href="products.html">All Products</a>
         <a href="#">Best Sellers</a>
         <a href="deals.html">Deals</a>
@@ -160,332 +161,321 @@
   </div>
 
   <!-- ==========================================
-       HERO BANNER SECTION (CAROUSEL SLIDER)
+       MAIN CONTENT SECTION
        ========================================== -->
-  <section class="hero-section">
-    <div class="container">
-      <div class="hero-slider">
-        <div class="slide-track">
-          
-          <!-- Slide 1: Discover Premium Gadgets (Purple) -->
-          <div class="slide active">
-            <img src="images/hero-banner1.png" alt="Discover Premium Gadgets" class="slide-img">
-          </div>
-
-          <!-- Slide 2: Next-Gen Gadgets (Blue) -->
-          <div class="slide">
-            <img src="images/hero-banner2.jpg" alt="Next-Gen Gadgets For Smart Living" class="slide-img">
-          </div>
-
-          <!-- Slide 3: Must-Have Gadgets (Light) -->
-          <div class="slide">
-            <img src="images/hero-banner3.jpg" alt="Must-Have Gadgets for Everyday Life" class="slide-img">
-          </div>
-
-          <!-- Slide 4: Next-Level Gadgets (Green) -->
-          <div class="slide">
-            <img src="images/hero-banner4.jpg" alt="Next-Level Gadgets For Modern Living" class="slide-img">
-          </div>
-
-        </div>
-
-        <!-- Carousel Dots -->
-        <div class="carousel-dots">
-          <div class="dot active"></div>
-          <div class="dot"></div>
-          <div class="dot"></div>
-          <div class="dot"></div>
-        </div>
-
-        <!-- Slider Arrows -->
-        <button class="slider-arrow prev-arrow" id="prevSlide" aria-label="Previous slide"><i class="fas fa-chevron-left"></i></button>
-        <button class="slider-arrow next-arrow" id="nextSlide" aria-label="Next slide"><i class="fas fa-chevron-right"></i></button>
+  <main class="container" style="padding: 20px 0 50px 0;">
+    <!-- Breadcrumbs -->
+    <div class="breadcrumb-container" style="padding: 0 0 20px 0; background-color: transparent;">
+      <div class="breadcrumb-links" style="font-size: 0.85rem; color: #718096;">
+        <a href="index.html" style="color: #00969A; text-decoration: none; font-weight: 500;">Home</a>
+        <span style="margin: 0 8px; color: #cbd5e1;">&gt;</span>
+        <span style="font-weight: 500;">Wishlist</span>
       </div>
     </div>
-  </section>
 
-  <!-- ==========================================
-       SHOP BY CATEGORY SECTION
-       ========================================== -->
-  <section class="category-section">
-    <div class="container">
-      <h2 class="section-title">Shop by Category</h2>
-      
-      <div class="category-slider-wrapper">
-        <!-- Minimalist Left Navigation Arrow -->
-        <button class="category-arrow prev" id="catPrevBtn" aria-label="Previous categories">
-          <i class="fas fa-chevron-left"></i>
-        </button>
-
-        <!-- Scroll Slider Container -->
-        <div class="category-slider-container" id="categorySlider">
-          <div class="category-track">
-            
-            <!-- Group 1 -->
-            <div class="category-group">
-              <!-- Card 1: Smart Watches -->
-              <a href="products.html" class="category-card" id="catWatches1">
-                <div class="category-img-wrapper">
-                  <img src="images/cat-watches.png" alt="Smart Watches">
-                </div>
-                <span class="category-title">Smart Watches</span>
-              </a>
-
-              <!-- Card 2: Audio / Earbuds -->
-              <a href="products.html" class="category-card" id="catAudio1">
-                <div class="category-img-wrapper">
-                  <img src="images/cat-audio.png" alt="Audio / Earbuds">
-                </div>
-                <span class="category-title">Audio / Earbuds</span>
-              </a>
-
-              <!-- Card 3: Charging & Cables -->
-              <a href="products.html" class="category-card" id="catCharging1">
-                <div class="category-img-wrapper">
-                  <img src="images/cat-charging.png" alt="Charging & Cables">
-                </div>
-                <span class="category-title">Charging & Cables</span>
-              </a>
-
-              <!-- Card 4: Smart Home -->
-              <a href="products.html" class="category-card" id="catSmartHome1">
-                <div class="category-img-wrapper">
-                  <img src="images/cat-smarthome.png" alt="Smart Home">
-                </div>
-                <span class="category-title">Smart Home</span>
-              </a>
-
-              <!-- Card 5: Car Accessories -->
-              <a href="products.html" class="category-card" id="catCar1">
-                <div class="category-img-wrapper">
-                  <img src="images/cat-car.png" alt="Car Accessories">
-                </div>
-                <span class="category-title">Car Accessories</span>
-              </a>
-            </div>
-
-            <!-- Group 2 (Duplicate for Seamless Infinite Loop) -->
-            <div class="category-group" aria-hidden="true">
-              <!-- Card 1: Smart Watches -->
-              <a href="products.html" class="category-card" id="catWatches2">
-                <div class="category-img-wrapper">
-                  <img src="images/cat-watches.png" alt="Smart Watches">
-                </div>
-                <span class="category-title">Smart Watches</span>
-              </a>
-
-              <!-- Card 2: Audio / Earbuds -->
-              <a href="products.html" class="category-card" id="catAudio2">
-                <div class="category-img-wrapper">
-                  <img src="images/cat-audio.png" alt="Audio / Earbuds">
-                </div>
-                <span class="category-title">Audio / Earbuds</span>
-              </a>
-
-              <!-- Card 3: Charging & Cables -->
-              <a href="products.html" class="category-card" id="catCharging2">
-                <div class="category-img-wrapper">
-                  <img src="images/cat-charging.png" alt="Charging & Cables">
-                </div>
-                <span class="category-title">Charging & Cables</span>
-              </a>
-
-              <!-- Card 4: Smart Home -->
-              <a href="products.html" class="category-card" id="catSmartHome2">
-                <div class="category-img-wrapper">
-                  <img src="images/cat-smarthome.png" alt="Smart Home">
-                </div>
-                <span class="category-title">Smart Home</span>
-              </a>
-
-              <!-- Card 5: Car Accessories -->
-              <a href="products.html" class="category-card" id="catCar2">
-                <div class="category-img-wrapper">
-                  <img src="images/cat-car.png" alt="Car Accessories">
-                </div>
-                <span class="category-title">Car Accessories</span>
-              </a>
-            </div>
-
-          </div>
-        </div>
-
-        <!-- Minimalist Right Navigation Arrow -->
-        <button class="category-arrow next" id="catNextBtn" aria-label="Next categories">
-          <i class="fas fa-chevron-right"></i>
-        </button>
+    <!-- Wishlist Header -->
+    <div class="wishlist-header">
+      <div class="wishlist-header-left">
+        <h1>My Wishlist <span class="wishlist-count-badge">4 Items</span></h1>
+        <p class="wishlist-subtitle">Items you love. Don't wait too long!</p>
+      </div>
+      <div class="wishlist-header-right">
+        <button class="btn-share-wishlist"><i class="fas fa-share-alt"></i> Share Wishlist</button>
+        <button class="btn-move-all"><i class="fas fa-shopping-basket"></i> Move All to Cart</button>
       </div>
     </div>
-  </section>
 
-  <!-- ==========================================
-       FEATURED PRODUCTS SECTION
-       ========================================== -->
-  <section class="section-padding">
-    <div class="container">
-      <!-- Section Header -->
-      <div class="featured-header">
-        <h2>Featured Products</h2>
-        <a href="#" class="view-all-link">View All <i class="fas fa-arrow-right"></i></a>
+    <!-- Wishlist Grid -->
+    <div class="wishlist-grid">
+      <!-- Card 1 -->
+      <div class="wishlist-card">
+        <button class="wishlist-remove-btn" aria-label="Remove item"><i class="fas fa-times"></i></button>
+        <div class="wishlist-card-img">
+          <img src="images/prod-airpods.png" alt="Apple AirPods Pro 2nd Generation (USB-C)">
+        </div>
+        <h4>Apple AirPods Pro 2nd Generation (USB-C)</h4>
+        <div class="wishlist-rating-row">
+          <div class="wishlist-stars">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star-half-alt"></i>
+          </div>
+          <span class="wishlist-review-count">(128)</span>
+        </div>
+        <div class="wishlist-price-row">
+          <span class="wishlist-current-price">Rs. 39,999</span>
+          <span class="wishlist-original-price">Rs. 49,999</span>
+          <span class="wishlist-discount-badge">-20%</span>
+        </div>
+        <div class="wishlist-stock">
+          <i class="fas fa-circle"></i> In Stock
+        </div>
+        <div class="wishlist-card-actions">
+          <button class="btn-add-to-cart-outline"><i class="fas fa-shopping-cart"></i> Add to Cart</button>
+          <button class="wishlist-heart-btn" aria-label="Saved to wishlist"><i class="fas fa-heart"></i></button>
+        </div>
       </div>
 
-      <!-- Products Grid -->
-      <div class="products-grid">
-        
-        <!-- Product 1: Apple AirPods Pro 2 -->
-        <div class="product-card" id="prodAirpods">
-          <span class="product-badge">-20%</span>
-          <button class="wishlist-btn-corner active" aria-label="Remove from wishlist"><i class="fas fa-heart"></i></button>
-          
-          <div class="product-img-wrapper">
-            <img src="images/prod-airpods.png" alt="Apple AirPods Pro 2nd Gen">
-          </div>
-          
-          <div class="product-info">
-            <h3 class="product-title">Apple AirPods Pro 2nd Generation (USB-C)</h3>
-            <div class="product-rating">
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              <span class="rating-count">(128)</span>
-            </div>
-            <div class="product-price">
-              <span class="price-old">Rs. 49,999</span>
-              <span class="price-current">Rs. 39,999</span>
-            </div>
-            <button class="add-to-cart-btn"><i class="fas fa-shopping-cart"></i> Add to Cart</button>
-          </div>
+      <!-- Card 2 -->
+      <div class="wishlist-card">
+        <button class="wishlist-remove-btn" aria-label="Remove item"><i class="fas fa-times"></i></button>
+        <div class="wishlist-card-img">
+          <img src="images/prod-galaxywatch.png" alt="Samsung Galaxy Watch 6 Classic 47mm">
         </div>
-
-        <!-- Product 2: Samsung Galaxy Watch 6 -->
-        <div class="product-card" id="prodGalaxyWatch">
-          <span class="product-badge">-15%</span>
-          <button class="wishlist-btn-corner active" aria-label="Remove from wishlist"><i class="fas fa-heart"></i></button>
-          
-          <div class="product-img-wrapper">
-            <img src="images/prod-galaxywatch.png" alt="Samsung Galaxy Watch 6 Classic">
+        <h4>Samsung Galaxy Watch 6 Classic 47mm</h4>
+        <div class="wishlist-rating-row">
+          <div class="wishlist-stars">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="far fa-star"></i>
           </div>
-          
-          <div class="product-info">
-            <h3 class="product-title">Samsung Galaxy Watch 6 Classic 47mm</h3>
-            <div class="product-rating">
+          <span class="wishlist-review-count">(56)</span>
+        </div>
+        <div class="wishlist-price-row">
+          <span class="wishlist-current-price">Rs. 50,999</span>
+          <span class="wishlist-original-price">Rs. 59,999</span>
+          <span class="wishlist-discount-badge">-15%</span>
+        </div>
+        <div class="wishlist-stock">
+          <i class="fas fa-circle"></i> In Stock
+        </div>
+        <div class="wishlist-card-actions">
+          <button class="btn-add-to-cart-outline"><i class="fas fa-shopping-cart"></i> Add to Cart</button>
+          <button class="wishlist-heart-btn" aria-label="Saved to wishlist"><i class="fas fa-heart"></i></button>
+        </div>
+      </div>
+
+      <!-- Card 3 -->
+      <div class="wishlist-card">
+        <button class="wishlist-remove-btn" aria-label="Remove item"><i class="fas fa-times"></i></button>
+        <div class="wishlist-card-img">
+          <img src="images/prod-anker.png" alt="Anker 737 Power Bank (PowerCore 24K)">
+        </div>
+        <h4>Anker 737 Power Bank (PowerCore 24K)</h4>
+        <div class="wishlist-rating-row">
+          <div class="wishlist-stars">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="far fa-star"></i>
+          </div>
+          <span class="wishlist-review-count">(72)</span>
+        </div>
+        <div class="wishlist-price-row">
+          <span class="wishlist-current-price">Rs. 23,499</span>
+          <span class="wishlist-original-price">Rs. 29,999</span>
+          <span class="wishlist-discount-badge">-22%</span>
+        </div>
+        <div class="wishlist-stock">
+          <i class="fas fa-circle"></i> In Stock
+        </div>
+        <div class="wishlist-card-actions">
+          <button class="btn-add-to-cart-outline"><i class="fas fa-shopping-cart"></i> Add to Cart</button>
+          <button class="wishlist-heart-btn" aria-label="Saved to wishlist"><i class="fas fa-heart"></i></button>
+        </div>
+      </div>
+
+      <!-- Card 4 -->
+      <div class="wishlist-card">
+        <button class="wishlist-remove-btn" aria-label="Remove item"><i class="fas fa-times"></i></button>
+        <div class="wishlist-card-img">
+          <img src="images/prod-sony.png" alt="Sony WF-1000XM5 Wireless Earbuds">
+        </div>
+        <h4>Sony WF-1000XM5 Wireless Earbuds</h4>
+        <div class="wishlist-rating-row">
+          <div class="wishlist-stars">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star-half-alt"></i>
+          </div>
+          <span class="wishlist-review-count">(87)</span>
+        </div>
+        <div class="wishlist-price-row">
+          <span class="wishlist-current-price">Rs. 36,999</span>
+          <span class="wishlist-original-price">Rs. 44,699</span>
+          <span class="wishlist-discount-badge">-18%</span>
+        </div>
+        <div class="wishlist-stock">
+          <i class="fas fa-circle"></i> In Stock
+        </div>
+        <div class="wishlist-card-actions">
+          <button class="btn-add-to-cart-outline"><i class="fas fa-shopping-cart"></i> Add to Cart</button>
+          <button class="wishlist-heart-btn" aria-label="Saved to wishlist"><i class="fas fa-heart"></i></button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Explore Banner -->
+    <div class="wishlist-explore-banner">
+      <div class="explore-heart-icon">
+        <i class="far fa-heart"></i>
+      </div>
+      <div class="explore-text">
+        <h3>Looking for more?</h3>
+        <p>Explore more products and find something you'll love.</p>
+      </div>
+      <a href="products.html" class="btn-continue-shopping">Continue Shopping</a>
+    </div>
+
+    <!-- Recently Viewed Section -->
+    <div class="recently-viewed-section">
+      <div class="recently-viewed-header">
+        <h2>Recently Viewed</h2>
+        <a href="products.html">View All &rarr;</a>
+      </div>
+      <div class="recently-viewed-grid">
+        <!-- RV Card 1 -->
+        <div class="recently-viewed-card">
+          <div class="rv-card-img">
+            <img src="images/prod-airpods.png" alt="Apple 20W USB-C Power Adapter">
+          </div>
+          <h5>Apple 20W USB-C Power Adapter</h5>
+          <div class="rv-rating">
+            <div class="wishlist-stars">
               <i class="fas fa-star"></i>
               <i class="fas fa-star"></i>
               <i class="fas fa-star"></i>
               <i class="fas fa-star"></i>
               <i class="fas fa-star-half-alt"></i>
-              <span class="rating-count">(96)</span>
             </div>
-            <div class="product-price">
-              <span class="price-old">Rs. 59,999</span>
-              <span class="price-current">Rs. 50,999</span>
-            </div>
-            <button class="add-to-cart-btn"><i class="fas fa-shopping-cart"></i> Add to Cart</button>
+            <span>(98)</span>
           </div>
+          <div class="rv-price">Rs. 5,499</div>
+          <button class="btn-rv-add-to-cart"><i class="fas fa-shopping-cart"></i> Add to Cart</button>
         </div>
 
-        <!-- Product 3: Sony WF-1000XM5 -->
-        <div class="product-card" id="prodSony">
-          <span class="product-badge">-18%</span>
-          <button class="wishlist-btn-corner active" aria-label="Remove from wishlist"><i class="fas fa-heart"></i></button>
-          
-          <div class="product-img-wrapper">
-            <img src="images/prod-sony.png" alt="Sony WF-1000XM5 Wireless Earbuds">
+        <!-- RV Card 2 -->
+        <div class="recently-viewed-card">
+          <div class="rv-card-img">
+            <img src="images/prod-airpods.png" alt="Spigen Tough Armor Case for iPhone 15 Pro">
           </div>
-          
-          <div class="product-info">
-            <h3 class="product-title">Sony WF-1000XM5 Wireless Earbuds</h3>
-            <div class="product-rating">
+          <h5>Spigen Tough Armor Case for iPhone 15 Pro</h5>
+          <div class="rv-rating">
+            <div class="wishlist-stars">
               <i class="fas fa-star"></i>
               <i class="fas fa-star"></i>
               <i class="fas fa-star"></i>
               <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              <span class="rating-count">(87)</span>
+              <i class="far fa-star"></i>
             </div>
-            <div class="product-price">
-              <span class="price-old">Rs. 44,999</span>
-              <span class="price-current">Rs. 36,999</span>
-            </div>
-            <button class="add-to-cart-btn"><i class="fas fa-shopping-cart"></i> Add to Cart</button>
+            <span>(64)</span>
           </div>
+          <div class="rv-price">Rs. 4,199</div>
+          <button class="btn-rv-add-to-cart"><i class="fas fa-shopping-cart"></i> Add to Cart</button>
         </div>
 
-        <!-- Product 4: Anker 737 Power Bank -->
-        <div class="product-card" id="prodAnker">
-          <span class="product-badge">-22%</span>
-          <button class="wishlist-btn-corner active" aria-label="Remove from wishlist"><i class="fas fa-heart"></i></button>
-          
-          <div class="product-img-wrapper">
-            <img src="images/prod-anker.png" alt="Anker 737 Power Bank">
+        <!-- RV Card 3 -->
+        <div class="recently-viewed-card">
+          <div class="rv-card-img">
+            <img src="images/prod-airpods.png" alt="Sony WH-1000XM5 Wireless Headphones">
           </div>
-          
-          <div class="product-info">
-            <h3 class="product-title">Anker 737 Power Bank (PowerCore 24K)</h3>
-            <div class="product-rating">
+          <h5>Sony WH-1000XM5 Wireless Headphones</h5>
+          <div class="rv-rating">
+            <div class="wishlist-stars">
               <i class="fas fa-star"></i>
               <i class="fas fa-star"></i>
               <i class="fas fa-star"></i>
               <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              <span class="rating-count">(72)</span>
+              <i class="fas fa-star-half-alt"></i>
             </div>
-            <div class="product-price">
-              <span class="price-old">Rs. 29,999</span>
-              <span class="price-current">Rs. 23,499</span>
-            </div>
-            <button class="add-to-cart-btn"><i class="fas fa-shopping-cart"></i> Add to Cart</button>
+            <span>(187)</span>
           </div>
+          <div class="rv-price">Rs. 39,999</div>
+          <button class="btn-rv-add-to-cart"><i class="fas fa-shopping-cart"></i> Add to Cart</button>
         </div>
 
+        <!-- RV Card 4 -->
+        <div class="recently-viewed-card">
+          <div class="rv-card-img">
+            <img src="images/prod-airpods.png" alt="Anker PowerDrive III (PowerPort Car Charger)">
+          </div>
+          <h5>Anker PowerDrive III (PowerPort Car Charger)</h5>
+          <div class="rv-rating">
+            <div class="wishlist-stars">
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="far fa-star"></i>
+            </div>
+            <span>(56)</span>
+          </div>
+          <div class="rv-price">Rs. 2,999</div>
+          <button class="btn-rv-add-to-cart"><i class="fas fa-shopping-cart"></i> Add to Cart</button>
+        </div>
+
+        <!-- RV Card 5 -->
+        <div class="recently-viewed-card">
+          <div class="rv-card-img">
+            <img src="images/prod-airpods.png" alt="TP-Link Tapo Mini Smart Wi-Fi Plug">
+          </div>
+          <h5>TP-Link Tapo Mini Smart Wi-Fi Plug</h5>
+          <div class="rv-rating">
+            <div class="wishlist-stars">
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="far fa-star"></i>
+            </div>
+            <span>(43)</span>
+          </div>
+          <div class="rv-price">Rs. 3,299</div>
+          <button class="btn-rv-add-to-cart"><i class="fas fa-shopping-cart"></i> Add to Cart</button>
+        </div>
       </div>
     </div>
-  </section>
+  </main>
 
   <!-- ==========================================
-       TRUST / VALUE PROPS SECTION
+       TRUST PROPS BAR SECTION
        ========================================== -->
-  <section class="trust-bar">
+  <section class="trust-props-section" style="border-top: 1px solid #e2e8f0; background-color: #f8fafc;">
     <div class="container">
-      <div class="trust-grid">
+      <div class="trust-props-grid">
         
-        <!-- Prop 1: Free Shipping -->
-        <div class="trust-item">
+        <!-- Prop 1 -->
+        <div class="trust-prop-card">
           <div class="trust-icon-wrapper">
             <i class="fas fa-shipping-fast"></i>
           </div>
           <div class="trust-text">
             <h4>Free Shipping Nationwide</h4>
-            <p>On all orders above Rs. 2,500</p>
+            <p>On all orders above Rs. 5,000</p>
           </div>
         </div>
 
-        <!-- Prop 2: 7-Day Replacement Warranty -->
-        <div class="trust-item">
+        <!-- Prop 2 -->
+        <div class="trust-prop-card">
           <div class="trust-icon-wrapper">
             <i class="fas fa-sync-alt"></i>
           </div>
           <div class="trust-text">
             <h4>7-Day Replacement Warranty</h4>
-            <p>Hassle-free returns within 7 days</p>
+            <p>Hassle free replacement</p>
           </div>
         </div>
 
-        <!-- Prop 3: 100% Authentic Products -->
-        <div class="trust-item">
+        <!-- Prop 3 -->
+        <div class="trust-prop-card">
           <div class="trust-icon-wrapper">
-            <i class="fas fa-check-shield"></i>
+            <i class="fas fa-shield-alt"></i>
           </div>
           <div class="trust-text">
             <h4>100% Authentic Products</h4>
-            <p>Sourced from official brands only</p>
+            <p>Sourced directly from brands</p>
           </div>
         </div>
 
-        <!-- Prop 4: Cash on Delivery -->
-        <div class="trust-item">
+        <!-- Prop 4 -->
+        <div class="trust-prop-card">
           <div class="trust-icon-wrapper">
             <i class="fas fa-hand-holding-usd"></i>
           </div>

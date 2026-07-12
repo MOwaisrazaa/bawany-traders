@@ -561,5 +561,70 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
+  // ==========================================
+  // 14. Dynamic Wishlist Card Action Logic
+  // ==========================================
+  const wishlistBadge = document.getElementById('wishlistBadge');
+  let wishlistCount = parseInt(wishlistBadge ? wishlistBadge.textContent : '4') || 4;
+
+  const initialWishlistedItems = [
+    "airpods",
+    "galaxywatch",
+    "galaxy watch",
+    "anker",
+    "sony wf"
+  ];
+
+  const injectWishlistButtons = () => {
+    const cards = document.querySelectorAll('.product-card');
+    cards.forEach(card => {
+      if (card.querySelector('.wishlist-btn-corner')) return;
+
+      const titleEl = card.querySelector('.product-title');
+      const titleText = titleEl ? titleEl.textContent.toLowerCase() : "";
+      
+      const isWishlisted = initialWishlistedItems.some(item => titleText.includes(item)) || card.id === "prodAirpods" || card.id === "prodGalaxyWatch" || card.id === "prodSony" || card.id === "prodAnker";
+
+      const btn = document.createElement('button');
+      btn.className = `wishlist-btn-corner ${isWishlisted ? 'active' : ''}`;
+      btn.setAttribute('aria-label', isWishlisted ? 'Remove from wishlist' : 'Add to wishlist');
+      btn.innerHTML = `<i class="${isWishlisted ? 'fas' : 'far'} fa-heart"></i>`;
+
+      card.insertBefore(btn, card.firstChild);
+
+      btn.addEventListener('click', (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+
+        const isActive = btn.classList.toggle('active');
+        const icon = btn.querySelector('i');
+        
+        let pTitle = "Item";
+        if (titleEl) {
+          pTitle = titleEl.textContent.replace(/<[^>]*>/g, '').trim();
+        }
+
+        if (isActive) {
+          icon.className = "fas fa-heart";
+          btn.setAttribute('aria-label', 'Remove from wishlist');
+          wishlistCount++;
+          showToast(`Added "${pTitle}" to wishlist!`, 'fa-heart');
+        } else {
+          icon.className = "far fa-heart";
+          btn.setAttribute('aria-label', 'Add to wishlist');
+          wishlistCount = Math.max(0, wishlistCount - 1);
+          showToast(`Removed "${pTitle}" from wishlist.`, 'fa-heart');
+        }
+
+        if (wishlistBadge) {
+          wishlistBadge.textContent = wishlistCount;
+          wishlistBadge.style.display = wishlistCount > 0 ? 'flex' : 'none';
+        }
+      });
+    });
+  };
+
+  injectWishlistButtons();
+
   document.head.appendChild(style);
 });
