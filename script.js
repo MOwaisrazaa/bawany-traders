@@ -5,11 +5,43 @@
 document.addEventListener('DOMContentLoaded', () => {
   // --- Preloader Controller ---
   const preloader = document.getElementById('preloader');
-  if (preloader) {
+  const percentEl = document.getElementById('preloaderPercent');
+  const statusEl = document.querySelector('.preloader-loading-text');
+  
+  if (preloader && percentEl) {
+    let progress = 0;
+    const duration = 2000; // 2 seconds
+    const intervalTime = 25; // Update every 25ms
+    const step = 100 / (duration / intervalTime);
+    
+    const statuses = [
+      { limit: 30, text: 'Connecting to Server...' },
+      { limit: 65, text: 'Loading Premium Catalog...' },
+      { limit: 90, text: 'Polishing Interface...' },
+      { limit: 100, text: 'Welcome to Bawany Traders' }
+    ];
+
+    const timer = setInterval(() => {
+      progress += step;
+      if (progress >= 100) {
+        progress = 100;
+        clearInterval(timer);
+      }
+      
+      const currentPercent = Math.floor(progress);
+      percentEl.textContent = `${currentPercent}%`;
+      
+      // Update status text dynamically based on percentage
+      const currentStatus = statuses.find(s => currentPercent <= s.limit);
+      if (currentStatus && statusEl) {
+        statusEl.textContent = currentStatus.text;
+      }
+    }, intervalTime);
+
     setTimeout(() => {
       preloader.classList.add('fade-out');
       document.body.classList.remove('preloader-active');
-    }, 2000);
+    }, duration);
   }
   // --- DOM Elements ---
   const header = document.querySelector('header');
