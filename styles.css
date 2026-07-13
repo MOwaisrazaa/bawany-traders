@@ -253,10 +253,10 @@ header {
 }
 
 .logo-img {
-  height: 48px;
+  height: 60px;
   width: auto;
   object-fit: contain;
-  margin-right: -6px;
+  margin-right: -18px;
   flex-shrink: 0;
   transition: transform var(--transition-speed) ease;
 }
@@ -292,20 +292,22 @@ header {
 /* Search Bar */
 .search-container {
   flex: 1;
-  max-width: 600px;
+  max-width: 480px;
   display: flex;
   border: 2px solid var(--primary-teal);
   border-radius: 8px;
   overflow: hidden;
   height: 44px;
+  margin: 0 45px 0 25px;
 }
 
 .search-category {
   border: none;
   background-color: var(--light-gray);
-  padding: 0 15px;
+  padding: 0 6px 0 10px;
+  width: 125px;
   border-right: 1px solid var(--border-gray);
-  font-size: 0.85rem;
+  font-size: 0.8rem;
   font-weight: 500;
   color: var(--text-dark);
   outline: none;
