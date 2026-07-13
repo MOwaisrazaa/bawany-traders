@@ -162,21 +162,66 @@ document.addEventListener('DOMContentLoaded', () => {
     }, 2700);
   };
 
+  // Particle burst function for Add to Cart
+  const createParticleBurst = (e) => {
+    const x = e.clientX;
+    const y = e.clientY;
+    const colors = ['#00969A', '#00F2FE', '#2ECC71', '#0B1325', '#FFA500'];
+
+    for (let i = 0; i < 15; i++) {
+      const particle = document.createElement('span');
+      particle.className = 'cart-particle';
+      document.body.appendChild(particle);
+
+      // Random size
+      const size = Math.random() * 8 + 4; // 4px to 12px
+      particle.style.width = `${size}px`;
+      particle.style.height = `${size}px`;
+      
+      // Random colors
+      particle.style.background = colors[Math.floor(Math.random() * colors.length)];
+      
+      // Set start position
+      particle.style.left = `${x}px`;
+      particle.style.top = `${y}px`;
+
+      // Random target position (circle around click point)
+      const angle = Math.random() * Math.PI * 2;
+      const distance = Math.random() * 80 + 30;
+      const tx = Math.cos(angle) * distance;
+      const ty = Math.sin(angle) * distance;
+
+      particle.style.setProperty('--tx', `${tx}px`);
+      particle.style.setProperty('--ty', `${ty}px`);
+
+      // Start animation
+      particle.style.animation = 'particleExplode 0.6s cubic-bezier(0.1, 0.8, 0.3, 1) forwards';
+
+      // Remove particle after animation ends
+      particle.addEventListener('animationend', () => {
+        particle.remove();
+      });
+    }
+  };
+
   // ==========================================
   // 6. "Add to Cart" Interaction
   // ==========================================
-  const cartButtons = document.querySelectorAll('.add-to-cart-btn, .slide-cta');
+  const cartButtons = document.querySelectorAll('.add-to-cart-btn, .slide-cta, .btn-rv-add-to-cart');
   
   cartButtons.forEach(btn => {
     btn.addEventListener('click', (e) => {
       e.preventDefault();
       
+      // Trigger particles burst
+      createParticleBurst(e);
+      
       // Determine product title
       let productTitle = "Premium Item";
-      const card = btn.closest('.product-card');
+      const card = btn.closest('.product-card, .recently-viewed-card, .wishlist-card');
       
       if (card) {
-        const titleEl = card.querySelector('.product-title');
+        const titleEl = card.querySelector('.product-title, h5');
         if (titleEl) productTitle = titleEl.textContent.trim();
       } else if (btn.classList.contains('slide-cta')) {
         // Hero button product title
@@ -189,9 +234,11 @@ document.addEventListener('DOMContentLoaded', () => {
         cartBadge.textContent = cartCount;
         cartBadge.style.display = 'flex';
         
-        // Visual micro-animation feedback (bounce)
+        // Visual micro-animation feedback (bounce & pulse)
+        cartBadge.classList.add('cart-badge-bump');
         cartBadge.parentElement.classList.add('animate-bounce');
         setTimeout(() => {
+          cartBadge.classList.remove('cart-badge-bump');
           cartBadge.parentElement.classList.remove('animate-bounce');
         }, 500);
       }
@@ -625,6 +672,36 @@ document.addEventListener('DOMContentLoaded', () => {
   };
 
   injectWishlistButtons();
+
+  // --- Scroll Reveal Animation ---
+  const revealOnScrollElements = document.querySelectorAll('.reveal-on-scroll');
+  if ('IntersectionObserver' in window && revealOnScrollElements.length > 0) {
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('reveal-visible');
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, {
+      threshold: 0.1,
+      rootMargin: '0px 0px -40px 0px'
+    });
+
+    revealOnScrollElements.forEach(el => revealObserver.observe(el));
+
+    // Stagger delay for elements with data-stagger
+    const staggerContainers = document.querySelectorAll('[data-stagger]');
+    staggerContainers.forEach(container => {
+      const children = container.querySelectorAll('.reveal-on-scroll');
+      children.forEach((child, index) => {
+        child.style.transitionDelay = `${index * 80}ms`;
+      });
+    });
+  } else {
+    // Fallback if IntersectionObserver is not supported
+    revealOnScrollElements.forEach(el => el.classList.add('reveal-visible'));
+  }
 
   document.head.appendChild(style);
 });

@@ -1385,12 +1385,7 @@ footer {
    10. Responsive Media Queries
    ========================================== */
 
-/* Laptop Viewports */
-@media (max-width: 1200px) {
-  .products-grid {
-    grid-template-columns: repeat(3, 1fr);
-  }
-}
+
 
 /* Tablet Viewports */
 @media (max-width: 992px) {
@@ -5261,4 +5256,156 @@ footer {
     justify-content: center;
   }
 }
+
+/* ==========================================
+   12. Advanced Animation System & Effects
+   ========================================== */
+
+/* Scroll Reveal Base Classes */
+.reveal-on-scroll {
+  opacity: 0;
+  transform: translateY(30px) scale(0.98);
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), 
+              transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: transform, opacity;
+}
+
+.reveal-on-scroll.reveal-left {
+  transform: translateX(-40px);
+}
+
+.reveal-on-scroll.reveal-right {
+  transform: translateX(40px);
+}
+
+.reveal-on-scroll.reveal-scale {
+  transform: scale(0.93) translateY(20px);
+}
+
+.reveal-on-scroll.reveal-visible {
+  opacity: 1;
+  transform: translate(0) scale(1);
+}
+
+/* Floating Hover Animation for Product Cards */
+.product-card {
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), 
+              box-shadow 0.5s cubic-bezier(0.16, 1, 0.3, 1), 
+              border-color 0.5s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+.product-card:hover {
+  transform: translateY(-8px) scale(1.01) !important;
+  box-shadow: 0 20px 35px rgba(11, 19, 37, 0.08), 0 4px 15px rgba(0, 150, 154, 0.04) !important;
+  border-color: var(--primary-teal) !important;
+}
+
+/* Premium Diagonal Shimmer Shine on Hover */
+.product-card::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -60%;
+  width: 30%;
+  height: 200%;
+  background: linear-gradient(
+    to right,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.25) 30%,
+    rgba(255, 255, 255, 0.55) 50%,
+    rgba(255, 255, 255, 0.25) 70%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  transform: rotate(30deg);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+  z-index: 5;
+}
+
+.product-card:hover::after {
+  opacity: 1;
+  animation: shineSweep 1.4s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+}
+
+@keyframes shineSweep {
+  0% { left: -60%; }
+  100% { left: 140%; }
+}
+
+/* Premium CTA Button Shine Effect */
+.btn-teal, .add-to-cart-btn, .notify-btn, .newsletter-btn, .category-btn {
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.btn-teal::before, .add-to-cart-btn::before, .notify-btn::before, .category-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    120deg,
+    transparent,
+    rgba(255, 255, 255, 0.25),
+    transparent
+  );
+  transform: translateX(-100%);
+  transition: transform 0.6s ease;
+  z-index: -1;
+}
+
+.btn-teal:hover::before, .add-to-cart-btn:hover::before, .notify-btn:hover::before, .category-btn:hover::before {
+  transform: translateX(100%);
+}
+
+/* Particles Burst Effect styles */
+.cart-particle {
+  position: fixed;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 1;
+}
+
+@keyframes particleExplode {
+  0% {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(calc(-50% + var(--tx)), calc(-50% + var(--ty))) scale(0);
+    opacity: 0;
+  }
+}
+
+/* Brand Logo Hover Rotate */
+.logo {
+  text-decoration: none;
+}
+
+.logo-img {
+  transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+.logo:hover .logo-img {
+  transform: rotate(360deg) scale(1.05);
+}
+
+/* Animated Cart Badge Pulse */
+@keyframes badgePulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.3); }
+  100% { transform: scale(1); }
+}
+
+.cart-badge-bump {
+  animation: badgePulse 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
 
