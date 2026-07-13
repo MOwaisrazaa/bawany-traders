@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Product Details | Bawany Traders</title>
+  <meta name="description" content="View product specifications, detailed description, customer reviews, and purchase online at Bawany Traders Pakistan.">
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="styles.css">
+  <!-- FontAwesome for Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+  <!-- ==========================================
+       HEADER SECTION
+       ========================================== -->
+  <header>
+    <!-- Top Bar Ticker -->
+    <div class="top-bar-ticker">
+      <div class="container">
+        <div class="ticker-left">
+          <a href="mailto:info@bawanytradersofficial.com"><i class="far fa-envelope"></i> info@bawanytradersofficial.com</a>
+        </div>
+        <div class="ticker-center">
+          <div class="ticker-wrapper">
+            <div class="ticker-text">JOIN OUR COMMUNITY GROUP TODAY - SEND YOUR NAME, CITY &amp; AREA TO 0314-0270274</div>
+          </div>
+        </div>
+        <div class="ticker-right">
+          <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+          <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+          <a href="#" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Main Navigation Bar -->
+    <div class="main-nav">
+      <div class="container">
+        <!-- Hamburger Menu for Mobile -->
+        <button class="mobile-toggle" id="mobileToggle" aria-label="Open navigation menu">
+          <i class="fas fa-bars"></i>
+        </button>
+
+        <!-- Brand Logo -->
+        <a href="index.html" class="logo" id="brandLogo">
+          <img src="images/logo.png" alt="Bawany Traders" class="logo-img">
+          <div class="logo-text-wrapper">
+            <span class="logo-title">BAWANY</span>
+            <span class="logo-subtitle">TRADERS OFFICIAL</span>
+          </div>
+        </a>
+
+        <!-- Search Container -->
+        <div class="search-container">
+          <select class="search-category" id="searchCategory" aria-label="Select category filter">
+            <option>All Categories</option>
+            <option>Smart Watches</option>
+            <option>Audio / Earbuds</option>
+            <option>Charging &amp; Cables</option>
+            <option>Smart Home</option>
+            <option>Car Accessories</option>
+          </select>
+          <input type="text" class="search-input" id="searchInput" placeholder="Search for products, brands and more..." aria-label="Search inputs">
+          <button class="search-btn" id="searchBtn" aria-label="Execute search">
+            <i class="fas fa-search"></i>
+          </button>
+        </div>
+
+        <!-- Action Items (Wishlist, Cart, Account) -->
+        <div class="nav-actions">
+          <a href="track.html" class="nav-action-item" id="trackOrderAction">
+            <i class="fas fa-truck"></i>
+            <span>Track Order</span>
+          </a>
+          <a href="wishlist.html" class="nav-action-item" id="wishlistAction">
+            <i class="far fa-heart"></i>
+            <span>Wishlist</span>
+            <span class="badge" id="wishlistBadge">4</span>
+          </a>
+          <a href="cart.html" class="nav-action-item" id="cartAction">
+            <i class="fas fa-shopping-basket"></i>
+            <span>Cart</span>
+            <span class="badge" id="cartBadge">0</span>
+          </a>
+          <div class="nav-action-item" id="accountAction">
+            <i class="far fa-user"></i>
+            <span>Account</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Sub Navigation Bar -->
+    <nav class="sub-nav">
+      <div class="container">
+        <!-- Category Dropdown Button -->
+        <div class="category-dropdown">
+          <button class="category-btn" id="categoryBtn">
+            <i class="fas fa-bars"></i>
+            <span>Shop by Categories</span>
+            <i class="fas fa-chevron-down" style="font-size: 0.75rem;"></i>
+          </button>
+          <!-- Category Hover/Click Menu -->
+          <div class="category-menu" id="categoryMenu">
+            <a href="#"><i class="fas fa-laptop" style="margin-right: 10px; width: 15px;"></i> Electronics</a>
+            <a href="#"><i class="fas fa-clock" style="margin-right: 10px; width: 15px;"></i> Smart Watches</a>
+            <a href="#"><i class="fas fa-headphones" style="margin-right: 10px; width: 15px;"></i> Audio / Earbuds</a>
+            <a href="#"><i class="fas fa-bolt" style="margin-right: 10px; width: 15px;"></i> Charging &amp; Cables</a>
+            <a href="#"><i class="fas fa-home" style="margin-right: 10px; width: 15px;"></i> Smart Home</a>
+            <a href="#"><i class="fas fa-car" style="margin-right: 10px; width: 15px;"></i> Car Accessories</a>
+          </div>
+        </div>
+
+        <!-- Navigation Links -->
+        <div class="nav-links">
+          <a href="index.html">Home</a>
+          <a href="products.html">All Products</a>
+          <a href="deals.html">Deals</a>
+          <a href="about.html">About Us</a>
+          <a href="contact.html">Contact Us</a>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Mobile Sidebar / Drawer -->
+  <div class="drawer-overlay" id="drawerOverlay"></div>
+  <div class="mobile-nav-drawer" id="mobileDrawer">
+    <div class="drawer-header">
+      <a href="index.html" class="logo">
+        <img src="images/logo.png" alt="Bawany Traders" class="logo-img">
+        <div class="logo-text-wrapper">
+          <span class="logo-title">BAWANY</span>
+          <span class="logo-subtitle">TRADERS OFFICIAL</span>
+        </div>
+      </a>
+      <button class="drawer-close" id="drawerClose" aria-label="Close menu">&times;</button>
+    </div>
+    <div class="drawer-content">
+      <div class="drawer-menu">
+        <a href="index.html">Home</a>
+        <a href="products.html">All Products</a>
+        <a href="#">Best Sellers</a>
+        <a href="deals.html">Deals</a>
+        <a href="about.html">About Us</a>
+        <a href="contact.html">Contact Us</a>
+      </div>
+      <div class="drawer-categories-title">Categories</div>
+      <div class="drawer-menu">
+        <a href="#">Smart Watches</a>
+        <a href="#">Audio / Earbuds</a>
+        <a href="#">Charging &amp; Cables</a>
+        <a href="#">Smart Home</a>
+        <a href="#">Car Accessories</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==========================================
+       PRODUCT DETAIL SECTION
+       ========================================== -->
+  <section class="product-detail-section">
+    <div class="container">
+      
+      <!-- Breadcrumbs -->
+      <div class="detail-breadcrumbs">
+        <a href="index.html">Home</a> 
+        <i class="fas fa-chevron-right"></i> 
+        <a href="products.html">Shop</a> 
+        <i class="fas fa-chevron-right"></i> 
+        <span id="breadcrumbCategory" style="color: var(--text-muted);">Category</span> 
+        <i class="fas fa-chevron-right"></i> 
+        <span id="breadcrumbTitle" style="color: var(--dark-navy);">Product</span>
+      </div>
+
+      <!-- Main Product Box Grid -->
+      <div class="product-detail-grid">
+        
+        <!-- Left: Image Gallery -->
+        <div class="product-detail-gallery">
+          <div class="main-image-container">
+            <span class="product-badge" id="productDetailBadge" style="display: none;"></span>
+            <button class="wishlist-btn-corner" id="wishlistHeartBtn" aria-label="Add to wishlist">
+              <i class="far fa-heart"></i>
+            </button>
+            <img src="images/logo.png" alt="Product Image" id="mainDetailImage">
+          </div>
+          <div class="thumbnail-list" id="thumbnailList">
+            <!-- Thumbnails injected via JS -->
+          </div>
+        </div>
+
+        <!-- Right: Product Info -->
+        <div class="product-detail-info">
+          
+          <div class="product-header-meta">
+            <span class="product-brand-tag" id="productBrand">Official Brand</span>
+            <div class="stock-status-box" id="stockStatusBox">
+              <span class="stock-dot pulse-dot"></span>
+              <span id="stockStatusText">In Stock</span>
+            </div>
+          </div>
+
+          <h1 class="product-detail-title" id="productDetailTitle">Loading Product...</h1>
+          
+          <!-- Rating -->
+          <div class="product-detail-rating">
+            <div class="rating-stars" id="detailRatingStars">
+              <!-- Injected by JS -->
+            </div>
+            <a href="#reviews" class="rating-link-count" id="detailRatingLink">(0 Customer Reviews)</a>
+          </div>
+
+          <!-- Pricing -->
+          <div class="product-detail-price-box">
+            <div class="prices-wrapper">
+              <span class="price-current" id="detailPriceCurrent">Rs. 0</span>
+              <span class="price-old" id="detailPriceOld" style="display: none;">Rs. 0</span>
+            </div>
+            <span class="save-amount-badge" id="detailSaveBadge" style="display: none;">Save Rs. 0</span>
+          </div>
+
+          <!-- Description Brief -->
+          <p class="product-brief-description" id="productBriefDesc">
+            Loading description details...
+          </p>
+
+          <!-- Divider -->
+          <hr class="detail-divider">
+
+          <!-- Options: Color -->
+          <div class="product-options-group" id="colorOptionsGroup">
+            <h4 class="option-title">Select Color:</h4>
+            <div class="color-options-list" id="colorOptionsList">
+              <!-- Colors injected by JS -->
+            </div>
+          </div>
+
+          <!-- Actions Wrapper: Quantity & Add to Cart -->
+          <div class="product-actions-wrapper">
+            <div class="quantity-picker-box">
+              <button class="qty-btn minus" id="qtyMinusBtn" aria-label="Decrease quantity"><i class="fas fa-minus"></i></button>
+              <input type="number" class="qty-val-input" id="detailQtyInput" value="1" min="1" max="10" readonly aria-label="Selected quantity">
+              <button class="qty-btn plus" id="qtyPlusBtn" aria-label="Increase quantity"><i class="fas fa-plus"></i></button>
+            </div>
+            <button class="btn btn-teal add-to-cart-action-btn" id="addToCartActionBtn">
+              <i class="fas fa-shopping-cart"></i> Add to Cart
+            </button>
+          </div>
+
+          <!-- Trust Badges -->
+          <div class="detail-trust-badges">
+            <div class="trust-badge-item">
+              <i class="fas fa-shipping-fast"></i>
+              <span>Free Shipping</span>
+            </div>
+            <div class="trust-badge-item">
+              <i class="fas fa-sync-alt"></i>
+              <span>7-Day Replacement</span>
+            </div>
+            <div class="trust-badge-item">
+              <i class="fas fa-hand-holding-usd"></i>
+              <span>Cash on Delivery</span>
+            </div>
+          </div>
+
+          <!-- Metadata list -->
+          <div class="product-meta-list">
+            <div><strong>SKU:</strong> <span id="detailSKU">BT-00000</span></div>
+            <div><strong>Category:</strong> <span id="detailCategory">Accessories</span></div>
+            <div><strong>Tags:</strong> <span id="detailTags">Smart, Gadgets</span></div>
+          </div>
+
+        </div>
+
+      </div>
+
+      <!-- ==========================================
+           TABS SECTION (DESCRIPTION, SPECS, REVIEWS)
+           ========================================== -->
+      <div class="product-tabs-container">
+        
+        <!-- Tab Headers -->
+        <div class="tab-headers">
+          <button class="tab-btn active" data-tab="tabDesc">Description</button>
+          <button class="tab-btn" data-tab="tabSpecs">Specifications</button>
+          <button class="tab-btn" data-tab="tabReviews">Reviews (<span id="reviewsCountBadge">0</span>)</button>
+        </div>
+
+        <!-- Tab Panels -->
+        <div class="tab-panels">
+          
+          <!-- Panel 1: Description -->
+          <div class="tab-panel active" id="tabDesc">
+            <div class="rich-text-content" id="detailLongDesc">
+              <p>Loading full description...</p>
+            </div>
+          </div>
+
+          <!-- Panel 2: Specifications -->
+          <div class="tab-panel" id="tabSpecs">
+            <div class="table-responsive">
+              <table class="specs-table">
+                <tbody id="specsTableBody">
+                  <!-- Specs injected via JS -->
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- Panel 3: Reviews -->
+          <div class="tab-panel" id="tabReviews">
+            
+            <div class="reviews-summary-grid">
+              
+              <!-- Left rating breakdown -->
+              <div class="rating-breakdown-box">
+                <h3 class="average-rating-num" id="averageRatingNum">0.0</h3>
+                <div class="average-rating-stars" id="averageRatingStars">
+                  <!-- Injected by JS -->
+                </div>
+                <p class="based-on-text">Based on <span id="ratingBreakdownCount">0</span> review(s)</p>
+              </div>
+
+              <!-- Star bar list -->
+              <div class="star-bars-container">
+                <div class="star-bar-row">
+                  <span>5 Star</span>
+                  <div class="progress-bar-bg"><div class="progress-bar-fill" style="width: 85%;"></div></div>
+                  <span>85%</span>
+                </div>
+                <div class="star-bar-row">
+                  <span>4 Star</span>
+                  <div class="progress-bar-bg"><div class="progress-bar-fill" style="width: 10%;"></div></div>
+                  <span>10%</span>
+                </div>
+                <div class="star-bar-row">
+                  <span>3 Star</span>
+                  <div class="progress-bar-bg"><div class="progress-bar-fill" style="width: 5%;"></div></div>
+                  <span>5%</span>
+                </div>
+                <div class="star-bar-row">
+                  <span>2 Star</span>
+                  <div class="progress-bar-bg"><div class="progress-bar-fill" style="width: 0%;"></div></div>
+                  <span>0%</span>
+                </div>
+                <div class="star-bar-row">
+                  <span>1 Star</span>
+                  <div class="progress-bar-bg"><div class="progress-bar-fill" style="width: 0%;"></div></div>
+                  <span>0%</span>
+                </div>
+              </div>
+
+            </div>
+
+            <hr class="detail-divider" style="margin: 30px 0;">
+
+            <div class="reviews-content-grid">
+              
+              <!-- Review list -->
+              <div class="reviews-list" id="reviewsList">
+                <!-- Reviews injected via JS -->
+              </div>
+
+              <!-- Write a review form -->
+              <div class="write-review-container">
+                <h3>Write a Review</h3>
+                <form class="write-review-form" id="newReviewForm">
+                  <div class="form-group">
+                    <label>Your Rating *</label>
+                    <div class="star-rating-selector" id="starRatingSelector">
+                      <i class="far fa-star" data-rating="1"></i>
+                      <i class="far fa-star" data-rating="2"></i>
+                      <i class="far fa-star" data-rating="3"></i>
+                      <i class="far fa-star" data-rating="4"></i>
+                      <i class="far fa-star" data-rating="5"></i>
+                    </div>
+                  </div>
+                  <div class="form-row">
+                    <div class="form-group">
+                      <label for="reviewName">Your Name *</label>
+                      <input type="text" id="reviewName" class="form-control" required placeholder="Enter your name">
+                    </div>
+                    <div class="form-group">
+                      <label for="reviewEmail">Your Email *</label>
+                      <input type="email" id="reviewEmail" class="form-control" required placeholder="Enter your email">
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="reviewText">Your Review *</label>
+                    <textarea id="reviewText" rows="5" class="form-control" required placeholder="Share your experience with this product..."></textarea>
+                  </div>
+                  <button type="submit" class="btn btn-navy" style="width: auto; padding: 12px 30px;">Submit Review</button>
+                </form>
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+      <!-- ==========================================
+           RELATED PRODUCTS SECTION
+           ========================================== -->
+      <div class="related-products-section">
+        <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 30px; border-bottom: 1px solid var(--border-gray); padding-bottom: 15px;">
+          <div style="display: flex; align-items: center; gap: 12px;">
+            <span style="display: inline-block; width: 4px; height: 26px; background-color: var(--primary-teal); border-radius: 2px;"></span>
+            <h2 style="font-family: 'Space Grotesk', sans-serif; font-size: 1.8rem; font-weight: 800; color: var(--dark-navy); margin: 0; letter-spacing: -0.5px;">Related Products</h2>
+          </div>
+        </div>
+        <div class="products-grid" id="relatedProductsGrid">
+          <!-- Injected dynamically via JS -->
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ==========================================
+       FOOTER SECTION (DARK THEME)
+       ========================================== -->
+  <footer>
+    <div class="container">
+      <div class="footer-top" data-stagger="true">
+        
+        <!-- Column 1: Brand details -->
+        <div class="footer-column footer-brand reveal-on-scroll reveal-visible">
+          <a href="index.html" class="logo">
+            <img src="images/logo.png" alt="Bawany Traders" class="logo-img">
+            <div class="logo-text-wrapper">
+              <span class="logo-title" style="color: var(--white);">BAWANY</span>
+              <span class="logo-subtitle">TRADERS OFFICIAL</span>
+            </div>
+          </a>
+          <p>Your trusted destination for the latest gadgets, electronics &amp; smart accessories in Pakistan.</p>
+          <div class="social-links">
+            <a href="#" class="social-link" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" class="social-link" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="#" class="social-link" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+            <a href="#" class="social-link" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+          </div>
+        </div>
+
+        <!-- Column 2: Useful Links -->
+        <div class="footer-column reveal-on-scroll reveal-visible">
+          <h3>Useful Links</h3>
+          <ul class="footer-links-list">
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="track.html">Track Order</a></li>
+            <li><a href="#">Returns &amp; Refunds</a></li>
+            <li><a href="#">Shipping Policy</a></li>
+            <li><a href="privacy-policy.html">Privacy Policy</a></li>
+            <li><a href="#">Terms &amp; Conditions</a></li>
+            <li><a href="contact.html">Contact Us</a></li>
+          </ul>
+        </div>
+
+        <!-- Column 3: Customer Service -->
+        <div class="footer-column reveal-on-scroll reveal-visible">
+          <h3>Customer Service</h3>
+          <ul class="footer-links-list">
+            <li><a href="#">Help Center</a></li>
+            <li><a href="#">Support</a></li>
+            <li><a href="#">Warranty Policy</a></li>
+          </ul>
+        </div>
+
+        <!-- Column 4: Newsletter -->
+        <div class="footer-column reveal-on-scroll reveal-visible">
+          <h3>Newsletter</h3>
+          <p style="font-size: 0.85rem; margin-bottom: 15px; line-height: 1.5;">Subscribe to get updates on new arrivals, exclusive deals &amp; offers.</p>
+          <form class="newsletter-form" id="newsletterForm">
+            <input type="email" class="newsletter-input" id="newsletterInput" placeholder="Enter your email" required aria-label="Email address for subscription">
+            <button type="submit" class="newsletter-btn" aria-label="Subscribe to newsletter">
+              <i class="fas fa-paper-plane"></i>
+            </button>
+          </form>
+        </div>
+
+      </div>
+
+      <!-- Copyright Bottom -->
+      <div class="footer-bottom">
+        <div class="container">
+          <p>&copy; 2026 Bawany Traders. All Rights Reserved.</p>
+          <p>Powered by <a href="https://snipezon.com" target="_blank" style="color: var(--primary-teal); text-decoration: none; font-weight: 600;">snipezon.com</a></p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="script.js"></script>
+</body>
+</html>
