@@ -3,6 +3,14 @@
    ========================================== */
 
 document.addEventListener('DOMContentLoaded', () => {
+  // --- Preloader Controller ---
+  const preloader = document.getElementById('preloader');
+  if (preloader) {
+    setTimeout(() => {
+      preloader.classList.add('fade-out');
+      document.body.classList.remove('preloader-active');
+    }, 2000);
+  }
   // --- DOM Elements ---
   const header = document.querySelector('header');
   const categoryBtn = document.getElementById('categoryBtn');
