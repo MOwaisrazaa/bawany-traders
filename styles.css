@@ -960,6 +960,12 @@ header {
   justify-content: center;
 }
 
+.product-img-wrapper a {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
 .product-img-wrapper img {
   width: 100%;
   height: 100%;
@@ -6589,6 +6595,19 @@ body.preloader-active {
   .tab-btn {
     font-size: 0.9rem;
   }
+}
+
+/* ==========================================================================
+   Image Size Standardization - Zooming product shots to match lifestyle scale
+   ========================================================================== */
+.product-img-wrapper img[src*="airpods"],
+.product-img-wrapper img[src*="sony"] {
+  transform: scale(1.35) !important;
+}
+
+.product-card:hover .product-img-wrapper img[src*="airpods"],
+.product-card:hover .product-img-wrapper img[src*="sony"] {
+  transform: scale(1.42) !important;
 }
 
 
