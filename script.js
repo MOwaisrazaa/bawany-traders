@@ -1531,6 +1531,67 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
+  // ==========================================
+  // 16. Typewriter Search Placeholder Animation
+  // ==========================================
+  const searchInput = document.getElementById('searchInput');
+  if (searchInput) {
+    const phrases = [
+      "Search for products, brands and more...",
+      "Search for Smart Watches...",
+      "Search for Noise Cancelling Earbuds...",
+      "Search for Premium Power Banks...",
+      "Search for fast chargers and cables...",
+      "Search for smart home gadgets..."
+    ];
+    
+    let phraseIndex = 0;
+    let charIndex = 0;
+    let isDeleting = false;
+    let typingSpeed = 80;
+    
+    function typePlaceholder() {
+      if (!searchInput) return;
+      
+      // Stop typing if input is focused or contains text
+      if (document.activeElement === searchInput || searchInput.value.length > 0) {
+        setTimeout(typePlaceholder, 1000);
+        return;
+      }
+      
+      const currentPhrase = phrases[phraseIndex];
+      
+      if (isDeleting) {
+        searchInput.setAttribute('placeholder', currentPhrase.substring(0, charIndex - 1));
+        charIndex--;
+        typingSpeed = 30;
+      } else {
+        searchInput.setAttribute('placeholder', currentPhrase.substring(0, charIndex + 1));
+        charIndex++;
+        typingSpeed = 80;
+      }
+      
+      if (!isDeleting && charIndex === currentPhrase.length) {
+        isDeleting = true;
+        typingSpeed = 2000;
+      } else if (isDeleting && charIndex === 0) {
+        isDeleting = false;
+        phraseIndex = (phraseIndex + 1) % phrases.length;
+        typingSpeed = 500;
+      }
+      
+      setTimeout(typePlaceholder, typingSpeed);
+    }
+    
+    // Reset/fallback placeholder when search is focused
+    searchInput.addEventListener('focus', () => {
+      searchInput.setAttribute('placeholder', 'Search for products, brands and more...');
+    });
+    
+    // Start typewriter cycle
+    setTimeout(typePlaceholder, 1000);
+  }
+
   document.head.appendChild(style);
 });
 
