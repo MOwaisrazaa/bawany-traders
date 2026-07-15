@@ -1592,6 +1592,260 @@ document.addEventListener('DOMContentLoaded', () => {
     setTimeout(typePlaceholder, 1000);
   }
 
+  // ==========================================
+  // CHECKOUT PAGE WIZARD & SIMULATION LOGIC
+  // ==========================================
+  const shippingForm = document.getElementById('shippingForm');
+  if (shippingForm) {
+    const continueBtn = document.getElementById('continueCheckoutBtn');
+    const orderModal = document.getElementById('orderSuccessModal');
+    
+    // Form Inputs
+    const inputFields = {
+      fullName: document.getElementById('fullName'),
+      phone: document.getElementById('phoneNumber'),
+      email: document.getElementById('emailAddress'),
+      addr1: document.getElementById('addressLine1'),
+      addr2: document.getElementById('addressLine2'),
+      city: document.getElementById('city'),
+      state: document.getElementById('state'),
+      zip: document.getElementById('zipCode'),
+      notes: document.getElementById('deliveryInstructions')
+    };
+
+    // Pre-saved addresses
+    const preSavedAddresses = {
+      addrRadio1: {
+        fullName: 'Kashif Ali',
+        phone: '0300 1234567',
+        email: 'kashifali@example.com',
+        addr1: 'House #123, Street 5, Block A',
+        addr2: 'Near ABC Mall',
+        city: 'Lahore',
+        state: 'Punjab',
+        zip: '54000',
+        notes: ''
+      },
+      addrRadio2: {
+        fullName: 'Office Address',
+        phone: '021 3456789',
+        email: 'office@bawanytraders.pk',
+        addr1: 'Office #5, 2nd Floor, Tech Tower',
+        addr2: 'Shahrah-e-Faisal',
+        city: 'Karachi',
+        state: 'Sindh',
+        zip: '75400',
+        notes: ''
+      }
+    };
+
+    // Autofill with default active saved address
+    function autofillAddress(addressKey) {
+      const addrObj = preSavedAddresses[addressKey];
+      if (addrObj) {
+        inputFields.fullName.value = addrObj.fullName;
+        inputFields.phone.value = addrObj.phone;
+        inputFields.email.value = addrObj.email;
+        inputFields.addr1.value = addrObj.addr1;
+        inputFields.addr2.value = addrObj.addr2;
+        inputFields.city.value = addrObj.city;
+        inputFields.state.value = addrObj.state;
+        inputFields.zip.value = addrObj.zip;
+        
+        // Remove validation error classes on fill
+        Object.values(inputFields).forEach(field => {
+          if (field) field.classList.remove('invalid');
+        });
+      }
+    }
+    
+    // Initialize default active saved address autofill
+    autofillAddress('addrRadio1');
+
+    // Handle Saved Address card click switching
+    const savedCard1 = document.getElementById('savedCard1');
+    const savedCard2 = document.getElementById('savedCard2');
+    
+    if (savedCard1 && savedCard2) {
+      savedCard1.addEventListener('click', () => {
+        document.getElementById('addrRadio1').checked = true;
+        savedCard1.classList.add('active');
+        savedCard2.classList.remove('active');
+        autofillAddress('addrRadio1');
+      });
+
+      savedCard2.addEventListener('click', () => {
+        document.getElementById('addrRadio2').checked = true;
+        savedCard2.classList.add('active');
+        savedCard1.classList.remove('active');
+        autofillAddress('addrRadio2');
+      });
+    }
+
+    // Handle Payment Option Cards Selection
+    const paymentCards = document.querySelectorAll('.payment-option-card');
+    paymentCards.forEach(card => {
+      card.addEventListener('click', () => {
+        const radio = card.querySelector('input[type="radio"]');
+        if (radio) radio.checked = true;
+        paymentCards.forEach(c => c.classList.remove('active'));
+        card.classList.add('active');
+      });
+    });
+
+    // Form inputs clear errors on user typing
+    Object.values(inputFields).forEach(field => {
+      if (field) {
+        field.addEventListener('input', () => {
+          field.classList.remove('invalid');
+        });
+      }
+    });
+
+    // Validation helper
+    function validateStep1() {
+      let isValid = true;
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+      // Check required fields
+      const requiredFields = ['fullName', 'phone', 'email', 'addr1', 'city', 'state', 'zip'];
+      requiredFields.forEach(key => {
+        const field = inputFields[key];
+        if (field) {
+          const val = field.value.trim();
+          if (val === '') {
+            field.classList.add('invalid');
+            isValid = false;
+          } else if (key === 'email' && !emailRegex.test(val)) {
+            field.classList.add('invalid');
+            isValid = false;
+          } else if (key === 'phone' && val.length < 10) {
+            field.classList.add('invalid');
+            isValid = false;
+          } else {
+            field.classList.remove('invalid');
+          }
+        }
+      });
+
+      return isValid;
+    }
+
+    // Progress wizard tracking
+    let checkoutStep = 1;
+
+    if (continueBtn) {
+      continueBtn.addEventListener('click', () => {
+        if (checkoutStep === 1) {
+          // Shipping Step -> Payment Step
+          if (validateStep1()) {
+            // Mark Step 1 complete, Step 2 active
+            document.getElementById('stepIndicator1').classList.remove('active');
+            document.getElementById('stepIndicator1').classList.add('completed');
+            document.getElementById('stepDivider1').classList.add('completed');
+            
+            document.getElementById('stepIndicator2').classList.add('active');
+            document.getElementById('stepDivider2').classList.add('active');
+            
+            // Scroll to payment section smoothly
+            document.getElementById('checkoutSectionPayment').scrollIntoView({ behavior: 'smooth', block: 'center' });
+            
+            continueBtn.innerHTML = 'Continue to Review Order <i class="fas fa-arrow-right"></i>';
+            checkoutStep = 2;
+          } else {
+            // Shake form on validation error
+            shippingForm.style.animation = 'none';
+            setTimeout(() => {
+              shippingForm.style.animation = 'shake 0.4s ease';
+            }, 10);
+          }
+        } else if (checkoutStep === 2) {
+          // Payment Step -> Review Step
+          document.getElementById('stepIndicator2').classList.remove('active');
+          document.getElementById('stepIndicator2').classList.add('completed');
+          document.getElementById('stepDivider2').classList.add('completed');
+          
+          document.getElementById('stepIndicator3').classList.add('active');
+          document.getElementById('stepDivider3').classList.add('active');
+          
+          // Populate Review Info
+          const fullName = inputFields.fullName.value;
+          const phone = inputFields.phone.value;
+          const email = inputFields.email.value;
+          const addr1 = inputFields.addr1.value;
+          const addr2 = inputFields.addr2.value;
+          const city = inputFields.city.value;
+          const state = inputFields.state.value;
+          const zip = inputFields.zip.value;
+          
+          const activePaymentCard = document.querySelector('.payment-option-card.active');
+          const paymentMethodName = activePaymentCard ? activePaymentCard.querySelector('.method-title').innerText : 'Cash on Delivery';
+          
+          document.getElementById('reviewShippingDetails').innerHTML = `
+            <p><strong>${fullName}</strong></p>
+            <p>${addr1}${addr2 ? ', ' + addr2 : ''}</p>
+            <p>${city}, ${state} - ${zip}</p>
+            <p>Phone: ${phone} | Email: ${email}</p>
+          `;
+          
+          document.getElementById('reviewPaymentDetails').innerHTML = `
+            <p><strong>${paymentMethodName}</strong></p>
+            <p class="method-desc" style="font-size: 0.78rem; color: #718096; margin-top: 5px;">${activePaymentCard ? activePaymentCard.querySelector('.method-desc').innerText : ''}</p>
+          `;
+          
+          // Expand Review Panel, Collapse Shipping & Payment
+          document.getElementById('checkoutSectionReview').classList.remove('collapsed');
+          document.getElementById('checkoutSectionReview').querySelector('.review-section-content').style.display = 'block';
+          
+          // Scroll to review section
+          document.getElementById('checkoutSectionReview').scrollIntoView({ behavior: 'smooth', block: 'center' });
+          
+          continueBtn.innerHTML = 'Place Order <i class="fas fa-lock"></i>';
+          checkoutStep = 3;
+        } else if (checkoutStep === 3) {
+          // Review Step -> Complete (Show Modal)
+          document.getElementById('stepIndicator3').classList.remove('active');
+          document.getElementById('stepIndicator3').classList.add('completed');
+          document.getElementById('stepDivider3').classList.add('completed');
+          
+          document.getElementById('stepIndicator4').classList.add('active');
+          document.getElementById('stepIndicator4').classList.add('completed');
+          
+          // Generate simulated Order ID
+          const orderNum = Math.floor(100000 + Math.random() * 900000);
+          document.getElementById('successOrderId').innerText = `#BT-${orderNum}`;
+          
+          // Set Payment Method name in success modal
+          const activePaymentCard = document.querySelector('.payment-option-card.active');
+          const paymentMethodName = activePaymentCard ? activePaymentCard.querySelector('.method-title').innerText : 'Cash on Delivery';
+          document.getElementById('successOrderPayment').innerText = paymentMethodName;
+          
+          // Clear cart indicators
+          const cartBadge = document.getElementById('cartBadge');
+          const mobCartBadge = document.querySelector('.mobile-nav-drawer #cartBadge');
+          if (cartBadge) cartBadge.innerText = '0';
+          if (mobCartBadge) mobCartBadge.innerText = '0';
+          
+          // Show Modal Overlay
+          if (orderModal) {
+            orderModal.style.display = 'flex';
+          }
+        }
+      });
+    }
+
+    // Add Form Shake CSS
+    const shakeStyle = document.createElement('style');
+    shakeStyle.innerHTML = `
+      @keyframes shake {
+        0%, 100% { transform: translateX(0); }
+        20%, 60% { transform: translateX(-6px); }
+        40%, 80% { transform: translateX(6px); }
+      }
+    `;
+    document.head.appendChild(shakeStyle);
+  }
+
   document.head.appendChild(style);
 });
 
