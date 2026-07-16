@@ -1846,6 +1846,99 @@ document.addEventListener('DOMContentLoaded', () => {
     document.head.appendChild(shakeStyle);
   }
 
+  // ==========================================
+  // Login Page Controller
+  // ==========================================
+  const loginForm = document.getElementById('loginForm');
+  const togglePasswordBtn = document.getElementById('togglePasswordBtn');
+  const loginPassword = document.getElementById('loginPassword');
+  const loginIdentifier = document.getElementById('loginIdentifier');
+  const identifierError = document.getElementById('identifierError');
+  const passwordError = document.getElementById('passwordError');
+
+  // Show/Hide Password Toggle
+  if (togglePasswordBtn && loginPassword) {
+    togglePasswordBtn.addEventListener('click', () => {
+      const type = loginPassword.getAttribute('type') === 'password' ? 'text' : 'password';
+      loginPassword.setAttribute('type', type);
+      togglePasswordBtn.classList.toggle('fa-eye');
+      togglePasswordBtn.classList.toggle('fa-eye-slash');
+    });
+  }
+
+  // Login Form Submission & Validation
+  if (loginForm) {
+    loginForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      
+      let isValid = true;
+      const identifierVal = loginIdentifier.value.trim();
+      const passwordVal = loginPassword.value;
+
+      // Validate Email or Phone Number
+      if (!identifierVal) {
+        identifierError.textContent = "Please enter your email or phone number.";
+        identifierError.style.display = "block";
+        loginIdentifier.classList.add('invalid');
+        isValid = false;
+      } else {
+        // Simple regex checking
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        const phoneRegex = /^[\d\+\-\s\(\)]{7,15}$/;
+        
+        if (!emailRegex.test(identifierVal) && !phoneRegex.test(identifierVal)) {
+          identifierError.textContent = "Please enter a valid email address or phone number.";
+          identifierError.style.display = "block";
+          loginIdentifier.classList.add('invalid');
+          isValid = false;
+        } else {
+          identifierError.style.display = "none";
+          loginIdentifier.classList.remove('invalid');
+        }
+      }
+
+      // Validate Password
+      if (!passwordVal) {
+        passwordError.textContent = "Please enter your password.";
+        passwordError.style.display = "block";
+        loginPassword.classList.add('invalid');
+        isValid = false;
+      } else if (passwordVal.length < 6) {
+        passwordError.textContent = "Password must be at least 6 characters.";
+        passwordError.style.display = "block";
+        loginPassword.classList.add('invalid');
+        isValid = false;
+      } else {
+        passwordError.style.display = "none";
+        loginPassword.classList.remove('invalid');
+      }
+
+      // Submit success animation
+      if (isValid) {
+        const submitBtn = document.getElementById('loginSubmitBtn');
+        submitBtn.disabled = true;
+        submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> <span>Signing In...</span>';
+
+        setTimeout(() => {
+          showToast("Welcome Back! Logged in successfully.", "fa-check-circle");
+          
+          setTimeout(() => {
+            window.location.href = "index.html";
+          }, 1500);
+        }, 1500);
+      } else {
+        // Shake form card on validation failure
+        const card = document.querySelector('.login-form-card');
+        if (card) {
+          card.style.animation = 'shake 0.4s ease-in-out';
+          setTimeout(() => {
+            card.style.animation = '';
+          }, 400);
+        }
+      }
+    });
+  }
+
   document.head.appendChild(style);
 });
 
