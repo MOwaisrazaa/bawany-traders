@@ -14,26 +14,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const intervalTime = 25; // Update every 25ms
     const step = 100 / (duration / intervalTime);
     
-    // Matrix Scrambler variables
-    const titleEl = document.getElementById('preloaderTitle');
-    const finalWord = "BAWANY";
-    const chars = "$%#@&XZ9*?!=+{}[]<>";
-
-    const scrambleWord = (progressPercent) => {
-      if (!titleEl) return;
-      const resolvedCount = Math.floor((progressPercent / 100) * (finalWord.length + 1));
-      let displayWord = "";
-      
-      for (let i = 0; i < finalWord.length; i++) {
-        if (i < resolvedCount) {
-          displayWord += finalWord[i];
-        } else {
-          displayWord += chars[Math.floor(Math.random() * chars.length)];
-        }
-      }
-      titleEl.textContent = displayWord;
-    };
-
     // Cursor spotlight coordinate tracking
     preloader.addEventListener('mousemove', (e) => {
       preloader.style.setProperty('--mx', `${e.clientX}px`);
@@ -56,9 +36,6 @@ document.addEventListener('DOMContentLoaded', () => {
       
       const currentPercent = Math.floor(progress);
       percentEl.textContent = `${currentPercent}%`;
-      
-      // Scramble title text dynamically in sync with progress
-      scrambleWord(currentPercent);
       
       // Update status text dynamically based on percentage
       const currentStatus = statuses.find(s => currentPercent <= s.limit);
